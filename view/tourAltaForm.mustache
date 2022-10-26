@@ -1,0 +1,23 @@
+{{> header}}
+<!-- The Band Section -->
+<div class='w3-container w3-content w3-center w3-padding-64' style='max-width:800px' id='band'>
+    <h2 class='w3-wide'>Formulario Alta Presentacion</h2>
+    <form method="post" action="/presentaciones/procesarAlta">
+        <div>
+            <label>nombre:</label>
+            <input type="text" name="nombre">
+        </div>
+        <div>
+            <label>fecha:</label>
+            <input type='date' name='fecha'>
+        </div>
+        <div>
+            <label>precio:</label>
+            <input type='number' name='precio'>
+        </div>
+
+        <button type="submit">Enviar</button>
+    </form>
+
+</div>
+{{> footer}}
