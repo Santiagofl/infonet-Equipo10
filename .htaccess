@@ -7,6 +7,9 @@ Options -Indexes
     RewriteEngine On
     RewriteBase /infonet/
     RewriteRule ^(public)($|/) - [L,NC]
+    RewriteRule ^(public)($|/iso) - [L,NC]
+    RewriteRule ^(public)($|/style) - [L,NC]
+    RewriteRule ^(public)($|/logo) - [L,NC]
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteRule ^(.*)/(.*)/(.*)$ index.php?controller=$1&method=$2&$3 [L,QSA]

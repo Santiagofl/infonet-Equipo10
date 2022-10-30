@@ -5,14 +5,9 @@ include_once('helpers/MustacheRenderer.php');
 include_once('helpers/Logger.php');
 include_once('helpers/Router.php');
 
-include_once('model/CancionesModel.php');
-include_once('model/PresentacionesModel.php');
-include_once ("model/QuieroSerParteModel.php");
+include_once('model/ProductoModel.php');
 
-include_once('controller/PresentacionesController.php');
-include_once('controller/CancionesController.php');
-include_once('controller/LaBandaController.php');
-include_once('controller/QuieroSerParteController.php');
+include_once('controller/homeController.php');
 
 include_once ('dependencies/mustache/src/Mustache/Autoloader.php');
 
@@ -25,38 +20,16 @@ class Configuration {
         $this->view = new MustacheRenderer("view/", 'view/partial/');
     }
 
-    public function getPresentacionesController() {
-        return new PresentacionesController(
-            $this->getPresentacionesModel(),
-            $this->view,
-            new Logger());
+    public function getHomeController() {
+        return new HomeController($this->getAllProductosModel(), $this->view);
     }
 
-    public function getCancionesController() {
-        return new CancionesController($this->createCancionesModel(), $this->view);
+    private function getAllProductosModel(): ProductoModel {
+        return new ProductoModel($this->database);
     }
 
-    public function getLaBandaController() {
-        return new LaBandaController($this->view);
-    }
-
-    public function getQuieroserparteController(){
-        return new QuieroSerParteController($this->view, $this->getQuieroSerParteModel());
-    }
-
-    private function createCancionesModel(): CancionesModel {
-        return new CancionesModel($this->database);
-    }
-
-    private function getPresentacionesModel(): PresentacionesModel {
-        return new PresentacionesModel($this->database);
-    }
 
     public function getRouter() {
-        return new Router($this, "laBanda", "list");
-    }
-
-    private function getQuieroSerParteModel() {
-        return new QuieroSerParteModel($this->database);
+        return new Router($this, "home", "list");
     }
 }
