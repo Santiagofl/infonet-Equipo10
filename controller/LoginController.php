@@ -7,8 +7,8 @@ class LoginController{
         $this->view = $view;
     }
 
-    public function alta(){
-        $this->view->render('login.mustache');
+    public function list(){
+        $this->view->render('loginView.mustache');
     }
 
     /*
