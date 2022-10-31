@@ -8,6 +8,7 @@ include_once('helpers/Router.php');
 include_once('model/ProductoModel.php');
 
 include_once('controller/homeController.php');
+include_once('controller/LoginController.php');
 
 include_once ('dependencies/mustache/src/Mustache/Autoloader.php');
 
@@ -23,13 +24,19 @@ class Configuration {
     public function getHomeController() {
         return new HomeController($this->getAllProductosModel(), $this->view);
     }
+    public function getLoginController(){
+        return new LoginController($this->view);
+    }
+
+    public function getRouter() {
+        return new Router($this, "home", "list");
+    }
 
     private function getAllProductosModel(): ProductoModel {
         return new ProductoModel($this->database);
     }
 
 
-    public function getRouter() {
-        return new Router($this, "home", "list");
-    }
+
+
 }
