@@ -1,7 +1,8 @@
 <?php
 
-include_once ("configuration/Configuration.php");
+include_once("configuration/Configuration.php");
 $configuration = new Configuration();
 $router = $configuration->getRouter();
 
-$router->redirect(isset($_GET['controller']),isset($_GET['method']));
+// $router->redirect($_GET['controller'], isset($_GET['method']) ?? $_GET['method']);
+$router->redirect($_GET['controller'], $_GET['method']);

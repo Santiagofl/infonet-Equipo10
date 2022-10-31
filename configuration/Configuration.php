@@ -8,6 +8,7 @@ include_once('helpers/Router.php');
 include_once('model/ProductoModel.php');
 
 include_once('controller/homeController.php');
+include_once('controller/productoController.php');
 
 include_once ('dependencies/mustache/src/Mustache/Autoloader.php');
 
@@ -21,7 +22,11 @@ class Configuration {
     }
 
     public function getHomeController() {
-        return new HomeController($this->getAllProductosModel(), $this->view);
+        return new HomeController($this->view);
+    }
+
+    public function getProductoController() {
+        return new ProductoController($this->getAllProductosModel(), $this->view);
     }
 
     private function getAllProductosModel(): ProductoModel {
