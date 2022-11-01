@@ -30,7 +30,7 @@ class Configuration {
     }
 
     public function getAbmController() {
-        return new AbmController($this->view);
+        return new AbmController($this->getAllProductosModel(), $this->getAllEdicionesModel(),$this->view);
     }
 
     public function getProductoController() {

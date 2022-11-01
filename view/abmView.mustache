@@ -1,5 +1,8 @@
 {{> header}}
 <section class="my-3">
+    {{#data.ediciones}}
+        {{fecha}}
+    {{/data.ediciones}}
     <div class="d-flex flex-column gap-3">
         <!---crear edicion--->
         <div>
@@ -54,5 +57,8 @@
             </div>
         </div>
     </div>
+    {{#data.productos}}
+        {{nombre}}
+    {{/data.productos}}
 </section>
 {{> footer}}

@@ -1,13 +1,21 @@
 <?php
 
 class AbmController {
+
+    private $productoModel;
+    private $edicionModel;
     private $view;
 
-    public function __construct($view) {
+    public function __construct($productosModel, $edicionModel, $view) {
         $this->view = $view;
+        $this->productoModel = $productosModel;
+        $this->edicionModel = $edicionModel;
     }
 
     public function list() {
-        $this->view->render('abmView.mustache');
+        $pro['productos'] = $this->productoModel->getProductos();
+        $edi['ediciones'] = $this->edicionModel->getEdiciones();
+        $data['data'] = $pro + $edi;
+        $this->view->render('abmView.mustache', $data);
     }
 }
