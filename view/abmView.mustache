@@ -1,31 +1,33 @@
 {{> header}}
 <section class="my-3">
-    {{#data.ediciones}}
-        {{fecha}}
-    {{/data.ediciones}}
     <div class="d-flex flex-column gap-3">
         <!---crear edicion--->
         <div>
-            <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#formCrearSecciones"
+            <button class="btn btn-primary btn-radius" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#formCrearSecciones"
                     aria-expanded="false" aria-controls="collapseExample">
                 Crear Ediciones
             </button>
             <div class="collapse my-3" id="formCrearSecciones">
-                <form>
-                    <div class="mb-3">
-                        <label for="exampleInputEmail1" class="form-label">Email address</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                <form class="col-6">
+                    <div class="form-floating my-3">
+                        <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com">
+                        <label for="floatingInput">Nombre</label>
                     </div>
-                    <div class="mb-3">
-                        <label for="exampleInputPassword1" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="exampleInputPassword1">
+                    <div class="form-floating my-3">
+                        <input type="text" class="form-control" id="floatingPassword" placeholder="Password">
+                        <label for="floatingPassword">Imagen</label>
                     </div>
-                    <div class="mb-3 form-check">
-                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                        <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                    <div class="form-floating my-3">
+                        <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
+                            <option selected disabled>Producto</option>
+                            {{#data.productos}}
+                                <option value="{{id_producto}}">{{nombre}}</option>
+                            {{/data.productos}}
+                        </select>
+                        <label for="floatingSelect">Seleccionar producto</label>
                     </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn btn-primary my-2 btn-radius">Crear</button>
                 </form>
             </div>
         </div>
@@ -33,32 +35,68 @@
         <hr/>
         <!---crear secciones--->
         <div>
-            <button class="btn btn-warning" type="button" data-bs-toggle="collapse" data-bs-target="#formCrearEdicicion"
+            <button class="btn btn-warning btn-radius" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#formCrearEdicicion"
                     aria-expanded="false" aria-controls="collapseExample">
                 Crear Secciones
             </button>
             <div class="collapse my-3" id="formCrearEdicicion">
-                <form>
-                    <div class="mb-3">
-                        <label for="exampleInputEmail1" class="form-label">Email address</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                <form class="col-6">
+                    <div class="form-floating my-3">
+                        <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com">
+                        <label for="floatingInput">Nombre</label>
                     </div>
-                    <div class="mb-3">
-                        <label for="exampleInputPassword1" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="exampleInputPassword1">
+                    <div class="form-floating my-3">
+                        <input type="text" class="form-control" id="floatingPassword" placeholder="Password">
+                        <label for="floatingPassword">Imagen</label>
                     </div>
-                    <div class="mb-3 form-check">
-                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                        <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                    <div class="form-floating my-3">
+                        <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
+                            <option selected disabled>Edición</option>
+                            {{#data.ediciones}}
+                                {{id_edicion}}
+                                <option value="{{id_edicion}}">{{fecha}}</option>
+                            {{/data.ediciones}}
+                        </select>
+                        <label for="floatingSelect">Seleccionar edición</label>
                     </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <div class="form-floating my-3">
+                        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2"
+                                  style="height: 100px"></textarea>
+                        <label for="floatingTextarea2">Texto</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary my-2 btn-radius">Crear</button>
+                </form>
+            </div>
+        </div>
+
+        <hr/>
+        <!---crear articulos--->
+        <div>
+            <button class="btn btn-success btn-radius" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#formCrearArticulo"
+                    aria-expanded="false" aria-controls="collapseExample">
+                Crear Articulos
+            </button>
+            <div class="collapse my-3" id="formCrearArticulo">
+                <form class="col-6">
+                    <div class="form-floating my-3">
+                        <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com">
+                        <label for="floatingInput">Nombre</label>
+                    </div>
+                    <div class="form-floating my-3">
+                        <input type="text" class="form-control" id="floatingPassword" placeholder="Password">
+                        <label for="floatingPassword">Imagen</label>
+                    </div>
+                    <div class="form-floating my-3">
+                        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2"
+                                  style="height: 100px"></textarea>
+                        <label for="floatingTextarea2">Texto</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary my-2 btn-radius">Crear</button>
                 </form>
             </div>
         </div>
     </div>
-    {{#data.productos}}
-        {{nombre}}
-    {{/data.productos}}
 </section>
 {{> footer}}
