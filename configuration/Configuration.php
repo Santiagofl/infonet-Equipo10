@@ -12,6 +12,7 @@ include_once('controller/homeController.php');
 include_once('controller/productoController.php');
 include_once('controller/LoginController.php');
 include_once('controller/edicionController.php');
+include_once('controller/abmController.php');
 
 include_once ('dependencies/mustache/src/Mustache/Autoloader.php');
 
@@ -26,6 +27,10 @@ class Configuration {
 
     public function getHomeController() {
         return new HomeController($this->view);
+    }
+
+    public function getAbmController() {
+        return new AbmController($this->view);
     }
 
     public function getProductoController() {

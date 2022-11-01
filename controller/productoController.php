@@ -20,11 +20,12 @@ class ProductoController
 
     public function description()
     {
+        //aca hay dos secciones en una sola pagina por lo tanto entre estas dos vistas ira un header arriba y un footer abajo
         $id = $_GET['id'] ?? '';
         $producto['producto'] = $this->productoModel->getProducto($id);
         $this->view->render('descriptionView.mustache', $producto);
         $edicion['edicionProducto'] = $this->productoModel->getEdicionesDeCadaProducto($id);
-        $this->view->render('edicionporproductoView.mustache', $edicion);
+        $this->view->render('edicion-por-productoView.mustache', $edicion);
     }
 
 }
