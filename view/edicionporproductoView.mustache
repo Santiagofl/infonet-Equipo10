@@ -1,0 +1,18 @@
+<section class="my-3">
+    <h5 class="text-center my-3 text-decoration-underline">Ediciones del momento</h5>
+    <div class="d-flex flex-wrap justify-content-center gap-3">
+        {{#edicionProducto}}
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">{{fecha}}</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Edicion nro: {{id_edicion}}</h6>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                        card's content.</p>
+                    <a href="#" class="card-link">Ver secciones</a>
+                    <a href="#" class="card-link">Ver edicion</a>
+                </div>
+            </div>
+        {{/edicionProducto}}
+    </div>
+</section>
+{{> footer}}
