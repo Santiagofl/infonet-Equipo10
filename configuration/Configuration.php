@@ -4,12 +4,16 @@ include_once('helpers/MySQlDatabase.php');
 include_once('helpers/MustacheRenderer.php');
 include_once('helpers/Logger.php');
 include_once('helpers/Router.php');
+include_once('helpers/ValidatorHelper.php');
+include_once('helpers/SessionUser.php');
 
 include_once('model/ProductoModel.php');
+include_once ('model/LoginModel.php');
 
 include_once('controller/homeController.php');
 include_once('controller/productoController.php');
 include_once('controller/LoginController.php');
+include_once('controller/RegistroController.php');
 
 include_once ('dependencies/mustache/src/Mustache/Autoloader.php');
 
@@ -23,14 +27,14 @@ class Configuration {
     }
 
     public function getHomeController() {
-        return new HomeController($this->view);
+        return new HomeController($this->view, new SessionUser());
     }
 
     public function getProductoController() {
-        return new ProductoController($this->getAllProductosModel(), $this->view);
+        return new ProductoController($this->getAllProductosModel(), $this->view, new SessionUser());
     }
     public function getLoginController(){
-        return new LoginController($this->view);
+        return new LoginController($this->getAllLoginModel(), $this->view, new SessionUser());
     }
 
     public function getRouter() {
@@ -39,6 +43,10 @@ class Configuration {
 
     private function getAllProductosModel(): ProductoModel {
         return new ProductoModel($this->database);
+    }
+
+    private function getAllLoginModel(): LoginModel {
+        return new LoginModel($this->database);
     }
 
 

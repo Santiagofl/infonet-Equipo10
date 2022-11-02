@@ -26,6 +26,16 @@ class MySQlDatabase {
         return $respuesta->fetch_all(MYSQLI_ASSOC);
     }
 
+    public function queryResult($sql)
+    {
+        $comando = $this->conexion->prepare($sql);
+        $comando->execute();
+        $result = $comando->get_result();
+        return $result->fetch_assoc();
+
+
+    }
+
     public function execute($sql) {
         $this->conexion->query($sql);
     }

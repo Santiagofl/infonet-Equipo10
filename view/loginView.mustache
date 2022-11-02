@@ -1,5 +1,29 @@
 {{> header}}
 
-<p>Hola</p>
+<section>
+    <div class="container col-6 my-5">
+    <form method="post" action="/infonet/login/validarSesion">
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="floatingInput" name="usuario" required>
+            <label for="floatingInput">Usuario</label>
+        </div>
+        <div class="form-floating">
+            <input type="password" class="form-control" id="floatingPassword" name="password" required>
+            <label for="floatingPassword">Contraseña</label>
+        </div>
+
+        <!-- Submit button -->
+        <div class="d-flex justify-content-center">
+        <button type="submit" class="btn btn-primary btn-block my-4">Login</button>
+        </div>
+
+        <!-- Register buttons -->
+    </form>
+        <div class="text-center">
+            <p>¿No estas registrado? <a href="#!">Registrate</a></p>
+
+        </div>
+    </div>
+</section>
 
 {{> footer}}
