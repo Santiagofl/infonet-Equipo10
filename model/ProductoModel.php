@@ -32,4 +32,12 @@ class ProductoModel
         return $this->database->query($sql);
     }
 
+    public function setProducto($nombre, $imagen, $tipo)
+    {
+        $sql = "INSERT INTO producto
+                (`nombre`, `imagen`, `tipo`) 
+                VALUES ('$nombre', '$imagen', $tipo)";
+        $this->database->execute($sql);
+    }
+
 }

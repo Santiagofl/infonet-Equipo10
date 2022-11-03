@@ -1,5 +1,5 @@
 {{> header}}
-<section class="my-3">
+<section class="my-5">
     <div class="d-flex flex-column gap-3">
         <!---crear edicion--->
         <div>
@@ -34,14 +34,14 @@
 
         <hr/>
         <!---crear secciones--->
-        <div>
-            <button class="btn btn-warning btn-radius" type="button" data-bs-toggle="collapse"
+        <div class="col-6 align-self-end d-flex flex-column">
+            <button class="btn btn-warning btn-radius align-self-end" type="button" data-bs-toggle="collapse"
                     data-bs-target="#formCrearEdicicion"
                     aria-expanded="false" aria-controls="collapseExample">
                 Crear Secciones
             </button>
             <div class="collapse my-3" id="formCrearEdicicion">
-                <form class="col-6">
+                <form>
                     <div class="form-floating my-3">
                         <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com">
                         <label for="floatingInput">Nombre</label>
@@ -97,6 +97,42 @@
                 </form>
             </div>
         </div>
+
+        <hr/>
+        <!---crear productos--->
+        <div class="col-6 align-self-end d-flex flex-column">
+            <button class="btn btn-danger btn-radius align-self-end" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#formCrearProducto"
+                    aria-expanded="false" aria-controls="collapseExample">
+                Crear Productos
+            </button>
+            <div class="collapse my-3" id="formCrearProducto">
+                <form method="post" action="/infonet/producto/subirProducto">
+                    <div class="form-floating my-3">
+                        <input type="text" name="nombreProducto" class="form-control" id="nombreProducto" placeholder="name@example.com">
+                        <label for="nombreProducto">Nombre</label>
+                    </div>
+                    <div class="form-floating my-3">
+                        <input type="file" class="form-control" name="imagenProducto" id="imagenProducto" accept="image/png, image/jpeg"
+                               style="padding: 0 !important; line-height: 3.25 !important;">
+                    </div>
+                    <!--<div class="form-floating my-3">
+                        <input type="text" name="imagenProducto" class="form-control" id="imagenProducto" placeholder="name@example.com">
+                        <label for="imagenProducto">imagen</label>
+                    </div>-->
+                    <div class="form-floating my-3">
+                        <select class="form-select" name="tipoProducto" id="tipoProducto" aria-label="Floating label select example">
+                            <option selected disabled>Tipo</option>
+                            <option value="1">Diario</option>
+                            <option value="2">Revista</option>
+                        </select>
+                        <label for="tipoProducto">Seleccionar tipo</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary my-2 btn-radius">Crear</button>
+                </form>
+            </div>
+        </div>
+        <hr/>
     </div>
 </section>
 {{> footer}}

@@ -22,10 +22,27 @@ class ProductoController
     {
         //aca hay dos secciones en una sola pagina por lo tanto entre estas dos vistas ira un header arriba y un footer abajo
         $id = $_GET['id'] ?? '';
-        $producto['producto'] = $this->productoModel->getProducto($id);
-        $this->view->render('descriptionView.mustache', $producto);
-        $edicion['edicionProducto'] = $this->productoModel->getEdicionesDeCadaProducto($id);
-        $this->view->render('edicion-por-productoView.mustache', $edicion);
+        $data['producto'] = $this->productoModel->getProducto($id);
+        $this->view->render('descriptionView.mustache', $data);
+        $data['edicionProducto'] = $this->productoModel->getEdicionesDeCadaProducto($id);
+        $this->view->render('edicion-por-productoView.mustache', $data);
+    }
+
+    public function subirProducto()
+    {
+        $nombre = $_POST["nombreProducto"] ?? '';
+//        $imagen = $_POST["imagenProducto"] ?? '';
+//        $imagen = $_POST["imagenProducto"] ?? '';
+        $tipo = $_POST["tipoProducto"] ?? '';
+        $imagen = $_FILES["imagenProducto"]["name"] ?? '';
+
+//        $rutaArchivoTemporal = $_FILES["imagenProducto"]["tmp_name"];
+//        $rutaArchivoFinal =  "/infonet/public/iso/" . $_FILES["imagenProducto"]["name"];
+//        move_uploaded_file($rutaArchivoTemporal, $rutaArchivoFinal);
+
+        $this->productoModel->setProducto($nombre, $imagen, $tipo);
+
+        Redirect::doIt('/infonet/abm');
     }
 
 }

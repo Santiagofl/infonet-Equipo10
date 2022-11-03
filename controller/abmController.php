@@ -18,4 +18,5 @@ class AbmController {
         $data['data'] = $pro + $edi;
         $this->view->render('abmView.mustache', $data);
     }
+
 }
