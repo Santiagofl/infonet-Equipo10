@@ -1,0 +1,32 @@
+{{> header}}
+<main class="d-flex">
+    {{> menuAbm}}
+    <div class="container my-3">
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">Nombre</th>
+                <th scope="col">Imagen</th>
+                <th scope="col">Tipo</th>
+                <th scope="col">Accion</th>
+            </tr>
+            </thead>
+            <tbody>
+            {{#productos}}
+                <tr>
+                    <td>{{nombre}}</td>
+                    <td>{{imagen}}</td>
+                    <td>{{descripcion}}</td>
+                    <td>
+                        <div>
+                            <button class="btn btn-success btn-radius">Modificar</button>
+                            <button class="btn btn-danger btn-radius">Borrar</button>
+                        </div>
+                    </td>
+                </tr>
+            {{/productos}}
+            </tbody>
+        </table>
+    </div>
+</main>
+{{> footer}}

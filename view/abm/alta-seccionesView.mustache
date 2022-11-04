@@ -1,0 +1,17 @@
+{{> header}}
+<main class="d-flex">
+    {{> menuAbm}}
+    <div class="container my-3">
+        <h5>Crear Secciones</h5>
+        <div class="my-3">
+            <form method="post" action="/infonet/seccion/subirSeccion">
+                <div class="form-floating my-3">
+                    <input type="text" name="nombreSeccion" class="form-control" id="nombreSeccion">
+                    <label for="nombreSeccion">Nombre de la sección</label>
+                </div>
+                <button type="submit" class="btn btn-primary my-2 btn-radius">Crear</button>
+            </form>
+        </div>
+    </div>
+</main>
+{{> footer}}
