@@ -7,11 +7,13 @@ include_once('helpers/Router.php');
 
 include_once('model/ProductoModel.php');
 include_once('model/EdicionModel.php');
+include_once('model/SeccionModel.php');
 
 include_once('controller/homeController.php');
 include_once('controller/productoController.php');
 include_once('controller/LoginController.php');
 include_once('controller/edicionController.php');
+include_once('controller/seccionController.php');
 include_once('controller/abmController.php');
 
 include_once ('dependencies/mustache/src/Mustache/Autoloader.php');
@@ -41,6 +43,10 @@ class Configuration {
         return new EdicionController($this->getAllEdicionesModel(), $this->view);
     }
 
+    public function getSeccionController() {
+        return new SeccionController($this->getAllSeccionesModel(), $this->view);
+    }
+
     public function getLoginController(){
         return new LoginController($this->view);
     }
@@ -55,6 +61,10 @@ class Configuration {
 
     private function getAllEdicionesModel(): EdicionModel {
         return new EdicionModel($this->database);
+    }
+
+    private function getAllSeccionesModel(): SeccionModel {
+        return new SeccionModel($this->database);
     }
 
 

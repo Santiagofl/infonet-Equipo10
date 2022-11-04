@@ -31,14 +31,12 @@ class ProductoController
     public function subirProducto()
     {
         $nombre = $_POST["nombreProducto"] ?? '';
-//        $imagen = $_POST["imagenProducto"] ?? '';
-//        $imagen = $_POST["imagenProducto"] ?? '';
-        $tipo = $_POST["tipoProducto"] ?? '';
         $imagen = $_FILES["imagenProducto"]["name"] ?? '';
+        $tipo = $_POST["tipoProducto"] ?? '';
 
-//        $rutaArchivoTemporal = $_FILES["imagenProducto"]["tmp_name"];
-//        $rutaArchivoFinal =  "/infonet/public/iso/" . $_FILES["imagenProducto"]["name"];
-//        move_uploaded_file($rutaArchivoTemporal, $rutaArchivoFinal);
+        $rutaArchivoTemporal = $_FILES["imagenProducto"]["tmp_name"];
+        $rutaArchivoFinal =  "public/iso/" . $imagen;
+        move_uploaded_file($rutaArchivoTemporal, $rutaArchivoFinal);
 
         $this->productoModel->setProducto($nombre, $imagen, $tipo);
 
