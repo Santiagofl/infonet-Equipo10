@@ -35,12 +35,19 @@ class ProductoController
         $tipo = $_POST["tipoProducto"] ?? '';
 
         $rutaArchivoTemporal = $_FILES["imagenProducto"]["tmp_name"];
-        $rutaArchivoFinal =  "public/iso/" . $imagen;
+        $rutaArchivoFinal = "public/iso/" . $imagen;
         move_uploaded_file($rutaArchivoTemporal, $rutaArchivoFinal);
 
         $this->productoModel->setProducto($nombre, $imagen, $tipo);
 
         Redirect::doIt('/infonet/abm');
+    }
+
+    public function borrarProducto()
+    {
+        $idPproducto = $_GET["id"] ?? '';
+        $this->productoModel->deleteProducto($idPproducto);
+        Redirect::doIt('/infonet/abm/vistaListaProductos/lista-productos');
     }
 
 }

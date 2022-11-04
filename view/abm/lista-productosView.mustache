@@ -20,7 +20,12 @@
                     <td>
                         <div>
                             <button class="btn btn-success btn-radius">Modificar</button>
-                            <button class="btn btn-danger btn-radius">Borrar</button>
+                            <!--para borrar se pone el nombre del controller : producto
+                            y el nombre del metodo: borrarProducto
+                            el parametro es el /id=-->
+                            <a class="btn btn-danger btn-radius"
+                               href="/infonet/producto/borrarProducto/id={{ id_producto }}">Borrar
+                            </a>
                         </div>
                     </td>
                 </tr>

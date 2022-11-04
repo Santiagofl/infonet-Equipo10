@@ -40,4 +40,10 @@ class ProductoModel
         $this->database->execute($sql);
     }
 
+    public function deleteProducto($id)
+    {
+        $sql = "DELETE FROM producto WHERE producto.id_producto=" . $id;
+        $this->database->execute($sql);
+    }
+
 }
