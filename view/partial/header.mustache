@@ -39,16 +39,20 @@
           </li>
       </ul>
       <div class="d-flex">
+          {{#usuario}}
+              <button class='btn btn-light btn-radius' type='submit'>
+                  <a class='nav-link' href='/infonet/login/logout'>Logout</a>
+              </button>
+          {{/usuario}}
+          {{^usuario}}
+              <button class="btn btn-light btn-radius" type="submit">
+                  <a class="nav-link" href="/infonet/login">Inicia sesion</a>
+              </button>
 
-        <button class="btn btn-light btn-radius" type="submit">
-            <a class="nav-link" href="/infonet/login">Inicia sesion</a>
-        </button>
-
-        <button class="btn btn-outline-success btn-radius" type="submit">
-            <a class="nav-link" href="/infonet/signup">Registrarse</a>
-        </button>
-
-
+              <button class="btn btn-outline-success btn-radius" type="submit">
+                  <a class="nav-link" href="/infonet/signup">Registrarse</a>
+              </button>
+          {{/usuario}}
       </div>
     </div>
   </div>

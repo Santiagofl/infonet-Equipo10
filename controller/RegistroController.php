@@ -32,7 +32,7 @@
             (       ValidatorHelper::validacionDeNumeros($_POST['dni'],11)&&
                     ValidatorHelper::validacionDeTexto($_POST['email'],50)))&&
             (       ValidatorHelper::validacionDeTexto($_POST['user'],21)&&
-                    ValidatorHelper::validacionDeTexto($_POST['clave'],21) &&
+                    ValidatorHelper::validacionDeTexto($_POST['clave'],21)
                     )){
                 $name = $_POST["nombre"];
                 $lastName = $_POST["apellido"];
