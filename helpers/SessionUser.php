@@ -12,7 +12,7 @@ class SessionUser{
     }
 
     public function getCurrentUser(){
-        return $_SESSION['usuario'];
+        return $_SESSION['usuario'] ?? '';
     }
 
     public function closeSession(){

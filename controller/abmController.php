@@ -20,29 +20,33 @@ class AbmController
 
     public function list()
     {
-        $pro['productos'] = $this->productoModel->getProductos();
-        $edi['ediciones'] = $this->edicionModel->getEdiciones();
-        $data['data'] = $pro + $edi;
+
+        $data['productos'] = $this->productoModel->getProductos();
+        $data['ediciones'] = $this->edicionModel->getEdiciones();
         $this->view->render('abm/abmView.mustache', $data);
     }
 
     public function vistaAltaArticulos()
     {
-        $this->view->render('abm/alta-articulosView.mustache');
+        $data['usuario']= $this->session->getCurrentUser();
+        $this->view->render('abm/alta-articulosView.mustache',$data);
     }
 
     public function vistaAltaSecciones()
     {
-        $this->view->render('abm/alta-seccionesView.mustache');
+        $data['usuario']= $this->session->getCurrentUser();
+        $this->view->render('abm/alta-seccionesView.mustache',$data);
     }
 
     public function vistaAltaProductos()
     {
-        $this->view->render('abm/alta-productosView.mustache');
+        $data['usuario']= $this->session->getCurrentUser();
+        $this->view->render('abm/alta-productosView.mustache',$data);
     }
 
     public function vistaAltaEdiciones()
     {
+        $data['usuario']= $this->session->getCurrentUser();
         $data['productos'] = $this->productoModel->getProductos();
         $this->view->render('abm/alta-edicionesView.mustache', $data);
     }
@@ -50,12 +54,14 @@ class AbmController
     //Listas
     public function vistaListaProductos()
     {
+        $data['usuario']= $this->session->getCurrentUser();
         $data['productos'] = $this->productoModel->getProductos();
         $this->view->render('abm/lista-productosView.mustache', $data);
     }
 
     public function vistaListaSecciones()
     {
+        $data['usuario']= $this->session->getCurrentUser();
         $data['secciones'] = $this->seccionModel->getSecciones();
         $this->view->render('abm/lista-seccionesView.mustache', $data);
     }

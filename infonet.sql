@@ -22,6 +22,9 @@ CREATE TABLE `usuario` (
   REFERENCES rol(id_rol)
 );
 
+select *
+from usuario;
+
 CREATE TABLE `subscripcion` (
   `id_subscripcion` int(11) NOT NULL PRIMARY KEY auto_increment,
   `usuario` int(11) DEFAULT NULL,
