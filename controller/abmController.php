@@ -7,13 +7,15 @@ class AbmController
     private $edicionModel;
     public $seccionModel;
     private $view;
+    private $session;
 
-    public function __construct($productosModel, $edicionModel, $seccionModel, $view)
+    public function __construct($productosModel, $edicionModel, $seccionModel, $view,$session)
     {
         $this->view = $view;
         $this->productoModel = $productosModel;
         $this->edicionModel = $edicionModel;
         $this->seccionModel = $seccionModel;
+        $this->session = $session;
     }
 
     public function list()

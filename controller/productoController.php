@@ -16,7 +16,7 @@ class ProductoController
 
     public function list()
     {
-        $data['usuario']= $this->session->getCurrentUser();
+        $data['usuario']= $this->session->getCurrentUser() ?? '';
         $data['productos'] = $this->productoModel->getProductos();
         $this->view->render('productoView.mustache', $data);
     }
@@ -34,6 +34,7 @@ class ProductoController
 
     public function subirProducto()
     {
+        $data['usuario']= $this->session->getCurrentUser();
         $nombre = $_POST["nombreProducto"] ?? '';
         $imagen = $_FILES["imagenProducto"]["name"] ?? '';
         $tipo = $_POST["tipoProducto"] ?? '';
@@ -49,6 +50,7 @@ class ProductoController
 
     public function borrarProducto()
     {
+        $data['usuario']= $this->session->getCurrentUser();
         $idPproducto = $_GET["id"] ?? '';
         $this->productoModel->deleteProducto($idPproducto);
         Redirect::doIt('/infonet/abm/vistaListaProductos/lista-productos');

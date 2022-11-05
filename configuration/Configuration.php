@@ -35,27 +35,27 @@ class Configuration
 
     public function getHomeController()
     {
-        return new HomeController($this->view);
+        return new HomeController($this->view, new SessionUser());
     }
 
     public function getAbmController()
     {
-        return new AbmController($this->getAllProductosModel(), $this->getAllEdicionesModel(), $this->getAllSeccionesModel(), $this->view);
+        return new AbmController($this->getAllProductosModel(), $this->getAllEdicionesModel(), $this->getAllSeccionesModel(), $this->view,new SessionUser());
     }
 
     public function getProductoController()
     {
-        return new ProductoController($this->getAllProductosModel(), $this->view);
+        return new ProductoController($this->getAllProductosModel(), $this->view,new SessionUser());
     }
 
     public function getEdicionController()
     {
-        return new EdicionController($this->getAllEdicionesModel(), $this->view);
+        return new EdicionController($this->getAllEdicionesModel(), $this->view, new SessionUser());
     }
 
     public function getSeccionController()
     {
-        return new SeccionController($this->getAllSeccionesModel(), $this->view);
+        return new SeccionController($this->getAllSeccionesModel(), $this->view,new SessionUser());
     }
 
     public function getLoginController()
