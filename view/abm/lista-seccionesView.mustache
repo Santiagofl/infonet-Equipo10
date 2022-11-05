@@ -1,0 +1,18 @@
+{{> header}}
+<main class="d-flex">
+    {{> menuAbm}}
+    <div class="container my-3">
+        <h5>Buscar Articulos por seccion</h5>
+        <div class="form-floating my-3">
+            <select class="form-select" name="productoEdicion" id="productoEdicion"
+                    aria-label="Floating label select example">
+                <option selected disabled>Seccion</option>
+                {{#secciones}}
+                    <option value="{{id_seccion}}">{{nombre}}</option>
+                {{/secciones}}
+            </select>
+            <label for="productoEdicion">Seleccionar seccion</label>
+        </div>
+    </div>
+</main>
+{{> footer}}

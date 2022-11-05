@@ -5,13 +5,15 @@ class AbmController
 
     private $productoModel;
     private $edicionModel;
+    public $seccionModel;
     private $view;
 
-    public function __construct($productosModel, $edicionModel, $view)
+    public function __construct($productosModel, $edicionModel, $seccionModel, $view)
     {
         $this->view = $view;
         $this->productoModel = $productosModel;
         $this->edicionModel = $edicionModel;
+        $this->seccionModel = $seccionModel;
     }
 
     public function list()
@@ -48,5 +50,11 @@ class AbmController
     {
         $data['productos'] = $this->productoModel->getProductos();
         $this->view->render('abm/lista-productosView.mustache', $data);
+    }
+
+    public function vistaListaSecciones()
+    {
+        $data['secciones'] = $this->seccionModel->getSecciones();
+        $this->view->render('abm/lista-seccionesView.mustache', $data);
     }
 }

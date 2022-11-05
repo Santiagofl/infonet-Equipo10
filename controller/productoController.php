@@ -40,7 +40,7 @@ class ProductoController
 
         $this->productoModel->setProducto($nombre, $imagen, $tipo);
 
-        Redirect::doIt('/infonet/abm');
+        Redirect::doIt('/infonet/abm/vistaListaProductos/lista-productos');
     }
 
     public function borrarProducto()

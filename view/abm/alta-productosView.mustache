@@ -1,3 +1,24 @@
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+    console.log("Hola mundo");
+
+    $(document).ready(function () {
+        $("#clearImgProducto").hide();
+        $('#imagenProducto').change(function () {
+            $("#prevProd").html('');
+            for (var i = 0; i < $(this)[0].files.length; i++) {
+                $("#prevProd").append('<img src="' + window.URL.createObjectURL(this.files[i]) + '" width="150" />');
+            }
+            $("#clearImgProducto").show();
+        });
+
+        $("#clearImgProducto").click(function () {
+            $("#prevProd").html('');
+            $("#imagenProducto").val('');
+            $("#clearImgProducto").hide();
+        });
+    });
+</script>
 {{> header}}
 <main class="d-flex">
     {{> menuAbm}}
@@ -16,6 +37,10 @@
                            accept="image/png, image/jpeg"
                            style="padding: 0 12px !important; line-height: 3.25 !important;">
                 </div>
+                <!---En este div y el button son para eliminar y previsualizar-->
+                <div id="prevProd" class="form-floating my-3">
+                </div>
+                <button type="button" class="btn-close" id="clearImgProducto"></button>
                 <div class="form-floating my-3">
                     <select class="form-select" name="tipoProducto" id="tipoProducto"
                             aria-label="Floating label select example">

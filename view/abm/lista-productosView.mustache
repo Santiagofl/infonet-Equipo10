@@ -15,15 +15,22 @@
             {{#productos}}
                 <tr>
                     <td>{{nombre}}</td>
-                    <td>{{imagen}}</td>
+                    <td>
+                        <div>
+                            <img src="/infonet/public/iso/{{ imagen }}"
+                                 alt="{{ imagen }}"
+                                 class="m-auto"
+                                 width="30"/>
+                        </div>
+                    </td>
                     <td>{{descripcion}}</td>
                     <td>
                         <div>
                             <button class="btn btn-success btn-radius">Modificar</button>
                             <!--para borrar se pone el nombre del controller : producto
                             y el nombre del metodo: borrarProducto
-                            el parametro es el /id=-->
-                            <a class="btn btn-danger btn-radius"
+                            el parametro es el /id= que sera el $_GET["id"]-->
+                            <a class="btn btn-danger btn-radius disabled"
                                href="/infonet/producto/borrarProducto/id={{ id_producto }}">Borrar
                             </a>
                         </div>
