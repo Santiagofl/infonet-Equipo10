@@ -9,7 +9,12 @@
                 <div class="card-body">
                     <h5 class="card-title">{{nombre}}</h5>
                     <p class="card-text">Lo mejor de la fecha -  {{nombre}}</p>
-                    <button class="btn btn-success btn-radius">Comprar</button>
+                    {{#comprado}}
+                        <button class="btn btn-success btn-radius">Comprado!</button>
+                    {{/comprado}}
+                    {{^comprado}}
+                        <button class="btn btn-danger btn-radius">Comprar</button>
+                    {{/comprado}}
                     <a href="#" class="btn btn-primary btn-radius">Ver articulos</a>
                 </div>
             </div>

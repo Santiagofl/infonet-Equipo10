@@ -14,7 +14,7 @@ class AbmController {
 
     public function list() {
         $pro['productos'] = $this->productoModel->getProductos();
-        $edi['ediciones'] = $this->edicionModel->getEdiciones();
+        $edi['ediciones'] = $this->edicionModel->getEdiciones(2);
         $data['data'] = $pro + $edi;
         $this->view->render('abmView.mustache', $data);
     }

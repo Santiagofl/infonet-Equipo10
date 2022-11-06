@@ -24,7 +24,7 @@ class ProductoController
         $id = $_GET['id'] ?? '';
         $producto['producto'] = $this->productoModel->getProducto($id);
         $this->view->render('descriptionView.mustache', $producto);
-        $edicion['edicionProducto'] = $this->productoModel->getEdicionesDeCadaProducto($id);
+        $edicion['edicionProducto'] = $this->productoModel->getEdicionesDeCadaProducto($id, 2);
         $this->view->render('edicion-por-productoView.mustache', $edicion);
     }
 

@@ -24,11 +24,14 @@ class ProductoModel
         return $this->database->query($sql);
     }
 
-    public function getEdicionesDeCadaProducto($id)
+    public function getEdicionesDeCadaProducto($id, $idUsuario)
     {
-        $sql = 'SELECT e.id_edicion as id_edicion, e.fecha, p.nombre as producto, p.imagen
+
+        $sql = 'SELECT e.id_edicion as id_edicion, e.fecha, p.nombre as producto, p.imagen, c.usuario as comprado
                 FROM edicion e JOIN producto p ON e.id_producto=p.id_producto
-                WHERE p.id_producto=' . $id;
+                LEFT JOIN (select * from compra as c where usuario = '.$idUsuario.') AS c on e.id_edicion = c.edicion 
+                WHERE p.id_producto= '.$id;
+
         return $this->database->query($sql);
     }
 

@@ -14,7 +14,7 @@ class EdicionController
 
     public function list()
     {
-        $data['ediciones'] = $this->edicionModel->getEdiciones();
+        $data['ediciones'] = $this->edicionModel->getEdiciones(2);
         $this->view->render('edicionView.mustache', $data);
     }
 
