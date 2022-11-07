@@ -17,7 +17,7 @@ class EdicionController
     public function list()
     {
         $data['usuario']= $this->session->getCurrentUser();
-        $data['ediciones'] = $this->edicionModel->getEdiciones();
+        $data['ediciones'] = $this->edicionModel->getEdiciones(2);
         $this->view->render('edicionView.mustache', $data);
     }
 

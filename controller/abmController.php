@@ -22,7 +22,7 @@ class AbmController
     {
 
         $data['productos'] = $this->productoModel->getProductos();
-        $data['ediciones'] = $this->edicionModel->getEdiciones();
+        $data['ediciones'] = $this->edicionModel->getEdiciones(2);
         $this->view->render('abm/abmView.mustache', $data);
     }
 
