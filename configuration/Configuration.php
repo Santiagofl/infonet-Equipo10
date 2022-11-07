@@ -11,6 +11,7 @@ include_once('model/ProductoModel.php');
 include_once('model/EdicionModel.php');
 include_once('model/SeccionModel.php');
 include_once ('model/LoginModel.php');
+include_once ('model/RegistroModel.php');
 
 include_once('controller/homeController.php');
 include_once('controller/productoController.php');
@@ -58,6 +59,11 @@ class Configuration
         return new SeccionController($this->getAllSeccionesModel(), $this->view,new SessionUser());
     }
 
+    public function getRegistroController()
+    {
+        return new RegistroController($this->getAllRegistroModel(), $this->view, new SessionUser());
+    }
+
     public function getLoginController()
     {
         return new LoginController($this->getAllLoginModel(), $this->view, new SessionUser());
@@ -81,6 +87,9 @@ class Configuration
         return new LoginModel($this->database);
     }
 
+    private function getAllRegistroModel(): RegistroModel {
+        return new RegistroModel($this->database);
+    }
 
     private function getAllSeccionesModel(): SeccionModel
     {

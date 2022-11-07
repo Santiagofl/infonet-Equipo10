@@ -4,12 +4,21 @@
     <div class="container col-6 my-5">
     <form method="post" action="/infonet/login/validarSesion">
         <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="floatingInput" name="usuario" required>
+            <input type="text" class="form-control" id="floatingInput" name="usuario">
             <label for="floatingInput">Usuario</label>
         </div>
         <div class="form-floating">
-            <input type="password" class="form-control" id="floatingPassword" name="password" required>
+            <input type="password" class="form-control" id="floatingPassword" name="password">
             <label for="floatingPassword">Contraseña</label>
+        </div>
+
+        <div>
+            {{#confirmed}}
+                <p>Usuario o clave incorrectas!</p>
+            {{/confirmed}}
+            {{#validador}}
+                <p>Ingrese un usuario o contraseña correcto</p>
+            {{/validador}}
         </div>
 
         <!-- Submit button -->
@@ -20,7 +29,7 @@
         <!-- Register buttons -->
     </form>
         <div class="text-center">
-            <p>¿No estas registrado? <a href="#!">Registrate</a></p>
+            <p>¿No estas registrado? <a href="/infonet/registro">Registrate</a></p>
 
         </div>
     </div>

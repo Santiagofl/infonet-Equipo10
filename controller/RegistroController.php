@@ -1,61 +1,36 @@
 <?php
     class RegistroController{
         private $registroModel;
-        private $printer;
+        private $view;
+        private $session;
 
-        public function __construct($registroModel,$printer){
+        public function __construct($registroModel,$view, $session){
             $this->registroModel = $registroModel;
-            $this->printer = $printer;
+            $this->view = $view;
+            $this->session = $session;
         }
 
-        public function execute($data = [],$view ='registroView.html' ){
-            if(isset($_SESSION["logueado"]) && $_SESSION["logueado"]==1){
-                $menu ="<p>Hola, ".$_SESSION['user']."</p>
-                    <a href='/logIn/exit'>Cerrar Sesion</a>";
-              }else{
-                $menu ="<a href='/registro'>Registrarse</a>
-                <a href='/logIn'>Ingresar</a>";
-              }
-              
-              if(isset($data["turno"])){
-                $data["display"] = "d-none";
-              }else{
-                $data["display"] = "d-block";
-              }
-              $data += ["menu"=>$menu];
-            $this->printer->generateView($view,$data);
+        public function list($data = []){
+            $this->view->render('registroView.mustache',$data);
         }
 
-        public function registrar(){
-            if(((   ValidatorHelper::validacionDeTexto($_POST["nombre"],11)&&
-                    ValidatorHelper::validacionDeTexto($_POST["apellido"],11))&&
-            (       ValidatorHelper::validacionDeNumeros($_POST['dni'],11)&&
-                    ValidatorHelper::validacionDeTexto($_POST['email'],50)))&&
-            (       ValidatorHelper::validacionDeTexto($_POST['user'],21)&&
-                    ValidatorHelper::validacionDeTexto($_POST['clave'],21)
-                    )){
+        public function registrarUsuario(){
+
                 $name = $_POST["nombre"];
-                $lastName = $_POST["apellido"];
-                $dni = $_POST["dni"];
-                $email = $_POST["email"];
-                $user = $_POST["user"];
+                $user = $_POST["usuario"];
                 $pass = $_POST["clave"];
+                $email = $_POST["email"];
+                $fnacimiento = $_POST["fnacimiento"];
+                $rol = $_POST["rol"];
 
-                $status = $this->registroModel->registrar($name,$lastName,$dni,$email,$user,$pass);
-                if( $status == "registrado"){
-                    header("Location:/logIn/".$status);
-                    exit();}
-                else if($status == "noregistrado"){
-                    header("Location:/logIn/".$status);
+                $status = $this->registroModel->registrar($name,$user,$pass,$email,$fnacimiento,$rol);
+
+                if($status == "registrado"){
+                    header("Location:/infonet/verificacion");
                     exit();
-                }if($status== "email=".$email."&dni=".$dni){
-                    header("Location:/registro/duplicate/".$status);
-                    exit();
+                }else{
+                    $this->duplicate();
                 }
-            }else{
-                header("Location: /registro");
-                exit();
-            }
         }
 
         public function validarRegistro(){
@@ -65,16 +40,9 @@
         }
 
         public function duplicate(){
-            $email = $_GET['email'];
-            $dni = $_GET['dni'];
-            $title="DNI o email ya registrados";
-            $message="<a class='recovery' href='/login/recuperar/email=$email&dni=$dni'>Olvidé mi clave</a>";
-            $display = "d-block";
-            $data = ["popUp" => true,"title"=> $title,"message"=>$message,"display"=>$display];
-            $this->execute($data);
+            $data['title'] = "Usuario o email ya registrados";
+            $this->list($data);
         }
 
 
     }
-
-?>

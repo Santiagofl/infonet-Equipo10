@@ -16,23 +16,32 @@ class LoginController{
     }
 
     public function validarSesion(){
+        if(ValidatorHelper::validarSeteadoYNoVacio($_POST["usuario"]) &&
+            ValidatorHelper::validarSeteadoYNoVacio($_POST["password"])) {
             $usuario = $_POST["usuario"];
             $password = $_POST["password"];
-            $obj = $this->loginModel->iniciarSesion($usuario,$password);
+            $obj = $this->loginModel->iniciarSesion($usuario, $password);
 
-            if(!empty($obj)){
+            if (!empty($obj)) {
 
                 $this->session->setCurrentUser($obj);
                 header("Location: /infonet/producto");
-
-            }else{
+                exit();
+            } else {
                 $this->notRegistered();
             }
+        }else{
+            $this->incorrectFormat();
+        }
+    }
 
+    public function incorrectFormat(){
+        $data['validador'] = true;
+        $this->view->render('loginView.mustache',$data);
     }
 
     public function notRegistered(){
-        $data['message'] = "Usuario o clave incorrecta";
+        $data['confirmed'] = true;
         $this->list($data);
     }
 
@@ -40,5 +49,6 @@ class LoginController{
     public function logout(){
         $this->session->closeSession();
         header("Location: /infonet/login");
+        exit();
     }
 }
