@@ -20,18 +20,42 @@
     });
 </script>
 {{> header}}
-<main class="d-flex">
+<main>
     {{> menuAbm}}
-    <div class="container my-3">
+    <section class="my-3">
         <h5>Crear Articulos</h5>
         <div class="my-3">
-            <form id="uploadImgForm">
+            <form>
                 <div class="form-floating my-3">
-                    <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com">
-                    <label for="floatingInput">Nombre</label>
+                    <select class="form-select" name="productoEdicion" id="productoEdicion"
+                            aria-label="Floating label select example">
+                        <option selected disabled>Edición</option>
+                        {{#ediciones}}
+                            <option value="{{id_edicion}}">{{fecha}}</option>
+                        {{/ediciones}}
+                    </select>
+                    <label for="productoEdicion">Seleccionar edición</label>
                 </div>
                 <div class="form-floating my-3">
-                    <p class="mb-0">Seleccionar imagen</p>
+                    <select class="form-select" name="productoSeccion" id="productoSeccion"
+                            aria-label="Floating label select example">
+                        <option selected disabled>Seccion</option>
+                        {{#secciones}}
+                            <option value="{{id_seccion}}">{{nombre}}</option>
+                        {{/secciones}}
+                    </select>
+                    <label for="productoSeccion">Seleccionar seccion</label>
+                </div>
+                <div class="form-floating my-3">
+                    <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com">
+                    <label for="floatingInput">Título de la publicación</label>
+                </div>
+                <div class="form-floating my-3">
+                    <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com">
+                    <label for="floatingInput">Subtítulo de la publicación</label>
+                </div>
+                <div class="form-floating my-3">
+                    <p class="mb-0">Seleccionar imagen de portada de la publicación</p>
                     <input type="file" name="imagenArticulo" class="form-control" id="imagenArticulo"
                            accept="image/png, image/jpeg"
                            style="padding: 0 12px !important; line-height: 3.25 !important;">
@@ -46,9 +70,13 @@
                                               style="height: 100px"></textarea>
                     <label for="floatingTextarea2">Texto</label>
                 </div>
-                <button type="submit" class="btn btn-primary my-2 btn-radius">Crear</button>
+                <div class="form-floating my-3">
+                    <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com">
+                    <label for="floatingInput">Autor</label>
+                </div>
+                <button type="submit" class="btn btn-primary my-2 btn-radius">Crear artículo</button>
             </form>
         </div>
-    </div>
+    </section>
 </main>
 {{> footer}}
