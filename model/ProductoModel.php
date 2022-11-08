@@ -29,11 +29,13 @@ class ProductoModel
 
         $sql = 'SELECT e.id_edicion as id_edicion, e.fecha, p.nombre as producto, p.imagen, c.usuario as comprado
                 FROM edicion e JOIN producto p ON e.id_producto=p.id_producto
-                LEFT JOIN (select * from compra as c where usuario = '.$idUsuario.') AS c on e.id_edicion = c.edicion 
-                WHERE p.id_producto= '.$id;
+                LEFT JOIN (select * from compra as c where usuario = ' . $idUsuario . ') AS c on e.id_edicion = c.edicion 
+                WHERE p.id_producto= ' . $id;
+
 
         return $this->database->query($sql);
     }
+
 
     public function setProducto($nombre, $imagen, $tipo)
     {
@@ -46,6 +48,25 @@ class ProductoModel
     public function deleteProducto($id)
     {
         $sql = "DELETE FROM producto WHERE producto.id_producto=" . $id;
+        $this->database->execute($sql);
+    }
+
+    public function getSuscripcionUsuario($id_suscripcion, $id_usuario)
+    {
+
+        $sql = 'SELECT fecha FROM suscripcion_usuario
+                WHERE id_suscripcion = '. $id_suscripcion .' and id_usuario ='.$id_usuario ;
+
+        return $this->database->query($sql);
+    }
+
+
+    public function setSuscripcionUsuario($fecha, $id_suscripcion, $id_usuario)
+    {
+
+        $sql = 'INSERT INTO suscripcion_usuario
+                (fecha, id_suscripcion, id_usuario) 
+                VALUES (' . $fecha . ', ' . $id_suscripcion . ', ' . $id_usuario . ')';
         $this->database->execute($sql);
     }
 
