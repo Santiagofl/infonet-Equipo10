@@ -29,8 +29,8 @@ class ProductoModel
 
         $sql = 'SELECT e.id_edicion as id_edicion, e.fecha, p.nombre as producto, p.imagen, c.usuario as comprado
                 FROM edicion e JOIN producto p ON e.id_producto=p.id_producto
-                LEFT JOIN (select * from compra as c where usuario = '.$idUsuario.') AS c on e.id_edicion = c.edicion 
-                WHERE p.id_producto= '.$id;
+                LEFT JOIN (select * from compra as c where usuario = ' . $idUsuario . ') AS c on e.id_edicion = c.edicion 
+                WHERE p.id_producto= ' . $id;
 
         return $this->database->query($sql);
     }
@@ -46,6 +46,14 @@ class ProductoModel
     public function deleteProducto($id)
     {
         $sql = "DELETE FROM producto WHERE producto.id_producto=" . $id;
+        $this->database->execute($sql);
+    }
+
+    public function updateProducto($idProducto, $nombre, $imagen, $tipo)
+    {
+        $sql = "UPDATE producto p SET p.nombre='$nombre',
+                p.imagen='$imagen' ,p.tipo='$tipo'
+                WHERE p.id_producto='$idProducto';";
         $this->database->execute($sql);
     }
 

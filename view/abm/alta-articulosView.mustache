@@ -26,25 +26,27 @@
         <h5>Crear Articulos</h5>
         <div class="my-3">
             <form>
-                <div class="form-floating my-3">
-                    <select class="form-select" name="productoEdicion" id="productoEdicion"
-                            aria-label="Floating label select example">
-                        <option selected disabled>Edición</option>
-                        {{#ediciones}}
-                            <option value="{{id_edicion}}">{{fecha}}</option>
-                        {{/ediciones}}
-                    </select>
-                    <label for="productoEdicion">Seleccionar edición</label>
-                </div>
-                <div class="form-floating my-3">
-                    <select class="form-select" name="productoSeccion" id="productoSeccion"
-                            aria-label="Floating label select example">
-                        <option selected disabled>Seccion</option>
-                        {{#secciones}}
-                            <option value="{{id_seccion}}">{{nombre}}</option>
-                        {{/secciones}}
-                    </select>
-                    <label for="productoSeccion">Seleccionar seccion</label>
+                <div class="d-flex col-md-12 my-3 gap-2">
+                    <div class="form-floating col-6">
+                        <select class="form-select" name="productoEdicion" id="productoEdicion"
+                                aria-label="Floating label select example">
+                            <option selected disabled>Edición</option>
+                            {{#ediciones}}
+                                <option value="{{id_edicion}}">{{evento}} - {{fecha}}</option>
+                            {{/ediciones}}
+                        </select>
+                        <label for="productoEdicion">Seleccionar edición</label>
+                    </div>
+                    <div class="form-floating col-6">
+                        <select class="form-select" name="productoSeccion" id="productoSeccion"
+                                aria-label="Floating label select example">
+                            <option selected disabled>Seccion</option>
+                            {{#secciones}}
+                                <option value="{{id_seccion}}">{{nombre}}</option>
+                            {{/secciones}}
+                        </select>
+                        <label for="productoSeccion">Seleccionar seccion</label>
+                    </div>
                 </div>
                 <div class="form-floating my-3">
                     <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com">
@@ -70,9 +72,21 @@
                                               style="height: 100px"></textarea>
                     <label for="floatingTextarea2">Texto</label>
                 </div>
-                <div class="form-floating my-3">
-                    <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com">
-                    <label for="floatingInput">Autor</label>
+                <div class="d-flex col-md-12 my-3 gap-2">
+                    <div class="form-floating col-6">
+                        <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com">
+                        <label for="floatingInput">Autor</label>
+                    </div>
+                    <div class="form-floating col-6">
+                        <select class="form-select" name="productoSeccion" id="productoSeccion"
+                                aria-label="Floating label select example">
+                            <option selected disabled>Estado</option>
+                            {{#estadoArticulos}}
+                                <option value="{{id_estado}}">{{descripcion}}</option>
+                            {{/estadoArticulos}}
+                        </select>
+                        <label for="productoSeccion">Seleccionar seccion</label>
+                    </div>
                 </div>
                 <button type="submit" class="btn btn-primary my-2 btn-radius">Crear artículo</button>
             </form>

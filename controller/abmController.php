@@ -6,15 +6,17 @@ class AbmController
     private $productoModel;
     private $edicionModel;
     public $seccionModel;
+    public $articuloModel;
     private $view;
     private $session;
 
-    public function __construct($productosModel, $edicionModel, $seccionModel, $view, $session)
+    public function __construct($productosModel, $edicionModel, $seccionModel, $articuloModel, $view, $session)
     {
         $this->view = $view;
         $this->productoModel = $productosModel;
         $this->edicionModel = $edicionModel;
         $this->seccionModel = $seccionModel;
+         $this->articuloModel = $articuloModel;
         $this->session = $session;
     }
 
@@ -31,6 +33,7 @@ class AbmController
         $data['usuario'] = $this->session->getCurrentUser();
         $data['ediciones'] = $this->edicionModel->getEdiciones(2);
         $data['secciones'] = $this->seccionModel->getSecciones();
+        $data['estadoArticulos'] = $this->articuloModel->getEstadosDeArticulos();
         $this->view->render('abm/alta-articulosView.mustache', $data);
     }
 
