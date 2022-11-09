@@ -22,6 +22,7 @@ class ArticuloController
 
      public function articulosPorEdicion()
      {
+         $data['usuario'] = $this->session->getCurrentUser() ?? '';
          $idEdicion = $_GET['id'] ?? '';
          $data['articulos'] = $this->articuloModel->getArticulosPorEdicion($idEdicion);
          $this->view->render('articuloView.mustache', $data);
