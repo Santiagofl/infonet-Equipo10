@@ -20,10 +20,10 @@ class ArticuloController
         $this->view->render('', $data);
     }
 
-    // public function description()
-    // {
-    //     $id = $_GET['id'] ?? '';
-    //     $producto['producto'] = $this->productoModel->getProducto($id);
-    //     $this->view->render('descriptionView.mustache', $producto);
-    // }
+     public function articulosPorEdicion()
+     {
+         $idEdicion = $_GET['id'] ?? '';
+         $data['articulos'] = $this->articuloModel->getArticulosPorEdicion($idEdicion);
+         $this->view->render('articuloView.mustache', $data);
+     }
 }

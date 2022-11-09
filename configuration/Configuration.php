@@ -63,7 +63,7 @@ class Configuration
 
     public function getArticuloController()
     {
-        return new SeccionController($this->getAllArticulosModel(), $this->view,new SessionUser());
+        return new ArticuloController($this->getAllArticulosModel(), $this->view,new SessionUser());
     }
 
     public function getRegistroController()
