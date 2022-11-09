@@ -27,9 +27,14 @@ class ProductoController
         $data['usuario']= $this->session->getCurrentUser();
         $id = $_GET['id'] ?? '';
         $data['producto'] = $this->productoModel->getProducto($id);
+
+
+        $data['fecha']= $this->validarSuscripcion();
+
         $this->view->render('descriptionView.mustache', $data);
         $data['edicionProducto'] = $this->productoModel->getEdicionesDeCadaProducto($id, 2);
         $this->view->render('edicion-por-productoView.mustache', $data);
+
     }
 
     public function subirProducto()
@@ -55,5 +60,20 @@ class ProductoController
         $this->productoModel->deleteProducto($idPproducto);
         Redirect::doIt('/infonet/abm/vistaListaProductos/lista-productos');
     }
+
+    public function validarSuscripcion(){
+        $fechaActual = new dateTime(date('Y-m-d'));
+        $fechaInicial = new dateTime($this->productoModel->getSuscripcionUsuario(1,1)[0]['fecha']);
+        $diff = $fechaInicial->diff($fechaActual);
+
+        if(($diff->days)<31){
+            return true;
+        }else{
+            return false;
+        }
+
+
+    }
+
 
 }
