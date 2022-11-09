@@ -11,7 +11,7 @@ class SeccionModel
 
     public function getSecciones()
     {
-        $sql = 'SELECT * FROM seccion';
+        $sql = 'SELECT * FROM seccion s JOIN edicion e ON s.id_edicion=e.id_edicion;';
         return $this->database->query($sql);
     }
 

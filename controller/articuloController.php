@@ -1,6 +1,6 @@
 <?php
 
-class EdicionController
+class ArticuloController
 {
 
     private $articuloModel;

@@ -26,7 +26,7 @@ class EdicionModel
 
     public function getAllEdiciones()
     {
-        $sql = "SELECT * FROM infonet.edicion";
+        $sql = "SELECT * FROM edicion";
         return $this->database->query($sql);
     }
 }

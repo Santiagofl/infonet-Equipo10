@@ -2,8 +2,8 @@
 <script>
     $(document).ready(function () {
         //Edicion del producto
-        $("#containerSelectEdicion").hide();
-        $('#productoDeArticulo').change((e) => {
+        $(".containerSelectEdicion").hide();
+        $('.productoDeArticulo').change((e) => {
             //console.log(e.target.value); //id =
             var valueProducto = e.target.value;
             $.ajax({
@@ -15,22 +15,22 @@
                 success: function (response) {
                     let ediciones = JSON.parse(response)
 
-                    $("#containerSelectEdicion").html("" +
-                            "<select class='form-select' name='productoEdicion' id='productoEdicion' aria-label='Floating label select example'>" +
+                    $(".containerSelectEdicion").html("" +
+                            "<select class='form-select productoEdicion' name='productoEdicion' id='productoEdicion' aria-label='Floating label select example'>" +
                             "<option selected disabled>Seleccionar edición</option> " +
                             "</select> " +
                             "<label for='productoEdicion'>Seleccionar edición</label>");
 
-                    $("#containerSelectEdicion").show();
+                    $(".containerSelectEdicion").show();
 
                     // $("#productoEdicion").append("<option selected disabled>Edición</option>");
                     for (const edicion of ediciones) {
-                        $("#productoEdicion").append(`<option value="${edicion.id_edicion}">${edicion.evento}</option>`);
+                        $(".productoEdicion").append(`<option value="${edicion.id_edicion}">${edicion.evento}</option>`);
                     }
 
                     //seccion de la edicion
                     // $("#containerSelectSeccion").hide();
-                    $('#productoEdicion').change((e) => {
+                    $('.productoEdicion').change((e) => {
                         var valueSeccion = e.target.value;
                         $.ajax({
                             url: 'http://localhost/infonet/abm/seccionesPorEdicion?id=' + valueSeccion,
@@ -44,8 +44,8 @@
                                 //     console.log(element.nombre);
                                 // })
 
-                                $("#containerSelectSeccion").html("" +
-                                        "<select class='form-select' name='productoEdicionSeccion' id='productoEdicionSeccion' aria-label='Floating label select example'>" +
+                                $(".containerSelectSeccion").html("" +
+                                        "<select class='form-select productoEdicionSeccion' name='productoEdicionSeccion' id='productoEdicionSeccion' aria-label='Floating label select example'>" +
                                         "<option selected disabled>Seleccionar sección</option> " +
                                         "</select> " +
                                         "<label for='productoEdicion'>Seleccionar sección</label>");
@@ -54,7 +54,7 @@
 
                                 // $("#productoEdicion").append("<option selected disabled>Edición</option>");
                                 secciones.forEach(element => {
-                                    $("#productoEdicionSeccion").append(`<option value="${element.id_seccion}">${element.nombre}</option>`);
+                                    $(".productoEdicionSeccion").append(`<option value="${element.id_seccion}">${element.nombre}</option>`);
                                 })
                             }
                         });
@@ -74,7 +74,7 @@
         <div class="my-3">
             <h4 class="my-4">Crear artículo</h4>
             <div class="form-floating col-6">
-                <select class="form-select" id="productoDeArticulo"
+                <select class="form-select productoDeArticulo" id="productoDeArticulo"
                         aria-label="Floating label select example">
                     <option selected disabled>Producto</option>
                     {{#productos}}
@@ -89,11 +89,11 @@
             <!---FORMULARIO-->
             <form>
                 <div class="d-flex col-md-12 my-3 gap-2">
-                    <div class="form-floating col-6" id="containerSelectEdicion">
+                    <div class="form-floating col-6 containerSelectEdicion" id="containerSelectEdicion">
                         <!---select edicion-->
                         <label for="productoEdicion">Seleccionar edición</label>
                     </div>
-                    <div class="form-floating col-6" id="containerSelectSeccion">
+                    <div class="form-floating col-6 containerSelectSeccion" id="containerSelectSeccion">
                         <!--select secciones--->
                     </div>
                 </div>

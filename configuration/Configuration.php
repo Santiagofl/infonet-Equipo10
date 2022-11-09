@@ -21,6 +21,7 @@ include_once('controller/edicionController.php');
 include_once('controller/seccionController.php');
 include_once('controller/abmController.php');
 include_once('controller/RegistroController.php');
+include_once('controller/articuloController.php');
 
 include_once('dependencies/mustache/src/Mustache/Autoloader.php');
 
@@ -58,6 +59,11 @@ class Configuration
     public function getSeccionController()
     {
         return new SeccionController($this->getAllSeccionesModel(), $this->view,new SessionUser());
+    }
+
+    public function getArticuloController()
+    {
+        return new SeccionController($this->getAllArticulosModel(), $this->view,new SessionUser());
     }
 
     public function getRegistroController()

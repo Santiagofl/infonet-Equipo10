@@ -60,6 +60,13 @@ class AbmController
     }
 
     //Listas
+    public function vistaListaArticulos()
+    {
+        $data['usuario'] = $this->session->getCurrentUser();
+        $data['productos'] = $this->productoModel->getProductos();
+        $this->view->render('abm/lista-articulosView.mustache', $data);
+    }
+
     public function vistaListaProductos()
     {
         $data['usuario'] = $this->session->getCurrentUser();
@@ -74,6 +81,13 @@ class AbmController
         $this->view->render('abm/lista-seccionesView.mustache', $data);
     }
 
+    public function vistaListaEdiciones()
+    {
+        $data['usuario'] = $this->session->getCurrentUser();
+        $data['productos'] = $this->productoModel->getProductos();
+        $this->view->render('abm/lista-edicionesView.mustache', $data);
+    }
+
     //AJAX
     public function edicionesPorProducto()
     {
@@ -85,5 +99,17 @@ class AbmController
     {
         $id = $_GET['id'] ?? '';
         $data['secciones'] = $this->seccionModel->getSeccionesPorEdicionAJax($id);
+    }
+
+    public function articulosPorSeccion()
+    {
+        $id = $_GET['id'] ?? '';
+        $data['secciones'] = $this->seccionModel->getSeccionesPorEdicionAJax($id);
+    }
+
+    public function articulosPorEdicion()
+    {
+        $id = $_GET['id'] ?? '';
+        $data['articulos'] = $this->articuloModel->getArticulosPorEdicionAJax($id);
     }
 }
