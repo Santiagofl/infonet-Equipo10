@@ -16,7 +16,7 @@ class ProductoController
 
     public function list()
     {
-        $data['usuario']= $this->session->getCurrentUser() ?? '';
+        $data['usuario'] = $this->session->getCurrentUser() ?? '';
         $data['productos'] = $this->productoModel->getProductos();
         $this->view->render('productoView.mustache', $data);
     }
@@ -24,22 +24,25 @@ class ProductoController
     public function description()
     {
         //aca hay dos secciones en una sola pagina por lo tanto entre estas dos vistas ira un header arriba y un footer abajo
-        $data['usuario']= $this->session->getCurrentUser();
+        $data['usuario'] = $this->session->getCurrentUser();
         $id = $_GET['id'] ?? '';
         $data['producto'] = $this->productoModel->getProducto($id);
 
+        // TODO capturar usuario y producto
 
-        $data['fecha']= $this->validarSuscripcion();
+
+        $data['fecha'] = $this->validarSuscripcion(1, 1);
 
         $this->view->render('descriptionView.mustache', $data);
         $data['edicionProducto'] = $this->productoModel->getEdicionesDeCadaProducto($id, 2);
         $this->view->render('edicion-por-productoView.mustache', $data);
 
+
     }
 
     public function subirProducto()
     {
-        $data['usuario']= $this->session->getCurrentUser();
+        $data['usuario'] = $this->session->getCurrentUser();
         $nombre = $_POST["nombreProducto"] ?? '';
         $imagen = $_FILES["imagenProducto"]["name"] ?? '';
         $tipo = $_POST["tipoProducto"] ?? '';
@@ -55,20 +58,21 @@ class ProductoController
 
     public function borrarProducto()
     {
-        $data['usuario']= $this->session->getCurrentUser();
+        $data['usuario'] = $this->session->getCurrentUser();
         $idPproducto = $_GET["id"] ?? '';
         $this->productoModel->deleteProducto($idPproducto);
         Redirect::doIt('/infonet/abm/vistaListaProductos/lista-productos');
     }
 
-    public function validarSuscripcion(){
+    public function validarSuscripcion($id_producto, $idUsuario)
+    {
         $fechaActual = new dateTime(date('Y-m-d'));
-        $fechaInicial = new dateTime($this->productoModel->getSuscripcionUsuario(1,1)[0]['fecha']);
+        $fechaInicial = new dateTime($this->productoModel->getSuscripcion($id_producto, $idUsuario)[0]['fecha']);
         $diff = $fechaInicial->diff($fechaActual);
 
-        if(($diff->days)<31){
+        if (($diff->days) < 31) {
             return true;
-        }else{
+        } else {
             return false;
         }
 

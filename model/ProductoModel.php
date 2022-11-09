@@ -51,22 +51,22 @@ class ProductoModel
         $this->database->execute($sql);
     }
 
-    public function getSuscripcionUsuario($id_suscripcion, $id_usuario)
+    public function getSuscripcion($id_producto, $id_usuario)
     {
 
-        $sql = 'SELECT fecha FROM suscripcion_usuario
-                WHERE id_suscripcion = '. $id_suscripcion .' and id_usuario ='.$id_usuario ;
+        $sql = 'SELECT fecha FROM suscripcion
+                WHERE id_producto = '. $id_producto .' and id_usuario ='.$id_usuario ;
 
         return $this->database->query($sql);
     }
 
 
-    public function setSuscripcionUsuario($fecha, $id_suscripcion, $id_usuario)
+    public function setSuscripcion($fecha, $id_producto, $id_usuario)
     {
 
-        $sql = 'INSERT INTO suscripcion_usuario
-                (fecha, id_suscripcion, id_usuario) 
-                VALUES (' . $fecha . ', ' . $id_suscripcion . ', ' . $id_usuario . ')';
+        $sql = 'INSERT INTO suscripcion
+                (fecha, id_producto, id_usuario) 
+                VALUES (' . $fecha . ', ' . $id_producto . ', ' . $id_usuario . ')';
         $this->database->execute($sql);
     }
 

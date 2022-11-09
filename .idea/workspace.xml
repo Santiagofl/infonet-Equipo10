@@ -4,7 +4,7 @@
     <list default="true" id="6aa02d7e-1d1d-4107-9ef7-bb45196c54dd" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controller/productoController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controller/productoController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/descriptionView.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/descriptionView.mustache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/ProductoModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/ProductoModel.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,6 +24,9 @@
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="settings.editor.selected.configurable" value="preferences.toDoOptions" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
