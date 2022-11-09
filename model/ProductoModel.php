@@ -29,9 +29,8 @@ class ProductoModel
 
         $sql = 'SELECT e.id_edicion as id_edicion, e.fecha, p.nombre as producto, p.imagen, c.usuario as comprado
                 FROM edicion e JOIN producto p ON e.id_producto=p.id_producto
-                LEFT JOIN (select * from compra as c where usuario = ' . $idUsuario . ') AS c on e.id_edicion = c.edicion 
+                LEFT JOIN (select * from compra as c where c.usuario = ' . $idUsuario . ') AS c on e.id_edicion = c.edicion 
                 WHERE p.id_producto= ' . $id;
-
         return $this->database->query($sql);
     }
 
@@ -56,5 +55,16 @@ class ProductoModel
                 WHERE p.id_producto='$idProducto';";
         $this->database->execute($sql);
     }
+
+    //ajax
+    public function getEdicionesPorProductoAJax($id)
+    {
+        $sql = "SELECT * FROM edicion e JOIN producto p 
+ON e.id_producto=p.id_producto WHERE p.id_producto =" . $id;
+        $format = $this->database->query($sql);
+//        print_r($format);
+        return print json_encode($format, JSON_UNESCAPED_UNICODE);
+    }
+
 
 }

@@ -61,10 +61,12 @@
                         <input class="form-control" type="text" name="modNombreProducto" id="modNombreProducto"
                                value="{{nombre}}">
                         <br/>
+                        <input type="text" class="d-none" value="{{imagen}}" name="modImagenProductoSave" id="modImagenProductoSave">
                         <label for="modImagenProducto">Imagen de producto</label>
                         <input class="form-control" type="file" name="modImagenProducto" id="modImagenProducto"
                                accept="image/png, image/jpeg">
                         <br/>
+                        <span>Seleccionar tipo <span class="text-danger">(obligatorio)</span></span>
                         <select class="form-select" name="modTipoProducto" aria-label="Default select example">
                             <option selected disabled>Tipo de producto</option>
                             <option value="1">Diario</option>

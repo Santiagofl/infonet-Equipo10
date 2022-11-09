@@ -4,10 +4,11 @@ class EdicionController
 {
 
     private $edicionModel;
+    private $productoModel;
     private $view;
     private $session;
 
-    public function __construct($edicionModel, $view, $session)
+    public function __construct($edicionModel,$productoModel, $view, $session)
     {
         $this->edicionModel = $edicionModel;
         $this->view = $view;
@@ -21,10 +22,4 @@ class EdicionController
         $this->view->render('edicionView.mustache', $data);
     }
 
-    // public function description()
-    // {
-    //     $id = $_GET['id'] ?? '';
-    //     $producto['producto'] = $this->productoModel->getProducto($id);
-    //     $this->view->render('descriptionView.mustache', $producto);
-    // }
 }

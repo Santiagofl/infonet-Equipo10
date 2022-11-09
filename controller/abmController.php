@@ -16,7 +16,7 @@ class AbmController
         $this->productoModel = $productosModel;
         $this->edicionModel = $edicionModel;
         $this->seccionModel = $seccionModel;
-         $this->articuloModel = $articuloModel;
+        $this->articuloModel = $articuloModel;
         $this->session = $session;
     }
 
@@ -31,8 +31,9 @@ class AbmController
     public function vistaAltaArticulos()
     {
         $data['usuario'] = $this->session->getCurrentUser();
-        $data['ediciones'] = $this->edicionModel->getEdiciones(2);
+        $data['ediciones'] = $this->edicionModel->getAllEdiciones();
         $data['secciones'] = $this->seccionModel->getSecciones();
+        $data['productos'] = $this->productoModel->getProductos();
         $data['estadoArticulos'] = $this->articuloModel->getEstadosDeArticulos();
         $this->view->render('abm/alta-articulosView.mustache', $data);
     }
@@ -71,5 +72,18 @@ class AbmController
         $data['usuario'] = $this->session->getCurrentUser();
         $data['secciones'] = $this->seccionModel->getSecciones();
         $this->view->render('abm/lista-seccionesView.mustache', $data);
+    }
+
+    //AJAX
+    public function edicionesPorProducto()
+    {
+        $id = $_GET['id'] ?? '';
+        $data['ediciones'] = $this->productoModel->getEdicionesPorProductoAJax($id);
+    }
+
+    public function seccionesPorEdicion()
+    {
+        $id = $_GET['id'] ?? '';
+        $data['secciones'] = $this->seccionModel->getSeccionesPorEdicionAJax($id);
     }
 }

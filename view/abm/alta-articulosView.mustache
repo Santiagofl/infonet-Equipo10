@@ -1,51 +1,100 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
-<script type="text/javascript">
-    console.log("Hola mundo");
-
+<script>
     $(document).ready(function () {
-        $("#clearImgArticulo").hide();
-        $('#imagenArticulo').change(function () {
-            $("#prevArt").html('');
-            for (var i = 0; i < $(this)[0].files.length; i++) {
-                $("#prevArt").append('<img src="' + window.URL.createObjectURL(this.files[i]) + '" width="300" />');
-            }
-            $("#clearImgArticulo").show();
-        });
+        //Edicion del producto
+        $("#containerSelectEdicion").hide();
+        $('#productoDeArticulo').change((e) => {
+            //console.log(e.target.value); //id =
+            var valueProducto = e.target.value;
+            $.ajax({
+                url: 'http://localhost/infonet/abm/edicionesPorProducto?id=' + valueProducto,
+                type: 'GET',
+                beforeSend: function (e) {
+                    // console.log('antes', e);
+                },
+                success: function (response) {
+                    let ediciones = JSON.parse(response)
 
-        $("#clearImgArticulo").click(function () {
-            $("#prevArt").html('');
-            $("#imagenArticulo").val('');
-            $("#clearImgArticulo").hide();
-        });
+                    $("#containerSelectEdicion").html("" +
+                            "<select class='form-select' name='productoEdicion' id='productoEdicion' aria-label='Floating label select example'>" +
+                            "<option selected disabled>Seleccionar edición</option> " +
+                            "</select> " +
+                            "<label for='productoEdicion'>Seleccionar edición</label>");
+
+                    $("#containerSelectEdicion").show();
+
+                    // $("#productoEdicion").append("<option selected disabled>Edición</option>");
+                    for (const edicion of ediciones) {
+                        $("#productoEdicion").append(`<option value="${edicion.id_edicion}">${edicion.evento}</option>`);
+                    }
+
+                    //seccion de la edicion
+                    // $("#containerSelectSeccion").hide();
+                    $('#productoEdicion').change((e) => {
+                        var valueSeccion = e.target.value;
+                        $.ajax({
+                            url: 'http://localhost/infonet/abm/seccionesPorEdicion?id=' + valueSeccion,
+                            type: 'GET',
+                            beforeSend: function (e) {
+                                // console.log('antes', e);
+                            },
+                            success: function (response) {
+                                let secciones = JSON.parse(response);
+                                // secciones.forEach(element=>{
+                                //     console.log(element.nombre);
+                                // })
+
+                                $("#containerSelectSeccion").html("" +
+                                        "<select class='form-select' name='productoEdicionSeccion' id='productoEdicionSeccion' aria-label='Floating label select example'>" +
+                                        "<option selected disabled>Seleccionar sección</option> " +
+                                        "</select> " +
+                                        "<label for='productoEdicion'>Seleccionar sección</label>");
+
+                                // $("#containerSelectSeccion").show();
+
+                                // $("#productoEdicion").append("<option selected disabled>Edición</option>");
+                                secciones.forEach(element => {
+                                    $("#productoEdicionSeccion").append(`<option value="${element.id_seccion}">${element.nombre}</option>`);
+                                })
+                            }
+                        });
+                    });
+                }
+                // error: function (e) {
+                //     console.log('error', e);
+                // }
+            });
+        })
     });
 </script>
 {{> header}}
 <main>
     {{> menuAbm}}
     <section class="my-3">
-        <h5>Crear Articulos</h5>
         <div class="my-3">
+            <h4 class="my-4">Crear artículo</h4>
+            <div class="form-floating col-6">
+                <select class="form-select" id="productoDeArticulo"
+                        aria-label="Floating label select example">
+                    <option selected disabled>Producto</option>
+                    {{#productos}}
+                        <option value="{{id_producto}}">
+                            {{nombre}}
+                        </option>
+                    {{/productos}}
+                </select>
+                <label for="productoEdicion">Seleccionar producto</label>
+            </div>
+            <hr/>
+            <!---FORMULARIO-->
             <form>
                 <div class="d-flex col-md-12 my-3 gap-2">
-                    <div class="form-floating col-6">
-                        <select class="form-select" name="productoEdicion" id="productoEdicion"
-                                aria-label="Floating label select example">
-                            <option selected disabled>Edición</option>
-                            {{#ediciones}}
-                                <option value="{{id_edicion}}">{{evento}} - {{fecha}}</option>
-                            {{/ediciones}}
-                        </select>
+                    <div class="form-floating col-6" id="containerSelectEdicion">
+                        <!---select edicion-->
                         <label for="productoEdicion">Seleccionar edición</label>
                     </div>
-                    <div class="form-floating col-6">
-                        <select class="form-select" name="productoSeccion" id="productoSeccion"
-                                aria-label="Floating label select example">
-                            <option selected disabled>Seccion</option>
-                            {{#secciones}}
-                                <option value="{{id_seccion}}">{{nombre}}</option>
-                            {{/secciones}}
-                        </select>
-                        <label for="productoSeccion">Seleccionar seccion</label>
+                    <div class="form-floating col-6" id="containerSelectSeccion">
+                        <!--select secciones--->
                     </div>
                 </div>
                 <div class="form-floating my-3">
@@ -67,9 +116,9 @@
                 </div>
                 <button type="button" class="btn-close" id="clearImgArticulo"></button>
                 <div class="form-floating my-3">
-                                    <textarea class="form-control" placeholder="Leave a comment here"
-                                              id="floatingTextarea2"
-                                              style="height: 100px"></textarea>
+                                                <textarea class="form-control" placeholder="Leave a comment here"
+                                                          id="floatingTextarea2"
+                                                          style="height: 100px"></textarea>
                     <label for="floatingTextarea2">Texto</label>
                 </div>
                 <div class="d-flex col-md-12 my-3 gap-2">

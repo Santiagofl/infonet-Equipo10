@@ -52,7 +52,7 @@ class Configuration
 
     public function getEdicionController()
     {
-        return new EdicionController($this->getAllEdicionesModel(), $this->view, new SessionUser());
+        return new EdicionController($this->getAllEdicionesModel(),$this->getAllProductosModel(), $this->view, new SessionUser());
     }
 
     public function getSeccionController()

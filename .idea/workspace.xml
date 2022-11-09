@@ -2,16 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6aa02d7e-1d1d-4107-9ef7-bb45196c54dd" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/controller/articuloControler.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model/ArticuloModel.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/configuration/Configuration.php" beforeDir="false" afterPath="$PROJECT_DIR$/configuration/Configuration.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controller/abmController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controller/abmController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/edicionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controller/edicionController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controller/productoController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controller/productoController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/seccionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controller/seccionController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/EdicionModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/EdicionModel.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/model/ProductoModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/ProductoModel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/SeccionModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/SeccionModel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/iso/Array" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/jquery/jquery.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/jquery.min.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/view/abm/alta-articulosView.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/abm/alta-articulosView.mustache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/abm/alta-seccionesView.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/abm/alta-seccionesView.mustache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/abm/alta-productosView.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/abm/alta-productosView.mustache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/view/abm/lista-productosView.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/abm/lista-productosView.mustache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/partial/footer.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/partial/footer.mustache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/view/partial/header.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/partial/header.mustache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/view/partial/menuAbm.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/partial/menuAbm.mustache" afterDir="false" />
     </list>

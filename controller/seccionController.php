@@ -30,4 +30,6 @@ class SeccionController
         Redirect::doIt('/infonet/abm');
     }
 
+
+
 }
