@@ -10,9 +10,9 @@ include_once('helpers/SessionUser.php');
 include_once('model/ProductoModel.php');
 include_once('model/EdicionModel.php');
 include_once('model/SeccionModel.php');
-include_once ('model/LoginModel.php');
-include_once ('model/RegistroModel.php');
-include_once ('model/ArticuloModel.php');
+include_once('model/LoginModel.php');
+include_once('model/RegistroModel.php');
+include_once('model/ArticuloModel.php');
 
 include_once('controller/homeController.php');
 include_once('controller/productoController.php');
@@ -43,27 +43,27 @@ class Configuration
 
     public function getAbmController()
     {
-        return new AbmController($this->getAllProductosModel(), $this->getAllEdicionesModel(), $this->getAllSeccionesModel(), $this->getAllArticulosModel(),$this->view,new SessionUser());
+        return new AbmController($this->getAllProductosModel(), $this->getAllEdicionesModel(), $this->getAllSeccionesModel(), $this->getAllArticulosModel(), $this->view, new SessionUser());
     }
 
     public function getProductoController()
     {
-        return new ProductoController($this->getAllProductosModel(), $this->view,new SessionUser());
+        return new ProductoController($this->getAllProductosModel(), $this->view, new SessionUser());
     }
 
     public function getEdicionController()
     {
-        return new EdicionController($this->getAllEdicionesModel(),$this->getAllProductosModel(), $this->view, new SessionUser());
+        return new EdicionController($this->getAllEdicionesModel(), $this->getAllProductosModel(), $this->view, new SessionUser());
     }
 
     public function getSeccionController()
     {
-        return new SeccionController($this->getAllSeccionesModel(), $this->view,new SessionUser());
+        return new SeccionController($this->getAllSeccionesModel(), $this->view, new SessionUser());
     }
 
     public function getArticuloController()
     {
-        return new ArticuloController($this->getAllArticulosModel(), $this->view,new SessionUser());
+        return new ArticuloController($this->getAllArticulosModel(), $this->view, new SessionUser());
     }
 
     public function getRegistroController()
@@ -90,11 +90,14 @@ class Configuration
     {
         return new EdicionModel($this->database);
     }
-    private function getAllLoginModel(): LoginModel {
+
+    private function getAllLoginModel(): LoginModel
+    {
         return new LoginModel($this->database);
     }
 
-    private function getAllRegistroModel(): RegistroModel {
+    private function getAllRegistroModel(): RegistroModel
+    {
         return new RegistroModel($this->database);
     }
 

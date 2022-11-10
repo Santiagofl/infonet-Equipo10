@@ -38,6 +38,14 @@ class ArticuloModel
         return $this->database->query($sql);
     }
 
+    public function setArticulo($seccion, $edicion, $titulo, $subtitulo, $imagen, $texto, $autor)
+    {
+        $sql = "INSERT INTO articulo 
+                (`titulo`, `subtitulo`, `texto`, `autor`, `imagen`, `id_edicion`, `id_seccion`) 
+                VALUES ('$titulo', '$subtitulo', '$texto', '$autor', '$imagen', '$edicion', '$seccion');";
+        $this->database->execute($sql);
+    }
+
     /*ajax*/
     public function getArticulosPorEdicionAJax($idEdicion)
     {

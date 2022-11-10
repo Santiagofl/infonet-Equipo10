@@ -25,7 +25,7 @@ class AbmController
         $data['usuario'] = $this->session->getCurrentUser() ?? '';
         $data['productos'] = $this->productoModel->getProductos();
         $data['ediciones'] = $this->edicionModel->getEdiciones(2);
-        $this->view->render('abm/alta-productosView.mustache', $data);
+        $this->view->render('abm/abmView.mustache', $data);
     }
 
     public function vistaAltaArticulos()

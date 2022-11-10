@@ -22,11 +22,15 @@
                             "<label for='productoEdicion'>Seleccionar edición</label>");
 
                     $(".containerSelectEdicion").show();
-
                     // $("#productoEdicion").append("<option selected disabled>Edición</option>");
-                    for (const edicion of ediciones) {
+                    for (let edicion of ediciones) {
                         $(".productoEdicion").append(`<option value="${edicion.id_edicion}">${edicion.evento}</option>`);
                     }
+
+                    $('#productoEdicion').change((e)=>{
+                        console.log('edicion', e.target.value)
+                        $('#productoEdicionArticulo').val(e.target.value);
+                    })
 
                     //seccion de la edicion
                     // $("#containerSelectSeccion").hide();
@@ -55,6 +59,11 @@
                                 // $("#productoEdicion").append("<option selected disabled>Edición</option>");
                                 secciones.forEach(element => {
                                     $(".productoEdicionSeccion").append(`<option value="${element.id_seccion}">${element.nombre}</option>`);
+                                })
+
+                                $('#productoEdicionSeccion').change((e)=>{
+                                    console.log('seccion', e.target.value)
+                                    $('#productoEdicionSeccionArticulo').val(e.target.value);
                                 })
                             }
                         });
@@ -87,54 +96,64 @@
             </div>
             <hr/>
             <!---FORMULARIO-->
-            <form>
+            <form action="/infonet/articulo/subirArticulo" enctype="multipart/form-data" method="post">
+                <input type="text" class="d-none" id="productoEdicionSeccionArticulo" name="productoEdicionSeccionArticulo">
+                <input type="text" class="d-none" id="productoEdicionArticulo" name="productoEdicionArticulo">
                 <div class="d-flex col-md-12 my-3 gap-2">
                     <div class="form-floating col-6 containerSelectEdicion" id="containerSelectEdicion">
-                        <!---select edicion-->
+                        <!---select ediciones-->
+                        <!--                        name = productoEdicion-->
                         <label for="productoEdicion">Seleccionar edición</label>
                     </div>
                     <div class="form-floating col-6 containerSelectSeccion" id="containerSelectSeccion">
                         <!--select secciones--->
+                        <!--                        name = productoEdicionSeccion-->
                     </div>
                 </div>
                 <div class="form-floating my-3">
-                    <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com">
-                    <label for="floatingInput">Título de la publicación</label>
+                    <input type="text" class="form-control" name="tituloArticulo" id="tituloArticulo"
+                           placeholder="name@example.com">
+                    <label for="tituloArticulo">Título de la publicación</label>
                 </div>
                 <div class="form-floating my-3">
-                    <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com">
-                    <label for="floatingInput">Subtítulo de la publicación</label>
+                    <input type="text" class="form-control" name="subtituloArticulo" id="subtituloArticulo"
+                           placeholder="name@example.com">
+                    <label for="subtituloArticulo">Subtítulo de la publicación</label>
                 </div>
                 <div class="form-floating my-3">
                     <p class="mb-0">Seleccionar imagen de portada de la publicación</p>
                     <input type="file" name="imagenArticulo" class="form-control" id="imagenArticulo"
                            accept="image/png, image/jpeg"
                            style="padding: 0 12px !important; line-height: 3.25 !important;">
+                    <!--                    el jquery esta en app.js-->
                 </div>
                 <!---En este div y el button son para eliminar y previsualizar-->
                 <div id="prevArt" class="form-floating my-3">
                 </div>
                 <button type="button" class="btn-close" id="clearImgArticulo"></button>
                 <div class="form-floating my-3">
-                                                <textarea class="form-control" placeholder="Leave a comment here"
+                                                <textarea class="form-control" name="textoArticulo"
+                                                          placeholder="Leave a comment here"
                                                           id="floatingTextarea2"
                                                           style="height: 100px"></textarea>
-                    <label for="floatingTextarea2">Texto</label>
+                    <label for="textoArticulo">Texto del articulo</label>
                 </div>
                 <div class="d-flex col-md-12 my-3 gap-2">
                     <div class="form-floating col-6">
-                        <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com">
-                        <label for="floatingInput">Autor</label>
+                        <input type="text" class="form-control" id="autorArticulo" name="autorArticulo"
+                               placeholder="name@example.com">
+                        <label for="autorArticulo">Autor</label>
                     </div>
                     <div class="form-floating col-6">
-                        <select class="form-select" name="productoSeccion" id="productoSeccion"
+                        <select class="form-select" name="estadoArticulo" id="estadoArticulo"
                                 aria-label="Floating label select example">
                             <option selected disabled>Estado</option>
+                            <!--                            ALTER TABLE `tablename` ADD `new_col_name` INT NOT NULL DEFAULT 1;-->
                             {{#estadoArticulos}}
                                 <option value="{{id_estado}}">{{descripcion}}</option>
                             {{/estadoArticulos}}
                         </select>
-                        <label for="productoSeccion">Seleccionar seccion</label>
+                        <label for="estadoArticulo">Seleccionar estado</label>
                     </div>
                 </div>
                 <button type="submit" class="btn btn-primary my-2 btn-radius">Crear artículo</button>
