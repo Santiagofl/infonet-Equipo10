@@ -6,12 +6,19 @@
                 <div class="card-body">
                     <div class="d-flex justify-content-between align-items-center">
                         <h5 class="card-title">{{fecha}}</h5>
-                        {{#comprado}}
-                            <button class="btn btn-success btn-radius">Comprado!</button>
-                        {{/comprado}}
-                        {{^comprado}}
-                            <button class="btn btn-danger btn-radius">Comprar</button>
-                        {{/comprado}}
+
+
+                        {{^suscripto}}
+                            {{#comprado}}
+                                <button class="btn btn-success btn-radius">Comprado!</button>
+                            {{/comprado}}
+                            {{^comprado}}
+                                <button class="btn btn-danger btn-radius">Comprar</button>
+                            {{/comprado}}
+                        {{/suscripto}}
+
+
+
                     </div>
                     <h6 class="card-subtitle mb-2 text-muted">Edicion nro: {{id_edicion}}</h6>
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the

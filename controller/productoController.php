@@ -25,18 +25,24 @@ class ProductoController
     {
         //aca hay dos secciones en una sola pagina por lo tanto entre estas dos vistas ira un header arriba y un footer abajo
         $data['usuario'] = $this->session->getCurrentUser();
-        $id = $_GET['id'] ?? '';
+        $id_producto = $_GET['id'] ?? '';
 
         $data['producto'] = $this->productoModel->getProducto($id);
 
         //TODO capturar usuario
-        $data['fecha'] = $this->validarSuscripcion($id, 1);
+        $data['suscripto'] = $this->validarSuscripcion($id_producto, 1);
 
         $this->view->render('descriptionView.mustache', $data);
         $data['edicionProducto'] = $this->productoModel->getEdicionesDeCadaProducto($id, 2);
-        $this->view->render('edicion-por-productoView.mustache', $data);
 
-        print_r($this->productoModel->getSuscripcion(1, 1)[0]['fecha']);
+        if(!$this->validarSuscripcion($id_producto, 1)){
+            $this->view->render('edicion-por-productoView.mustache', $data);
+        }else{
+
+        }
+
+
+
 
 
     }
