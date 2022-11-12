@@ -27,13 +27,13 @@ class ProductoController
         $data['usuario'] = $this->session->getCurrentUser();
         $id_producto = $_GET['id'] ?? '';
 
-        $data['producto'] = $this->productoModel->getProducto($id);
+        $data['producto'] = $this->productoModel->getProducto($id_producto);
 
         //TODO capturar usuario
-        $data['suscripto'] = $this->validarSuscripcion($id_producto, 1);
+        $data['suscripto'] = $this->validarSuscripcion($id_producto, 2);
 
         $this->view->render('descriptionView.mustache', $data);
-        $data['edicionProducto'] = $this->productoModel->getEdicionesDeCadaProducto($id, 2);
+        $data['edicionProducto'] = $this->productoModel->getEdicionesDeCadaProducto($id_producto, 2);
 
         if(!$this->validarSuscripcion($id_producto, 1)){
             $this->view->render('edicion-por-productoView.mustache', $data);
