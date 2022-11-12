@@ -35,11 +35,9 @@ class ProductoController
         $this->view->render('descriptionView.mustache', $data);
         $data['edicionProducto'] = $this->productoModel->getEdicionesDeCadaProducto($id_producto, 2);
 
-        if(!$this->validarSuscripcion($id_producto, 1)){
-            $this->view->render('edicion-por-productoView.mustache', $data);
-        }else{
 
-        }
+        $this->view->render('edicion-por-productoView.mustache', $data);
+       
 
 
 
