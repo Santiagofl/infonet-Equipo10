@@ -1,17 +1,37 @@
 {{> header}}
-<main class="d-flex">
+<main>
     {{> menuAbm}}
-    <div class="container my-3">
+    <section class="my-3">
         <h5>Crear Secciones</h5>
         <div class="my-3">
             <form method="post" action="/infonet/seccion/subirSeccion">
                 <div class="form-floating my-3">
-                    <input type="text" name="nombreSeccion" class="form-control" id="nombreSeccion">
+                    <select class="form-select" name="productoEdicion" id="productoEdicion"
+                            aria-label="Floating label select example">
+                        <option selected disabled>Producto</option>
+                        {{#productos}}
+                            <option value="{{id_producto}}">{{nombre}}</option>
+                        {{/productos}}
+                    </select>
+                    <label for="productoEdicion">Seleccionar edición</label>
+                </div>
+                <div class="form-floating my-3">
+                    <select class="form-select" name="productoEdicion" id="productoEdicion"
+                            aria-label="Floating label select example">
+                        <option selected disabled>Edición</option>
+                        {{#ediciones}}
+                            <option value="{{id_edicion}}">{{evento}} - {{fecha}}</option>
+                        {{/ediciones}}
+                    </select>
+                    <label for="productoEdicion">Seleccionar edición</label>
+                </div>
+                <div class="form-floating my-3">
+                    <input type="text" name="nombreSeccion" class="form-control" id="nombreSeccion" placeholder="s">
                     <label for="nombreSeccion">Nombre de la sección</label>
                 </div>
-                <button type="submit" class="btn btn-primary my-2 btn-radius">Crear</button>
+                <button type="submit" class="btn btn-primary my-2 btn-radius">Crear sección</button>
             </form>
         </div>
-    </div>
+    </section>
 </main>
 {{> footer}}

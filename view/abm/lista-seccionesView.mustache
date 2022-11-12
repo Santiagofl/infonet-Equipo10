@@ -1,18 +1,37 @@
 {{> header}}
-<main class="d-flex">
+<main>
     {{> menuAbm}}
-    <div class="container my-3">
-        <h5>Buscar Articulos por seccion</h5>
-        <div class="form-floating my-3">
-            <select class="form-select" name="productoEdicion" id="productoEdicion"
-                    aria-label="Floating label select example">
-                <option selected disabled>Seccion</option>
-                {{#secciones}}
-                    <option value="{{id_seccion}}">{{nombre}}</option>
-                {{/secciones}}
-            </select>
-            <label for="productoEdicion">Seleccionar seccion</label>
-        </div>
-    </div>
+    <section class="my-3">
+        <h4 class="my-3">Todas las secciones</h4>
+        <table class="table text-center">
+            <thead>
+            <tr>
+                <th scope="col">Nombre</th>
+                <th scope="col">Evento edidicon</th>
+                <th scope="col">Accion</th>
+            </tr>
+            </thead>
+            <tbody>
+            {{#secciones}}
+                <tr>
+                    <td>{{nombre}}</td>
+                    <td>{{evento}}
+                    </td>
+                    <td>
+                        <div class="d-flex justify-content-center flex-wrap gap-2">
+                            <button class="btn btn-success btn-radius" type="button">Modificar
+                            </button>
+                            <!--para borrar se pone el nombre del controller : producto
+                            y el nombre del metodo: borrarProducto
+                            el parametro es el /id= que sera el $_GET["id"]-->
+                            <a class="btn btn-danger btn-radius">Borrar
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+            {{/secciones}}
+            </tbody>
+        </table>
+    </section>
 </main>
 {{> footer}}

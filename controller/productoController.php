@@ -93,4 +93,20 @@ class ProductoController
 
 
 
+    public function modificarProducto()
+    {
+        $data['usuario'] = $this->session->getCurrentUser();
+        $idProducto = $_GET["idProducto"] ?? '';
+        $nombreProducto = $_POST["modNombreProducto"] ?? '';
+        $imagenProducto = $_FILES["modImagenProducto"]["name"] ? $_FILES["modImagenProducto"]["name"] : $_POST["modImagenProductoSave"];
+        $tipoProducto = $_POST["modTipoProducto"] ?? '';
+
+        $rutaArchivoTemporal = $_FILES["modImagenProducto"]["tmp_name"];
+        $rutaArchivoFinal = "public/iso/" . $imagenProducto;
+        move_uploaded_file($rutaArchivoTemporal, $rutaArchivoFinal);
+
+        $this->productoModel->updateProducto($idProducto, $nombreProducto, $imagenProducto, $tipoProducto);
+        Redirect::doIt('/infonet/abm/vistaListaProductos/lista-productos');
+    }
+
 }

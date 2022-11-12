@@ -70,4 +70,23 @@ class ProductoModel
         $this->database->execute($sql);
     }
 
+    public function updateProducto($idProducto, $nombre, $imagen, $tipo)
+    {
+        $sql = "UPDATE producto p SET p.nombre='$nombre',
+                p.imagen='$imagen' ,p.tipo='$tipo'
+                WHERE p.id_producto='$idProducto';";
+        $this->database->execute($sql);
+    }
+
+    //ajax
+    public function getEdicionesPorProductoAJax($id)
+    {
+        $sql = "SELECT * FROM edicion e JOIN producto p 
+ON e.id_producto=p.id_producto WHERE p.id_producto =" . $id;
+        $format = $this->database->query($sql);
+//        print_r($format);
+        return print json_encode($format, JSON_UNESCAPED_UNICODE);
+    }
+
+
 }

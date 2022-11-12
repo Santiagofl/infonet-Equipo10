@@ -26,14 +26,16 @@
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
                         card's content.</p>
 
+
                     {{#comprado}}
-                        <a href="#" class="card-link">Ver articulos</a>
+                        <a href="/infonet/seccion/seccionesPorEdicion/id={{id_edicion}}" class="card-link">Ver articulos</a>
                     {{/comprado}}
                     {{#suscripto}}
                         {{^comprado}}
-                        <a href="#" class="card-link">Ver articulos</a>
+                        <a href="/infonet/seccion/seccionesPorEdicion/id={{id_edicion}}" class="card-link">Ver articulos</a>
                         {{/comprado}}
                     {{/suscripto}}
+
 
                 </div>
             </div>
