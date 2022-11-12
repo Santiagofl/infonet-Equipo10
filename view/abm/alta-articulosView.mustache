@@ -144,17 +144,17 @@
                                placeholder="name@example.com">
                         <label for="autorArticulo">Autor</label>
                     </div>
-                    <div class="form-floating col-6">
-                        <select class="form-select" name="estadoArticulo" id="estadoArticulo"
-                                aria-label="Floating label select example">
-                            <option selected disabled>Estado</option>
-                            <!--                            ALTER TABLE `tablename` ADD `new_col_name` INT NOT NULL DEFAULT 1;-->
-                            {{#estadoArticulos}}
-                                <option value="{{id_estado}}">{{descripcion}}</option>
-                            {{/estadoArticulos}}
-                        </select>
-                        <label for="estadoArticulo">Seleccionar estado</label>
-                    </div>
+<!--                    <div class="form-floating col-6">-->
+<!--                        <select class="form-select" name="estadoArticulo" id="estadoArticulo"-->
+<!--                                aria-label="Floating label select example">-->
+<!--                            <option selected disabled>Estado</option>-->
+<!--                            &lt;!&ndash;                            ALTER TABLE `tablename` ADD `new_col_name` INT NOT NULL DEFAULT 1;&ndash;&gt;-->
+<!--                            {{#estadoArticulos}}-->
+<!--                                <option value="{{id_estado}}">{{descripcion}}</option>-->
+<!--                            {{/estadoArticulos}}-->
+<!--                        </select>-->
+<!--                        <label for="estadoArticulo">Seleccionar estado</label>-->
+<!--                    </div>-->
                 </div>
                 <button type="submit" class="btn btn-primary my-2 btn-radius">Crear artículo</button>
             </form>

@@ -20,12 +20,12 @@ class ArticuloController
         $this->view->render('articuloView.mustache', $data);
     }
 
-    public function articulosPorEdicion()
+    public function articuloPorSeccion()
     {
         $data['usuario'] = $this->session->getCurrentUser() ?? '';
-        $idEdicion = $_GET['id'] ?? '';
-        $data['articulos'] = $this->articuloModel->getArticulosPorEdicion($idEdicion);
-        $this->view->render('articuloView.mustache', $data);
+        $idSeccion = $_GET['id'] ?? '';
+        $data['articulos'] = $this->articuloModel->getArticulosPorSeccion($idSeccion);
+        $this->view->render('articulos-por-seccionView.mustache', $data);
     }
 
     public function subirArticulo()
@@ -47,5 +47,12 @@ class ArticuloController
         move_uploaded_file($rutaArchivoTemporal, $rutaArchivoFinal);
 
         Redirect::doIt('/infonet/abm/vistaListaArticulos');
+    }
+
+    public function verArticulo(){
+        $data['usuario'] = $this->session->getCurrentUser();
+        $id = $_GET['id'] ?? '';
+        $data['articulos'] = $this->articuloModel->getArticuloPorId($id);
+        $this->view->render('articulo-contenidoView.mustache', $data);
     }
 }

@@ -31,4 +31,12 @@ class SeccionModel
         return print json_encode($format, JSON_UNESCAPED_UNICODE);
     }
 
+    public function getSeccionesPorProducto($id)
+    {
+        $sql = "SELECT * FROM seccion s JOIN edicion e
+                ON s.id_edicion=e.id_edicion
+                WHERE e.id_edicion=" . $id;
+        return $this->database->query($sql);
+    }
+
 }

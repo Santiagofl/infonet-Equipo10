@@ -29,4 +29,10 @@ class EdicionModel
         $sql = "SELECT * FROM edicion";
         return $this->database->query($sql);
     }
+
+    public function getEdicionById($id)
+    {
+        $sql = "SELECT * FROM edicion WHERE id_edicion=" . $id;
+        return $this->database->query($sql);
+    }
 }

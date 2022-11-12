@@ -58,7 +58,7 @@ class Configuration
 
     public function getSeccionController()
     {
-        return new SeccionController($this->getAllSeccionesModel(), $this->view, new SessionUser());
+        return new SeccionController($this->getAllSeccionesModel(), $this->getAllEdicionesModel(), $this->view, new SessionUser());
     }
 
     public function getArticuloController()

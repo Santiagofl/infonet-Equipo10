@@ -2,12 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6aa02d7e-1d1d-4107-9ef7-bb45196c54dd" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/public/home/seccion.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/view/articulo-contenidoView.mustache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/view/articulos-por-seccionView.mustache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/view/secciones-por-edicionView.mustache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/configuration/Configuration.php" beforeDir="false" afterPath="$PROJECT_DIR$/configuration/Configuration.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/abmController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controller/abmController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controller/articuloController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controller/articuloController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/seccionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controller/seccionController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/model/ArticuloModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/ArticuloModel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/EdicionModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/EdicionModel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/SeccionModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/SeccionModel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/abm/abmView.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/abm/abmView.mustache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/view/abm/alta-articulosView.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/abm/alta-articulosView.mustache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/articuloView.mustache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/edicion-por-productoView.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/edicion-por-productoView.mustache" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,23 +37,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/xampp/htdocs/infonet&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.fonts.default&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/xampp/htdocs/infonet/public/home",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "editor.preferences.fonts.default",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File&quot;: [
-      &quot;PLAIN_TEXT&quot;
+  "keyToStringList": {
+    "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
+      "PLAIN_TEXT"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\infonet\public\home" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\infonet\view\abm" />
       <recent name="C:\xampp\htdocs\mvc\view" />
@@ -80,7 +92,10 @@
       <workItem from="1667915819377" duration="6151000" />
       <workItem from="1667998604069" duration="15370000" />
       <workItem from="1668028092305" duration="902000" />
-      <workItem from="1668052334335" duration="5245000" />
+      <workItem from="1668052334335" duration="5540000" />
+      <workItem from="1668144967407" duration="66000" />
+      <workItem from="1668202603822" duration="1154000" />
+      <workItem from="1668213691145" duration="6831000" />
     </task>
     <servers />
   </component>
