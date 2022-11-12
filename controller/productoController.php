@@ -26,16 +26,17 @@ class ProductoController
         //aca hay dos secciones en una sola pagina por lo tanto entre estas dos vistas ira un header arriba y un footer abajo
         $data['usuario'] = $this->session->getCurrentUser();
         $id = $_GET['id'] ?? '';
+
         $data['producto'] = $this->productoModel->getProducto($id);
 
-        // TODO capturar usuario y producto
-
-
-        $data['fecha'] = $this->validarSuscripcion(1, 1);
+        //TODO capturar usuario
+        $data['fecha'] = $this->validarSuscripcion($id, 1);
 
         $this->view->render('descriptionView.mustache', $data);
         $data['edicionProducto'] = $this->productoModel->getEdicionesDeCadaProducto($id, 2);
         $this->view->render('edicion-por-productoView.mustache', $data);
+
+        print_r($this->productoModel->getSuscripcion(1, 1)[0]['fecha']);
 
 
     }
@@ -66,18 +67,26 @@ class ProductoController
 
     public function validarSuscripcion($id_producto, $idUsuario)
     {
-        $fechaActual = new dateTime(date('Y-m-d'));
-        $fechaInicial = new dateTime($this->productoModel->getSuscripcion($id_producto, $idUsuario)[0]['fecha']);
-        $diff = $fechaInicial->diff($fechaActual);
+        $resultado = $this->productoModel->getSuscripcion($id_producto, $idUsuario);
+        if($resultado){
+            $fechaActual = new dateTime(date('Y-m-d'));
+            $fechaInicial = new dateTime($resultado[0]['fecha']);
+            $diff = $fechaInicial->diff($fechaActual);
+            if (($diff->days) >31 ) {
+                return false;
+            } else {
+                return true;
+            }
 
-        if (($diff->days) < 31) {
-            return true;
-        } else {
-            return false;
         }
 
 
+
+
+
     }
+
+
 
 
 }
