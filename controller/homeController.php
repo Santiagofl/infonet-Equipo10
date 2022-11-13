@@ -1,14 +1,16 @@
 <?php
 
 class HomeController {
-    private $productoModel;
     private $view;
+    private $session;
 
-    public function __construct($view) {
+    public function __construct($view, $session) {
         $this->view = $view;
+        $this->session = $session;
     }
 
     public function list() {
-        $this->view->render('homeView.mustache');
+        $data['usuario']= $this->session->getCurrentUser();
+        $this->view->render('homeView.mustache', $data);
     }
 }

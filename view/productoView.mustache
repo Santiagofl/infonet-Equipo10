@@ -1,27 +1,29 @@
 {{> header}}
 <!-- The Band Section -->
 <section class="my-3">
-  <div class="home-product gap-2">
-    {{#productos}}
-    <div class="d-flex flex-column gap-2 border rounded p-3 home-card">
-      <p class="bg-info btn-radius px-2 fst-italic" style="width: fit-content">
-        {{ descripcion }}
-      </p>
-      <img
-        src="public/iso/{{ imagen }}"
-        alt="{{ imagen }}"
-        class="m-auto"
-        width="100"
-      />
-      <h5 class="card-title text-center text-uppercase">{{ nombre }}</h5>
-      <a
-        href="/infonet/producto/description/id={{ id_producto }}"
-        class="btn btn-warning align-self-center btn-radius"
-        >Ver producto</a
-      >
+    <div class="home-product gap-2">
+        {{#productos}}
+            <div class="d-flex flex-column gap-2 border rounded p-3 home-card">
+                <p class="bg-info btn-radius px-2 fst-italic" style="width: fit-content">
+                    {{ descripcion }}
+                </p>
+                <img
+                        src="public/iso/{{ imagen }}"
+                        alt="{{ imagen }}"
+                        class="m-auto"
+                        width="100"
+                />
+                <h5 class="card-title text-center text-uppercase">{{ nombre }}</h5>
+                <a
+                        href="/infonet/producto/description/id={{ id_producto }}"
+                class="btn btn-warning align-self-center btn-radius"
+                >Ver producto</a
+                    >
+            </div>
+        {{/productos}}
     </div>
-    {{/productos}}
-  </div>
+<!--    <div class="my-3 d-flex justify-content-center">-->
+<!--        <a href="/infonet/crearproducto/" class="btn btn-primary btn-radius">Crear productos</a>-->
+<!--    </div>-->
 </section>
-
 {{> footer}}

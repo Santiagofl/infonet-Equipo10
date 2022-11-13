@@ -2,23 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6aa02d7e-1d1d-4107-9ef7-bb45196c54dd" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.htaccess" beforeDir="false" afterPath="$PROJECT_DIR$/.htaccess" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/configuration/Configuration.php" beforeDir="false" afterPath="$PROJECT_DIR$/configuration/Configuration.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/CancionesController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/LaBandaController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/PresentacionesController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/QuieroSerParteController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/PresentacionesModel.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/QuieroSerParteModel.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/cancionesView.mustache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/labandaView.mustache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/partial/footer.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/partial/footer.mustache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/partial/header.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/partial/header.mustache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/quieroSerParteForm.mustache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/tourAltaForm.mustache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/tourView.mustache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/productoController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controller/productoController.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,18 +23,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/xampp/htdocs/infonet&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
-  }
-}</component>
+  <component name="PropertiesComponent">
+    <property name="TODO_SCOPE" value="All Places" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/view" />
+    <property name="settings.editor.selected.configurable" value="preferences.toDoOptions" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\infonet\view" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\infonet\view\abm" />
       <recent name="C:\xampp\htdocs\mvc\view" />
     </key>
   </component>
@@ -69,6 +54,19 @@
       <workItem from="1666929288464" duration="379000" />
       <workItem from="1667156273086" duration="3863000" />
       <workItem from="1667160900855" duration="1790000" />
+      <workItem from="1667259882139" duration="62000" />
+      <workItem from="1667259953214" duration="1850000" />
+      <workItem from="1667268068224" duration="4599000" />
+      <workItem from="1667339646015" duration="5837000" />
+      <workItem from="1667410831212" duration="5120000" />
+      <workItem from="1667446343249" duration="5018000" />
+      <workItem from="1667519395017" duration="10656000" />
+      <workItem from="1667533079047" duration="2031000" />
+      <workItem from="1667561805411" duration="4736000" />
+      <workItem from="1667577780810" duration="2294000" />
+      <workItem from="1667599724002" duration="2627000" />
+      <workItem from="1667605688995" duration="6191000" />
+      <workItem from="1668128720299" duration="8971000" />
     </task>
     <servers />
   </component>
@@ -85,5 +83,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

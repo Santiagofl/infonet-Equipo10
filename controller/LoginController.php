@@ -2,75 +2,53 @@
 
 class LoginController{
     private $view;
+    private $loginModel;
+    private $session;
 
-    public function __construct($view){
+    public function __construct($loginModel, $view, $session){
+        $this->loginModel = $loginModel;
         $this->view = $view;
+        $this->session = $session;
     }
 
-    public function list(){
-        $this->view->render('loginView.mustache');
+    public function list($data = []){
+        $this->view->render('loginView.mustache',$data);
     }
 
-    /*
-     private $logInModel;
-        private $printer;
+    public function validarSesion(){
+        if(ValidatorHelper::validarSeteadoYNoVacio($_POST["usuario"]) &&
+            ValidatorHelper::validarSeteadoYNoVacio($_POST["password"])) {
+            $usuario = $_POST["usuario"];
+            $password = $_POST["password"];
+            $obj = $this->loginModel->iniciarSesion($usuario, $password);
 
-        public function __construct($logInModel,$printer){
-            $this->logInModel = $logInModel;
-            $this->printer = $printer;
-        }
+            if (!empty($obj)) {
 
-        public function execute($data = []){
-
-                $menu ="<a href='/registro'>Registrarse</a>
-                <a href='/logIn'>Ingresar</a>";
-
-              $data["menu"] = $menu;
-              $this->printer->generateView("loginView.html",$data);
-        }
-
-        public function registrado(){
-            $title = "Registro exitoso!";
-
-        }
-
-        public function validarSesion(){
-            if(ValidatorHelper::validarSeteadoYNoVacio($_POST["usuario"]) &&
-               ValidatorHelper::validarSeteadoYNoVacio($_POST["password"])){
-                $usuario = $_POST["usuario"];
-                $password = $_POST["password"];
-                $obj = $this->logInModel->iniciarSesion($usuario,$password);
-
-                        session_start();
-
-                        $_SESSION["logueado"]=1;
-                        $_SESSION["usuario"]=$_POST["usuario"];
-                        $_SESSION["user"]=$obj['user'];
-                        $_SESSION["id"]=$obj['id'];
-                        $_SESSION["tipoUser"]=$obj['tipoUsuario'];
-
-                header("Location: /login");
+                $this->session->setCurrentUser($obj);
+                header("Location: /infonet/producto");
+                exit();
+            } else {
+                $this->notRegistered();
             }
-
-
+        }else{
+            $this->incorrectFormat();
         }
-
-
-        public function notRegistered(){
-            $email=$_GET["email"];
-            $title = "Usuario o clave incorrecta";
-            $message = "<p>intente nuevamente</p> </br> <a class='recovery' href='/login/recuperar/email=$email&dni=1'>Olvidé mi clave</a><a class='recovery' href='/registro'>Aún no estoy registrado</a>";
-            $display = "d-block";
-            $data = ["popUp" => true,"title"=> $title,"message"=>$message,"display"=>$display];
-            $this->execute($data);
-        }
-
-        public function exit(){
-            session_unset();
-            session_destroy();
-            header("Location: /login");
-        }
-
     }
-     */
+
+    public function incorrectFormat(){
+        $data['validador'] = true;
+        $this->view->render('loginView.mustache',$data);
+    }
+
+    public function notRegistered(){
+        $data['confirmed'] = true;
+        $this->list($data);
+    }
+
+
+    public function logout(){
+        $this->session->closeSession();
+        header("Location: /infonet/login");
+        exit();
+    }
 }
