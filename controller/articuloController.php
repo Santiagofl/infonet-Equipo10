@@ -55,4 +55,10 @@ class ArticuloController
         $data['articulos'] = $this->articuloModel->getArticuloPorId($id);
         $this->view->render('articulo-contenidoView.mustache', $data);
     }
+
+    public function borrarArticulo(){
+        $id = $_GET['id'] ?? '';
+        $this->articuloModel->deleteArticulo($id);
+        Redirect::doIt('/infonet/abm/vistaListaArticulos');
+    }
 }

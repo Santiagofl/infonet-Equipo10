@@ -57,4 +57,10 @@ class ArticuloModel
         $format = $this->database->query($sql);
         return print json_encode($format, JSON_UNESCAPED_UNICODE);
     }
+
+    public function deleteArticulo($id)
+    {
+        $sql = "DELETE FROM articulo WHERE articulo.id_articulo=" . $id;
+        $this->database->execute($sql);
+    }
 }

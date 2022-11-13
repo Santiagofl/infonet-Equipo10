@@ -38,7 +38,7 @@
                     $(".containerSelectEdicion").show();
 
                     for (const edicion of ediciones) {
-                        $(".productoEdicion").append(`<option value="${edicion.id_edicion}">${edicion.evento}</option>`);
+                        $(".productoEdicion").append(`<option value="${edicion.id_edicion}">${edicion.evento} - ${edicion.fecha}</option>`);
                     }
 
                     /*fin ediciones*/
@@ -58,27 +58,25 @@
                                 let articulos = JSON.parse(response);
                                 console.log(articulos);
                                 /*articulos*/
-                                $("#table-content-articulos").html("<table class='table text-center'>" +
-                                        "<thead>" +
-                                        "<tr>" +
-                                        "<th scope='col'>titulo</th>" +
-                                        "<th scope='col'>Fecha</th>" +
-                                        "<th scope='col'>Seccion</th>" +
-                                        "</tr>" +
-                                        "</thead>" +
-                                        "<tbody id='table-articulos-body'>" +
-                                        "</tbody>" +
-                                        "</table>");
-
-                                $("#table-content-edicion").show();
+                                $('#div-content-articulos').html("<div class='card-content-articulo'></div>")
                                 articulos.forEach(element => {
-                                    $("#table-articulos-body").append(
-                                            ` <tr>
-                                           <td>${element.titulo}</td>
-                                           <td>${element.fecha}</td>
-                                           <td>${element.nombreSeccion}</td>
-                                            </tr>
-                                        `)
+                                    $(".card-content-articulo").append(
+                                            `<div class="card my-3">
+                                            <div class="card-header">
+                                            ${element.titulo}
+                                            </div>
+                                            <div class="card-body">
+                                            <h5 class="card-title">${element.subtitulo}</h5>
+                                            <p class="card-text">Seccion: <span class="fw-bolder">${element.nombreSeccion}</span></p>
+                                            <div class="d-flex gap-2 ">
+                                            <a href="#" class="btn btn-radius btn-success">Modificar</a>
+                                            <a class="btn btn-radius btn-danger"
+                                            href="/infonet/articulo/borrarArticulo/id=${element.id_articulo}">Borrar</a>
+                                            </div>
+                                            </div>
+                                            <div class="card-footer text-muted">
+                                            ${element.estado}
+                                            </div></div>`)
                                 });
                                 /*fin del evento select articulos*/
                             }
@@ -125,7 +123,7 @@
                 <!--select secciones--->
             </div>
         </div>
-        <div id="table-content-articulos" class="my-4">
+        <div id="div-content-articulos" class="my-4">
             <!--tabla articulos--->
         </div>
     </section>

@@ -16,7 +16,7 @@
                     console.log(ediciones);
 
                     $(".containerSelectEdicion").html("" +
-                            "<select class='form-select productoEdicion' name='productoEdicion' aria-label='Floating label select example'>" +
+                            "<select class='form-select productoEdicion' name='productoEdicion' aria-label='Floating label select example' required>" +
                             "<option selected disabled>Seleccionar edición</option> " +
                             "</select> " +
                             "<label for='productoEdicion'>Seleccionar edición</label>");
@@ -46,7 +46,7 @@
                 <input type="text" class="d-none" id="edicionSeccion" name="edicionSeccion">
                 <div class="form-floating my-3">
                     <select class="form-select productoDeArticulo" name="productoEdicion" id="productoEdicion"
-                            aria-label="Floating label select example">
+                            aria-label="Floating label select example" required>
                         <option selected disabled>Producto</option>
                         {{#productos}}
                             <option value="{{id_producto}}">{{nombre}}</option>
@@ -59,7 +59,7 @@
                     <label for="productoEdicion">Seleccionar edición</label>
                 </div>
                 <div class="form-floating my-3">
-                    <input type="text" name="nombreSeccion" class="form-control" id="nombreSeccion" placeholder="s">
+                    <input type="text" name="nombreSeccion" class="form-control" id="nombreSeccion" placeholder="s" required>
                     <label for="nombreSeccion">Nombre de la sección</label>
                 </div>
                 <button type="submit" class="btn btn-primary my-2 btn-radius">Crear sección</button>
