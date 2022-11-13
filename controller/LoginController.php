@@ -23,10 +23,14 @@ class LoginController{
             $obj = $this->loginModel->iniciarSesion($usuario, $password);
 
             if (!empty($obj)) {
+                if($obj["activo"] == 1){
+                    $this->session->setCurrentUser($obj);
+                    header("Location: /infonet/producto");
+                    exit();
+                }else{
+                    $this->notActivo();
+                }
 
-                $this->session->setCurrentUser($obj);
-                header("Location: /infonet/producto");
-                exit();
             } else {
                 $this->notRegistered();
             }
@@ -35,20 +39,35 @@ class LoginController{
         }
     }
 
-    public function incorrectFormat(){
+    public function activarCuenta(){
+        if(isset($_GET['user'])){
+            $user = $_GET['user'];
+            $this->loginModel->activarCuenta($user);
+            $data['activado'] = true;
+            $this->list($data);
+        }
+
+    }
+
+    private function incorrectFormat(){
         $data['validador'] = true;
         $this->view->render('loginView.mustache',$data);
     }
 
-    public function notRegistered(){
+    private function notRegistered(){
         $data['confirmed'] = true;
         $this->list($data);
     }
 
+    private function notActivo(){
+        $data['desactivado'] = true;
+        $this->list($data);
+    }
 
     public function logout(){
         $this->session->closeSession();
         header("Location: /infonet/login");
         exit();
     }
+
 }

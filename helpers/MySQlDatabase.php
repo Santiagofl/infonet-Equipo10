@@ -33,7 +33,6 @@ class MySQlDatabase {
         $result = $comando->get_result();
         return $result->fetch_assoc();
 
-
     }
 
     public function execute($sql) {

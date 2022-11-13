@@ -19,6 +19,12 @@
             {{#validador}}
                 <p>Ingrese un usuario o contraseña correcto</p>
             {{/validador}}
+            {{#activado}}
+                <p>Su cuenta ha sido activada con exito! Ingrese su usuario y contraseña</p>
+            {{/activado}}
+            {{#desactivado}}
+                <p>Su cuenta no ha sido activada aun</p>
+            {{/desactivado}}
         </div>
 
         <!-- Submit button -->

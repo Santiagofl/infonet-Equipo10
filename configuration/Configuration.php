@@ -6,6 +6,7 @@ include_once('helpers/Logger.php');
 include_once('helpers/Router.php');
 include_once('helpers/ValidatorHelper.php');
 include_once('helpers/SessionUser.php');
+require_once('helpers/Mailer.php');
 
 include_once('model/ProductoModel.php');
 include_once('model/EdicionModel.php');
@@ -21,6 +22,7 @@ include_once('controller/edicionController.php');
 include_once('controller/seccionController.php');
 include_once('controller/abmController.php');
 include_once('controller/RegistroController.php');
+include_once('controller/VerificacionController.php');
 include_once('controller/articuloController.php');
 
 include_once('dependencies/mustache/src/Mustache/Autoloader.php');
@@ -56,6 +58,11 @@ class Configuration
         return new EdicionController($this->getAllEdicionesModel(), $this->getAllProductosModel(), $this->view, new SessionUser());
     }
 
+    public function getVerificacionController()
+    {
+        return new VerificacionController($this->view, new SessionUser());
+    }
+
     public function getSeccionController()
     {
         return new SeccionController($this->getAllSeccionesModel(), $this->getAllEdicionesModel(), $this->view, new SessionUser());
@@ -70,6 +77,11 @@ class Configuration
     {
         return new RegistroController($this->getAllRegistroModel(), $this->view, new SessionUser());
     }
+
+    public function getMailer(){
+        return new Mailer(); //en realidad todas las configuraciones deberian ir acá
+    }
+
 
     public function getLoginController()
     {
@@ -96,9 +108,8 @@ class Configuration
         return new LoginModel($this->database);
     }
 
-    private function getAllRegistroModel(): RegistroModel
-    {
-        return new RegistroModel($this->database);
+    private function getAllRegistroModel(): RegistroModel {
+        return new RegistroModel($this->database, $this->getMailer());
     }
 
     private function getAllSeccionesModel(): SeccionModel
