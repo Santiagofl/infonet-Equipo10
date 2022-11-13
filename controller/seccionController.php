@@ -26,10 +26,10 @@ class SeccionController
     public function subirSeccion()
     {
         $nombre = $_POST["nombreSeccion"] ?? '';
+        $edicion = $_POST["edicionSeccion"] ?? '';
+        $this->seccionModel->setSeccion($nombre, $edicion);
 
-        $this->seccionModel->setSeccion($nombre);
-
-        Redirect::doIt('/infonet/abm');
+        Redirect::doIt('/infonet/abm/vistaListaSecciones');
     }
 
     public function seccionesPorEdicion()
@@ -39,6 +39,14 @@ class SeccionController
         $data['secciones'] = $this->seccionModel->getSeccionesPorProducto($id);
         $data['edicion'] = $this->edicionModel->getEdicionById($id);
         $this->view->render('secciones-por-edicionView.mustache', $data);
+    }
+
+    public function borrarSeccion()
+    {
+        $data['usuario'] = $this->session->getCurrentUser();
+        $idSeccion = $_GET["id"] ?? '';
+        $this->seccionModel->deleteSeccion($idSeccion);
+        Redirect::doIt('/infonet/abm/vistaListaSecciones');
     }
 
 

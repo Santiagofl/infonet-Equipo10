@@ -47,17 +47,13 @@ class ArticuloModel
     public function getArticulosPorEdicionAJax($idEdicion)
     {
         $sql = "SELECT a.id_articulo, a.titulo, a.subtitulo, a.texto,
-                a.autor, a.imagen AS imagenArticulo,
-                a.id_estado, a.id_seccion, a.id_edicion,
-                e.fecha, e.id_producto, e.evento, s.nombre AS nombreSeccion,
-                p.nombre AS nombreProducto,
-                es.descripcion AS descripcionEstado
-                FROM articulo a JOIN edicion e
-                ON a.id_edicion=e.id_edicion LEFT JOIN
-                seccion s ON s.id_edicion =e.id_edicion 
-                JOIN producto p ON e.id_producto=p.id_producto
-                LEFT JOIN estado es ON es.id_estado=a.id_estado
-                where a.id_edicion=" . $idEdicion;
+                a.autor, a.imagen, a.latitud, a.longitud, 
+                a.id_edicion, e.fecha, e.evento AS evento, a.id_seccion, s.nombre AS nombreSeccion,
+                a.id_estado, es.descripcion AS estado
+                FROM articulo a JOIN seccion s ON s.id_seccion=a.id_seccion
+                JOIN edicion e ON e.id_edicion=a.id_edicion
+                JOIN estado es ON es.id_estado=a.id_estado
+                WHERE a.id_edicion=" . $idEdicion;
         $format = $this->database->query($sql);
         return print json_encode($format, JSON_UNESCAPED_UNICODE);
     }

@@ -2,7 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6aa02d7e-1d1d-4107-9ef7-bb45196c54dd" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/controller/productoController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controller/productoController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/abmController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controller/abmController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/seccionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controller/seccionController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/ArticuloModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/ArticuloModel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/SeccionModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/SeccionModel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/abm/alta-seccionesView.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/abm/alta-seccionesView.mustache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/abm/lista-seccionesView.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/abm/lista-seccionesView.mustache" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

@@ -41,7 +41,7 @@ class AbmController
     public function vistaAltaSecciones()
     {
         $data['usuario'] = $this->session->getCurrentUser();
-        $data['ediciones'] = $this->edicionModel->getEdiciones(2);
+        $data['ediciones'] = $this->edicionModel->getAllEdiciones();
         $data['productos'] = $this->productoModel->getProductos();
         $this->view->render('abm/alta-seccionesView.mustache', $data);
     }
@@ -78,6 +78,7 @@ class AbmController
     {
         $data['usuario'] = $this->session->getCurrentUser();
         $data['secciones'] = $this->seccionModel->getSecciones();
+        $data['productos'] = $this->productoModel->getProductos();
         $this->view->render('abm/lista-seccionesView.mustache', $data);
     }
 
