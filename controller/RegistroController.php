@@ -15,34 +15,43 @@
         }
 
         public function registrarUsuario(){
+            if(ValidatorHelper::validarSeteadoYNoVacio($_POST["nombre"]) &&
+                ValidatorHelper::validarSeteadoYNoVacio($_POST["usuario"]) &&
+                ValidatorHelper::validarSeteadoYNoVacio($_POST["clave"]) &&
+                ValidatorHelper::validarSeteadoYNoVacio($_POST["email"])) {
 
-                $name = $_POST["nombre"];
-                $user = $_POST["usuario"];
-                $pass = $_POST["clave"];
-                $email = $_POST["email"];
-                $fnacimiento = $_POST["fnacimiento"];
-                $rol = $_POST["rol"];
+            $name = $_POST["nombre"];
+            $user = $_POST["usuario"];
+            $pass = $_POST["clave"];
+            $email = $_POST["email"];
+            $rol = $_POST["rol"];
 
-                $status = $this->registroModel->registrar($name,$user,$pass,$email,$fnacimiento,$rol);
+            $status = $this->registroModel->registrar($name,$user,$pass,$email,$rol);
 
-                if($status == "registrado"){
+                if($status == "existente"){
+                    $this->duplicate();
+                }else{
                     header("Location:/infonet/verificacion");
                     exit();
-                }else{
-                    $this->duplicate();
                 }
+
+            }else{
+                $this->incorrectFormat();
+            }
+
         }
 
-        public function validarRegistro(){
-            $email = $_GET['email'];
-            $hash = $_GET['hash'];
-            $this->registroModel->validarRegistro($email,$hash);
-        }
 
         public function duplicate(){
             $data['title'] = "Usuario o email ya registrados";
             $this->list($data);
         }
+
+        public function incorrectFormat(){
+            $data['validador'] = true;
+            $this->view->render('registroView.mustache',$data);
+        }
+
 
 
     }
