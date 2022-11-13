@@ -1,11 +1,4 @@
--- phpMyAdmin SQL Dump
--- version 5.2.0
--- https://www.phpmyadmin.net/
---
--- Servidor: 127.0.0.1
--- Tiempo de generación: 06-11-2022 a las 21:59:32
--- Versión del servidor: 10.4.24-MariaDB
--- Versión de PHP: 7.4.29
+DROP DATABASE IF EXISTS infonet;
 create database infonet;
 use infonet;
 
@@ -454,6 +447,3 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-
-select *
-from usuario;

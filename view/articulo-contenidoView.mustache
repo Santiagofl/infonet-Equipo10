@@ -1,0 +1,13 @@
+{{> header}}
+<section class="my-4">
+    <div class="d-flex justify-content-center">
+        {{#articulos}}
+            <div class="d-flex flex-column gap-3 mb-2">
+                <h1 class="text-center">{{titulo}}</h1>
+                <p class="text-center">{{texto}}</p>
+                <a href="#" class="btn btn-danger btn-radius">Editar</a>
+            </div>
+
+        {{/articulos}}
+</section>
+{{> footer}}

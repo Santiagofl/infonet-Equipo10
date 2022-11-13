@@ -11,8 +11,9 @@ require_once('helpers/Mailer.php');
 include_once('model/ProductoModel.php');
 include_once('model/EdicionModel.php');
 include_once('model/SeccionModel.php');
-include_once ('model/LoginModel.php');
-include_once ('model/RegistroModel.php');
+include_once('model/LoginModel.php');
+include_once('model/RegistroModel.php');
+include_once('model/ArticuloModel.php');
 
 include_once('controller/homeController.php');
 include_once('controller/productoController.php');
@@ -22,6 +23,7 @@ include_once('controller/seccionController.php');
 include_once('controller/abmController.php');
 include_once('controller/RegistroController.php');
 include_once('controller/VerificacionController.php');
+include_once('controller/articuloController.php');
 
 include_once('dependencies/mustache/src/Mustache/Autoloader.php');
 
@@ -43,17 +45,17 @@ class Configuration
 
     public function getAbmController()
     {
-        return new AbmController($this->getAllProductosModel(), $this->getAllEdicionesModel(), $this->getAllSeccionesModel(), $this->view,new SessionUser());
+        return new AbmController($this->getAllProductosModel(), $this->getAllEdicionesModel(), $this->getAllSeccionesModel(), $this->getAllArticulosModel(), $this->view, new SessionUser());
     }
 
     public function getProductoController()
     {
-        return new ProductoController($this->getAllProductosModel(), $this->view,new SessionUser());
+        return new ProductoController($this->getAllProductosModel(), $this->view, new SessionUser());
     }
 
     public function getEdicionController()
     {
-        return new EdicionController($this->getAllEdicionesModel(), $this->view, new SessionUser());
+        return new EdicionController($this->getAllEdicionesModel(), $this->getAllProductosModel(), $this->view, new SessionUser());
     }
 
     public function getVerificacionController()
@@ -63,7 +65,12 @@ class Configuration
 
     public function getSeccionController()
     {
-        return new SeccionController($this->getAllSeccionesModel(), $this->view,new SessionUser());
+        return new SeccionController($this->getAllSeccionesModel(), $this->getAllEdicionesModel(), $this->view, new SessionUser());
+    }
+
+    public function getArticuloController()
+    {
+        return new ArticuloController($this->getAllArticulosModel(), $this->view, new SessionUser());
     }
 
     public function getRegistroController()
@@ -95,7 +102,9 @@ class Configuration
     {
         return new EdicionModel($this->database);
     }
-    private function getAllLoginModel(): LoginModel {
+
+    private function getAllLoginModel(): LoginModel
+    {
         return new LoginModel($this->database);
     }
 
@@ -106,6 +115,11 @@ class Configuration
     private function getAllSeccionesModel(): SeccionModel
     {
         return new SeccionModel($this->database);
+    }
+
+    private function getAllArticulosModel(): ArticuloModel
+    {
+        return new ArticuloModel($this->database);
     }
 
 

@@ -16,7 +16,16 @@
                     'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over
                     the
                     years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
-                <a href="#" class="btn btn-danger btn-radius">Suscribirse</a>
+
+
+                {{#suscripto}}
+                    <button class="btn btn-success btn-radius" disabled >Suscripto</button>
+                {{/suscripto}}
+                {{^suscripto}}
+                    <!-- TODO LLEVAR A CONFIRMAR COMPRA -->
+                    <a href="/infonet/suscribirse" class="btn btn-danger btn-radius">Suscribirse ${{precio}}/mes</a>
+                {{/suscripto}}
+
             </div>
 
         {{/producto}}
