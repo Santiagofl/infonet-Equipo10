@@ -6,31 +6,23 @@ class ProductoController
     private $productoModel;
     private $view;
     private $session;
+    private $weather;
 
-    public function __construct($productosModel, $view, $session)
+    public function __construct($productosModel, $view, $weather, $session)
     {
         $this->productoModel = $productosModel;
         $this->view = $view;
         $this->session = $session;
+        $this->weather = $weather;
     }
 
     public function list()
     {
         $data['usuario'] = $this->session->getCurrentUser() ?? '';
         $data['productos'] = $this->productoModel->getProductos();
-        $cache_file = 'data.json';
-        if (file_exists($cache_file)) {
-            $dat = json_decode(file_get_contents($cache_file));
-        } else {
-            $api_url = 'https://content.api.nytimes.com/svc/weather/v2/current-and-seven-day-forecast.json';
-            $dat = file_get_contents($api_url);
-            file_put_contents($cache_file, $dat);
-            $dat = json_decode($dat);
-        }
-        $data["clima"] = $dat->results->current[0];
-        $data["num"] = number_format((float)($dat->results->current[0]->temp - 32) * (5 / 9), 1, '.', '');
-        //$forecast = $data->results->seven_day_forecast;
-//        var_dump($current);
+        $data["clima"] = $this->weather->getDayWeather();
+        $data["tempNum"] = $this->weather->getCelciusTempDay();
+        $data["semana"] = $this->weather->getWeekWeather();
         $this->view->render('productoView.mustache', $data);
     }
 

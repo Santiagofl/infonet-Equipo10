@@ -7,6 +7,7 @@ include_once('helpers/Router.php');
 include_once('helpers/ValidatorHelper.php');
 include_once('helpers/SessionUser.php');
 require_once('helpers/Mailer.php');
+require_once('helpers/Weather.php');
 
 include_once('model/ProductoModel.php');
 include_once('model/EdicionModel.php');
@@ -50,7 +51,7 @@ class Configuration
 
     public function getProductoController()
     {
-        return new ProductoController($this->getAllProductosModel(), $this->view, new SessionUser());
+        return new ProductoController($this->getAllProductosModel(), $this->view, $this->getWeather(), new SessionUser());
     }
 
     public function getEdicionController()
@@ -78,7 +79,8 @@ class Configuration
         return new RegistroController($this->getAllRegistroModel(), $this->view, new SessionUser());
     }
 
-    public function getMailer(){
+    public function getMailer()
+    {
         return new Mailer(); //en realidad todas las configuraciones deberian ir acá
     }
 
@@ -108,7 +110,8 @@ class Configuration
         return new LoginModel($this->database);
     }
 
-    private function getAllRegistroModel(): RegistroModel {
+    private function getAllRegistroModel(): RegistroModel
+    {
         return new RegistroModel($this->database, $this->getMailer());
     }
 
@@ -120,6 +123,11 @@ class Configuration
     private function getAllArticulosModel(): ArticuloModel
     {
         return new ArticuloModel($this->database);
+    }
+
+    public function getWeather()
+    {
+        return new Weather();
     }
 
 

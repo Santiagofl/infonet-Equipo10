@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6aa02d7e-1d1d-4107-9ef7-bb45196c54dd" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/helpers/Weather.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/configuration/Configuration.php" beforeDir="false" afterPath="$PROJECT_DIR$/configuration/Configuration.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/homeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controller/homeController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controller/productoController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controller/productoController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/view/productoView.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/productoView.mustache" afterDir="false" />
     </list>
@@ -70,6 +73,7 @@
       <workItem from="1668128720299" duration="8971000" />
       <workItem from="1668387952704" duration="593000" />
       <workItem from="1668389319161" duration="2973000" />
+      <workItem from="1668435192504" duration="5189000" />
     </task>
     <servers />
   </component>

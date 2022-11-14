@@ -1,6 +1,28 @@
 {{> header}}
 <!-- The Band Section -->
 <section class="my-3">
+    <div class="card">
+        <div class="card-header">
+            Clima en {{clima.country}} - {{clima.city}}
+        </div>
+        <div class="card-body">
+            <div class="d-flex align-items-center">
+                <img src="{{clima.image}}" alt="{{clima.image}}" width="50">
+                <span>{{tempNum}}° C</span>
+            </div>
+            <h5 class="my-3">En la semana</h5>
+            <div class="d-flex gap-5 flex-wrap">
+                {{#semana}}
+                    <div class="d-flex flex-column align-items-center">
+                        <p>{{day}}</p>
+                        <img src="{{image}}" alt="{{image}}" width="50">
+                    </div>
+                {{/semana}}
+            </div>
+        </div>
+    </div>
+</section>
+<section class="my-3">
     <div class="home-product gap-2">
         {{#productos}}
             <div class="d-flex flex-column gap-2 border rounded p-3 home-card">
@@ -22,13 +44,5 @@
             </div>
         {{/productos}}
     </div>
-    <!--    <div class="my-3 d-flex justify-content-center">-->
-    <!--        <a href="/infonet/crearproducto/" class="btn btn-primary btn-radius">Crear productos</a>-->
-    <!--    </div>-->
-</section>
-<section class="my-3">
-    <h3>{{clima.city}}</h3>
-    <img src="{{clima.image}}" alt="{{clima.image}}" width="50">
-    <p>{{num}}° C</p>
 </section>
 {{> footer}}
