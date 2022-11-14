@@ -18,6 +18,19 @@ class ProductoController
     {
         $data['usuario'] = $this->session->getCurrentUser() ?? '';
         $data['productos'] = $this->productoModel->getProductos();
+        $cache_file = 'data.json';
+        if (file_exists($cache_file)) {
+            $dat = json_decode(file_get_contents($cache_file));
+        } else {
+            $api_url = 'https://content.api.nytimes.com/svc/weather/v2/current-and-seven-day-forecast.json';
+            $dat = file_get_contents($api_url);
+            file_put_contents($cache_file, $dat);
+            $dat = json_decode($dat);
+        }
+        $data["clima"] = $dat->results->current[0];
+        $data["num"] = number_format((float)($dat->results->current[0]->temp - 32) * (5 / 9), 1, '.', '');
+        //$forecast = $data->results->seven_day_forecast;
+//        var_dump($current);
         $this->view->render('productoView.mustache', $data);
     }
 
@@ -37,10 +50,6 @@ class ProductoController
 
 
         $this->view->render('edicion-por-productoView.mustache', $data);
-       
-
-
-
 
 
     }
@@ -72,11 +81,11 @@ class ProductoController
     public function validarSuscripcion($id_producto, $idUsuario)
     {
         $resultado = $this->productoModel->getSuscripcion($id_producto, $idUsuario);
-        if($resultado){
+        if ($resultado) {
             $fechaActual = new dateTime(date('Y-m-d'));
             $fechaInicial = new dateTime($resultado[0]['fecha']);
             $diff = $fechaInicial->diff($fechaActual);
-            if (($diff->days) >31 ) {
+            if (($diff->days) > 31) {
                 return false;
             } else {
                 return true;
@@ -85,12 +94,7 @@ class ProductoController
         }
 
 
-
-
-
     }
-
-
 
 
     public function modificarProducto()
