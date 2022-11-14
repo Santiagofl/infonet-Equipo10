@@ -22,10 +22,12 @@ class AbmController
 
     public function list()
     {
-        $data['usuario'] = $this->session->getCurrentUser() ?? '';
+        $data['usuario'] = $this->session->getCurrentUser();
+        $idUsuario = $this->session->getIdUsuario();
         $data['productos'] = $this->productoModel->getProductos();
-        $data['ediciones'] = $this->edicionModel->getEdiciones(2);
-        $this->view->render('abm/abmView.mustache', $data);
+        $data['ediciones'] = $this->edicionModel->getEdiciones($idUsuario);
+
+        $this->view->renderSession('abm/abmView.mustache', $data);
     }
 
     public function vistaAltaArticulos()
@@ -35,28 +37,28 @@ class AbmController
         $data['secciones'] = $this->seccionModel->getSecciones();
         $data['productos'] = $this->productoModel->getProductos();
         $data['estadoArticulos'] = $this->articuloModel->getEstadosDeArticulos();
-        $this->view->render('abm/alta-articulosView.mustache', $data);
+        $this->view->renderSession('abm/alta-articulosView.mustache', $data);
     }
 
     public function vistaAltaSecciones()
     {
         $data['usuario'] = $this->session->getCurrentUser();
-        $data['ediciones'] = $this->edicionModel->getEdiciones(2);
+        $data['ediciones'] = $this->edicionModel->getEdiciones($data['usuario']['id_usuario']);
         $data['productos'] = $this->productoModel->getProductos();
-        $this->view->render('abm/alta-seccionesView.mustache', $data);
+        $this->view->renderSession('abm/alta-seccionesView.mustache', $data);
     }
 
     public function vistaAltaProductos()
     {
         $data['usuario'] = $this->session->getCurrentUser();
-        $this->view->render('abm/alta-productosView.mustache', $data);
+        $this->view->renderSession('abm/alta-productosView.mustache', $data);
     }
 
     public function vistaAltaEdiciones()
     {
         $data['usuario'] = $this->session->getCurrentUser();
         $data['productos'] = $this->productoModel->getProductos();
-        $this->view->render('abm/alta-edicionesView.mustache', $data);
+        $this->view->renderSession('abm/alta-edicionesView.mustache', $data);
     }
 
     //Listas
@@ -64,28 +66,28 @@ class AbmController
     {
         $data['usuario'] = $this->session->getCurrentUser();
         $data['productos'] = $this->productoModel->getProductos();
-        $this->view->render('abm/lista-articulosView.mustache', $data);
+        $this->view->renderSession('abm/lista-articulosView.mustache', $data);
     }
 
     public function vistaListaProductos()
     {
         $data['usuario'] = $this->session->getCurrentUser();
         $data['productos'] = $this->productoModel->getProductos();
-        $this->view->render('abm/lista-productosView.mustache', $data);
+        $this->view->renderSession('abm/lista-productosView.mustache', $data);
     }
 
     public function vistaListaSecciones()
     {
         $data['usuario'] = $this->session->getCurrentUser();
         $data['secciones'] = $this->seccionModel->getSecciones();
-        $this->view->render('abm/lista-seccionesView.mustache', $data);
+        $this->view->renderSession('abm/lista-seccionesView.mustache', $data);
     }
 
     public function vistaListaEdiciones()
     {
         $data['usuario'] = $this->session->getCurrentUser();
         $data['productos'] = $this->productoModel->getProductos();
-        $this->view->render('abm/lista-edicionesView.mustache', $data);
+        $this->view->renderSession('abm/lista-edicionesView.mustache', $data);
     }
 
     //AJAX

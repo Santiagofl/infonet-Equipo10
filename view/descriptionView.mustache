@@ -31,3 +31,49 @@
         {{/producto}}
     </div>
 </section>
+<section class="my-3">
+    <h5 class="text-center my-3 text-decoration-underline">Ediciones del momento</h5>
+    <div class="d-flex flex-wrap justify-content-center gap-3">
+        {{#edicionProducto}}
+            {{^probando}}
+
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <h5 class="card-title">{{fecha}}</h5>
+
+
+                            {{^suscripto}}
+                                {{#comprado}}
+                                    <button class="btn btn-success btn-radius" disabled>Comprado</button>
+                                {{/comprado}}
+                                {{^comprado}}
+                                    <button class="btn btn-danger btn-radius">Comprar</button>
+                                {{/comprado}}
+                            {{/suscripto}}
+
+
+
+                        </div>
+                        <h6 class="card-subtitle mb-2 text-muted">Edicion nro: {{id_edicion}}</h6>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                            card's content.</p>
+
+
+                        {{#comprado}}
+                            <a href="/infonet/seccion/seccionesPorEdicion/id={{id_edicion}}" class="card-link">Ver articulos</a>
+                        {{/comprado}}
+                        {{#suscripto}}
+                            {{^comprado}}
+                                <a href="/infonet/seccion/seccionesPorEdicion/id={{id_edicion}}" class="card-link">Ver articulos</a>
+                            {{/comprado}}
+                        {{/suscripto}}
+
+
+                    </div>
+                </div>
+            {{/probando}}
+        {{/edicionProducto}}
+    </div>
+</section>
+{{> footer}}

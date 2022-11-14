@@ -23,26 +23,14 @@ class ProductoController
 
     public function description()
     {
-        //aca hay dos secciones en una sola pagina por lo tanto entre estas dos vistas ira un header arriba y un footer abajo
         $data['usuario'] = $this->session->getCurrentUser();
+        $idUsuario = $this->session->getIdUsuario();
         $id_producto = $_GET['id'] ?? '';
 
         $data['producto'] = $this->productoModel->getProducto($id_producto);
-
-        //TODO capturar usuario
-        $data['suscripto'] = $this->validarSuscripcion($id_producto, 2);
-
+        $data['suscripto'] = $this->validarSuscripcion($id_producto, $idUsuario);
+        $data['edicionProducto'] = $this->productoModel->getEdicionesDeCadaProducto($id_producto, $idUsuario);
         $this->view->render('descriptionView.mustache', $data);
-        $data['edicionProducto'] = $this->productoModel->getEdicionesDeCadaProducto($id_producto, 2);
-
-
-        $this->view->render('edicion-por-productoView.mustache', $data);
-       
-
-
-
-
-
     }
 
     public function subirProducto()
@@ -58,7 +46,7 @@ class ProductoController
 
         $this->productoModel->setProducto($nombre, $imagen, $tipo);
 
-        Redirect::doIt('/infonet/abm/vistaListaProductos/lista-productos');
+        Redirect::doIt('/infonet/abm/vistaListaProductos');
     }
 
     public function borrarProducto()
@@ -66,7 +54,7 @@ class ProductoController
         $data['usuario'] = $this->session->getCurrentUser();
         $idPproducto = $_GET["id"] ?? '';
         $this->productoModel->deleteProducto($idPproducto);
-        Redirect::doIt('/infonet/abm/vistaListaProductos/lista-productos');
+        Redirect::doIt('/infonet/abm/vistaListaProductos');
     }
 
     public function validarSuscripcion($id_producto, $idUsuario)

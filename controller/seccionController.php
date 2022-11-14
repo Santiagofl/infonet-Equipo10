@@ -38,7 +38,9 @@ class SeccionController
         $data['usuario'] = $this->session->getCurrentUser();
         $data['secciones'] = $this->seccionModel->getSeccionesPorProducto($id);
         $data['edicion'] = $this->edicionModel->getEdicionById($id);
-        $this->view->render('secciones-por-edicionView.mustache', $data);
+        //Si la query no me trae una compra/suscripcion entonces quiere decir que
+        //la edicion no esta comprada, asi que me lleva a el producto/$PARAM
+        $this->view->renderSession('secciones-por-edicionView.mustache', $data);
     }
 
 

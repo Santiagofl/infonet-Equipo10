@@ -25,8 +25,7 @@ class LoginController{
             if (!empty($obj)) {
                 if($obj["activo"] == 1){
                     $this->session->setCurrentUser($obj);
-                    header("Location: /infonet/producto");
-                    exit();
+                    Redirect::doIt("/infonet/producto");
                 }else{
                     $this->notActivo();
                 }
@@ -66,8 +65,7 @@ class LoginController{
 
     public function logout(){
         $this->session->closeSession();
-        header("Location: /infonet/login");
-        exit();
+        Redirect::doIt("/infonet/producto");
     }
 
 }

@@ -18,4 +18,14 @@ class MustacheRenderer {
         $contentAsString =  file_get_contents($this->viewFolder . $viewName);
         echo  $this->mustache->render($contentAsString, $datos);
     }
+
+    public function renderSession($viewName, $datos = []) {
+        $contentAsString =  file_get_contents($this->viewFolder . $viewName);
+        if($datos['usuario'] != 0){
+            echo  $this->mustache->render($contentAsString, $datos);
+        }else{
+            Redirect::doIt("/infonet/login");
+        }
+
+    }
 }
