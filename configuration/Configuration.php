@@ -34,12 +34,12 @@ class Configuration
     public function __construct()
     {
         $this->database = new MySQlDatabase();
-        $this->view = new MustacheRenderer("view/", 'view/partial/');
+        $this->view = new MustacheRenderer("view/", 'view/partial/', new SessionUser());
     }
 
     public function getHomeController()
     {
-        return new HomeController($this->view, new SessionUser());
+        return new HomeController($this->view);
     }
 
     public function getAbmController()
@@ -52,19 +52,14 @@ class Configuration
         return new ProductoController($this->getAllProductosModel(), $this->view, new SessionUser());
     }
 
-    public function getEdicionController()
-    {
-        return new EdicionController($this->getAllEdicionesModel(), $this->getAllProductosModel(), $this->view, new SessionUser());
-    }
-
     public function getVerificacionController()
     {
-        return new VerificacionController($this->view, new SessionUser());
+        return new VerificacionController($this->view);
     }
 
     public function getSeccionController()
     {
-        return new SeccionController($this->getAllSeccionesModel(), $this->getAllEdicionesModel(), $this->view, new SessionUser());
+        return new SeccionController($this->getAllSeccionesModel(), $this->getAllEdicionesModel(), $this->view);
     }
 
     public function getArticuloController()
@@ -78,9 +73,8 @@ class Configuration
     }
 
     public function getMailer(){
-        return new Mailer(); //en realidad todas las configuraciones deberian ir acá
+        return new Mailer();
     }
-
 
     public function getLoginController()
     {

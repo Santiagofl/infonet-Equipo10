@@ -6,6 +6,7 @@ class ProductoController
     private $productoModel;
     private $view;
     private $session;
+    private $rol;
 
     public function __construct($productosModel, $view, $session)
     {
@@ -16,17 +17,14 @@ class ProductoController
 
     public function list()
     {
-        $data['usuario'] = $this->session->getCurrentUser() ?? '';
         $data['productos'] = $this->productoModel->getProductos();
         $this->view->render('productoView.mustache', $data);
     }
 
     public function description()
     {
-        $data['usuario'] = $this->session->getCurrentUser();
         $idUsuario = $this->session->getIdUsuario();
         $id_producto = $_GET['id'] ?? '';
-
         $data['producto'] = $this->productoModel->getProducto($id_producto);
         $data['suscripto'] = $this->validarSuscripcion($id_producto, $idUsuario);
         $data['edicionProducto'] = $this->productoModel->getEdicionesDeCadaProducto($id_producto, $idUsuario);
@@ -35,7 +33,6 @@ class ProductoController
 
     public function subirProducto()
     {
-        $data['usuario'] = $this->session->getCurrentUser();
         $nombre = $_POST["nombreProducto"] ?? '';
         $imagen = $_FILES["imagenProducto"]["name"] ?? '';
         $tipo = $_POST["tipoProducto"] ?? '';
@@ -69,17 +66,8 @@ class ProductoController
             } else {
                 return true;
             }
-
         }
-
-
-
-
-
     }
-
-
-
 
     public function modificarProducto()
     {

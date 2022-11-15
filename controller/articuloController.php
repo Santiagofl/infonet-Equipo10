@@ -16,13 +16,11 @@ class ArticuloController
 
     public function list()
     {
-        $data['usuario'] = $this->session->getCurrentUser();
-        $this->view->renderSession('articuloView.mustache', $data);
+        $this->view->renderSession('articuloView.mustache');
     }
 
     public function articuloPorSeccion()
     {
-        $data['usuario'] = $this->session->getCurrentUser() ?? '';
         $idSeccion = $_GET['id'] ?? '';
         $data['articulos'] = $this->articuloModel->getArticulosPorSeccion($idSeccion);
         $this->view->renderSession('articulos-por-seccionView.mustache', $data);
@@ -30,7 +28,6 @@ class ArticuloController
 
     public function subirArticulo()
     {
-        $data['usuario'] = $this->session->getCurrentUser() ?? '';
         $seccion = $_POST["productoEdicionSeccionArticulo"] ?? '';
         $edicion = $_POST["productoEdicionArticulo"] ?? '';
         $titulo = $_POST["tituloArticulo"] ?? '';
@@ -50,7 +47,6 @@ class ArticuloController
     }
 
     public function verArticulo(){
-        $data['usuario'] = $this->session->getCurrentUser();
         $id = $_GET['id'] ?? '';
         $data['articulos'] = $this->articuloModel->getArticuloPorId($id);
         $this->view->renderSession('articulo-contenidoView.mustache', $data);
