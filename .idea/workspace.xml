@@ -2,7 +2,24 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6aa02d7e-1d1d-4107-9ef7-bb45196c54dd" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/configuration/Configuration.php" beforeDir="false" afterPath="$PROJECT_DIR$/configuration/Configuration.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controller/LoginController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/RegistroController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controller/RegistroController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/VerificacionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controller/VerificacionController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/abmController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controller/abmController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/articuloController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controller/articuloController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/homeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controller/homeController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controller/productoController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controller/productoController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/seccionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controller/seccionController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/helpers/MustacheRenderer.php" beforeDir="false" afterPath="$PROJECT_DIR$/helpers/MustacheRenderer.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/helpers/SessionUser.php" beforeDir="false" afterPath="$PROJECT_DIR$/helpers/SessionUser.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/descriptionView.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/descriptionView.mustache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/edicion-por-productoView.mustache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/partial/header.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/partial/header.mustache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/partial/menuAbm.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/partial/menuAbm.mustache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/registroView.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/registroView.mustache" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,13 +40,12 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="TODO_SCOPE" value="All Places" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/view" />
-    <property name="settings.editor.selected.configurable" value="preferences.toDoOptions" />
-    <property name="vue.rearranger.settings.migration" value="true" />
-  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\infonet\view" />
@@ -67,6 +83,10 @@
       <workItem from="1667599724002" duration="2627000" />
       <workItem from="1667605688995" duration="6191000" />
       <workItem from="1668128720299" duration="8971000" />
+      <workItem from="1668387952704" duration="593000" />
+      <workItem from="1668389319161" duration="2973000" />
+      <workItem from="1668435192504" duration="5699000" />
+      <workItem from="1668518936481" duration="10900000" />
     </task>
     <servers />
   </component>

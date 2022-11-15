@@ -24,10 +24,10 @@ class SeccionController
     public function subirSeccion()
     {
         $nombre = $_POST["nombreSeccion"] ?? '';
+        $edicion = $_POST["edicionSeccion"] ?? '';
+        $this->seccionModel->setSeccion($nombre, $edicion);
 
-        $this->seccionModel->setSeccion($nombre);
-
-        Redirect::doIt('/infonet/abm');
+        Redirect::doIt('/infonet/abm/vistaListaSecciones');
     }
 
     public function seccionesPorEdicion()
@@ -38,6 +38,14 @@ class SeccionController
         //Si la query no me trae una compra/suscripcion entonces quiere decir que
         //la edicion no esta comprada, asi que me lleva a el producto/$PARAM
         $this->view->renderSession('secciones-por-edicionView.mustache', $data);
+    }
+
+    public function borrarSeccion()
+    {
+        $data['usuario'] = $this->session->getCurrentUser();
+        $idSeccion = $_GET["id"] ?? '';
+        $this->seccionModel->deleteSeccion($idSeccion);
+        Redirect::doIt('/infonet/abm/vistaListaSecciones');
     }
 
 

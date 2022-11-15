@@ -89,8 +89,11 @@ class AbmController
     //Listas
     public function vistaListaArticulos()
     {
+
         if ($this->session->getRol() == 1) {
             $data['productos'] = $this->productoModel->getProductos();
+            $data['estados'] = $this->articuloModel->getEstadosDeArticulos();
+            $data['secciones'] = $this->seccionModel->getSecciones();
             $this->view->renderSession('abm/lista-articulosView.mustache', $data);
         } else {
             Redirect::doIt("/infonet/producto");
@@ -112,6 +115,7 @@ class AbmController
     {
         if ($this->session->getRol() == 1) {
             $data['secciones'] = $this->seccionModel->getSecciones();
+            $data['productos'] = $this->productoModel->getProductos();
             $this->view->renderSession('abm/lista-seccionesView.mustache', $data);
         }else {
             Redirect::doIt("/infonet/producto");

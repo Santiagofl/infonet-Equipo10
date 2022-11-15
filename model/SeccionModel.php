@@ -15,9 +15,9 @@ class SeccionModel
         return $this->database->query($sql);
     }
 
-    public function setSeccion($nombre)
+    public function setSeccion($nombre, $edicion)
     {
-        $sql = "INSERT INTO seccion (`nombre`) VALUES ('$nombre');";
+        $sql = "INSERT INTO seccion (`nombre`, `id_edicion`) VALUES ('$nombre', '$edicion');";
         $this->database->execute($sql);
     }
 
@@ -37,6 +37,12 @@ class SeccionModel
                 ON s.id_edicion=e.id_edicion
                 WHERE e.id_edicion=" . $id;
         return $this->database->query($sql);
+    }
+
+    public function deleteSeccion($idSeccion)
+    {
+        $sql = "DELETE FROM seccion WHERE seccion.id_seccion=" . $idSeccion;
+        $this->database->execute($sql);
     }
 
 }

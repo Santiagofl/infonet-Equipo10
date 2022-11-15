@@ -35,4 +35,12 @@ class EdicionModel
         $sql = "SELECT * FROM edicion WHERE id_edicion=" . $id;
         return $this->database->query($sql);
     }
+
+    public function setEdicion($idProducto, $fecha, $evento)
+    {
+        $sql = "INSERT INTO edicion
+                (`fecha`, `id_producto`, `evento`) 
+                VALUES ('$fecha', '$idProducto', '$evento')";
+        $this->database->execute($sql);
+    }
 }

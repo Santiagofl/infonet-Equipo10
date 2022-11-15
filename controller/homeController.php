@@ -1,6 +1,7 @@
 <?php
 
-class HomeController {
+class HomeController
+{
     private $view;
 
     public function __construct($view) {

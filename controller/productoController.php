@@ -6,18 +6,23 @@ class ProductoController
     private $productoModel;
     private $view;
     private $session;
+    private $weather;
     private $rol;
 
-    public function __construct($productosModel, $view, $session)
+    public function __construct($productosModel, $view, $weather, $session)
     {
         $this->productoModel = $productosModel;
         $this->view = $view;
         $this->session = $session;
+        $this->weather = $weather;
     }
 
     public function list()
     {
         $data['productos'] = $this->productoModel->getProductos();
+        $data["clima"] = $this->weather->getDayWeather();
+        $data["tempNum"] = $this->weather->getCelciusTempDay();
+        $data["semana"] = $this->weather->getWeekWeather();
         $this->view->render('productoView.mustache', $data);
     }
 
@@ -57,11 +62,11 @@ class ProductoController
     public function validarSuscripcion($id_producto, $idUsuario)
     {
         $resultado = $this->productoModel->getSuscripcion($id_producto, $idUsuario);
-        if($resultado){
+        if ($resultado) {
             $fechaActual = new dateTime(date('Y-m-d'));
             $fechaInicial = new dateTime($resultado[0]['fecha']);
             $diff = $fechaInicial->diff($fechaActual);
-            if (($diff->days) >31 ) {
+            if (($diff->days) > 31) {
                 return false;
             } else {
                 return true;
