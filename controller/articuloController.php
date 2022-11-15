@@ -16,21 +16,18 @@ class ArticuloController
 
     public function list()
     {
-        $data['usuario'] = $this->session->getCurrentUser();
-        $this->view->render('articuloView.mustache', $data);
+        $this->view->renderSession('articuloView.mustache');
     }
 
     public function articuloPorSeccion()
     {
-        $data['usuario'] = $this->session->getCurrentUser() ?? '';
         $idSeccion = $_GET['id'] ?? '';
         $data['articulos'] = $this->articuloModel->getArticulosPorSeccion($idSeccion);
-        $this->view->render('articulos-por-seccionView.mustache', $data);
+        $this->view->renderSession('articulos-por-seccionView.mustache', $data);
     }
 
     public function subirArticulo()
     {
-        $data['usuario'] = $this->session->getCurrentUser() ?? '';
         $seccion = $_POST["productoEdicionSeccionArticulo"] ?? '';
         $edicion = $_POST["productoEdicionArticulo"] ?? '';
         $titulo = $_POST["tituloArticulo"] ?? '';
@@ -49,12 +46,10 @@ class ArticuloController
         Redirect::doIt('/infonet/abm/vistaListaArticulos');
     }
 
-    public function verArticulo()
-    {
-        $data['usuario'] = $this->session->getCurrentUser();
+    public function verArticulo(){
         $id = $_GET['id'] ?? '';
         $data['articulos'] = $this->articuloModel->getArticuloPorId($id);
-        $this->view->render('articulo-contenidoView.mustache', $data);
+        $this->view->renderSession('articulo-contenidoView.mustache', $data);
     }
 
     public function borrarArticulo()

@@ -19,7 +19,6 @@ include_once('model/ArticuloModel.php');
 include_once('controller/homeController.php');
 include_once('controller/productoController.php');
 include_once('controller/LoginController.php');
-include_once('controller/edicionController.php');
 include_once('controller/seccionController.php');
 include_once('controller/abmController.php');
 include_once('controller/RegistroController.php');
@@ -36,12 +35,12 @@ class Configuration
     public function __construct()
     {
         $this->database = new MySQlDatabase();
-        $this->view = new MustacheRenderer("view/", 'view/partial/');
+        $this->view = new MustacheRenderer("view/", 'view/partial/', new SessionUser());
     }
 
     public function getHomeController()
     {
-        return new HomeController($this->view, new SessionUser());
+        return new HomeController($this->view);
     }
 
     public function getAbmController()
@@ -54,19 +53,14 @@ class Configuration
         return new ProductoController($this->getAllProductosModel(), $this->view, $this->getWeather(), new SessionUser());
     }
 
-    public function getEdicionController()
-    {
-        return new EdicionController($this->getAllEdicionesModel(), $this->getAllProductosModel(), $this->view, new SessionUser());
-    }
-
     public function getVerificacionController()
     {
-        return new VerificacionController($this->view, new SessionUser());
+        return new VerificacionController($this->view);
     }
 
     public function getSeccionController()
     {
-        return new SeccionController($this->getAllSeccionesModel(), $this->getAllEdicionesModel(), $this->view, new SessionUser());
+        return new SeccionController($this->getAllSeccionesModel(), $this->getAllEdicionesModel(), $this->view);
     }
 
     public function getArticuloController()
@@ -79,11 +73,9 @@ class Configuration
         return new RegistroController($this->getAllRegistroModel(), $this->view, new SessionUser());
     }
 
-    public function getMailer()
-    {
-        return new Mailer(); //en realidad todas las configuraciones deberian ir acá
+    public function getMailer(){
+        return new Mailer();
     }
-
 
     public function getLoginController()
     {
