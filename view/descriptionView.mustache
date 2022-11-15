@@ -23,7 +23,7 @@
                 {{/suscripto}}
                 {{^suscripto}}
                     <!-- TODO LLEVAR A CONFIRMAR COMPRA -->
-                    <a href="/infonet/suscribirse" class="btn btn-danger btn-radius">Suscribirse ${{precio}}/mes</a>
+                    <a href="/infonet/compra" class="btn btn-danger btn-radius">Suscribirse ${{precio}}/mes</a>
                 {{/suscripto}}
 
             </div>
@@ -48,7 +48,7 @@
                                     <button class="btn btn-success btn-radius" disabled>Comprado</button>
                                 {{/comprado}}
                                 {{^comprado}}
-                                    <button class="btn btn-danger btn-radius">Comprar</button>
+                                    <a class="btn btn-danger btn-radius" href="https://www.mercadopago.com.ar/checkout/v1/redirect?pref_id=328479679-17b8aa89-15e4-417e-bc12-4678079b375f">Pagar con MP</a>
                                 {{/comprado}}
                             {{/suscripto}}
 
@@ -56,6 +56,7 @@
 
                         </div>
                         <h6 class="card-subtitle mb-2 text-muted">Edicion nro: {{id_edicion}}</h6>
+                        <h6 class="card-subtitle mb-2 text-muted">Valor: ${{precio}} </h6>
                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
                             card's content.</p>
 

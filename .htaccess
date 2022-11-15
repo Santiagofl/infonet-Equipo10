@@ -5,7 +5,7 @@ Options -Indexes
 </FilesMatch>
 <IfModule mod_rewrite.c>
     RewriteEngine On
-    RewriteBase /infonet/
+    RewriteBase /infonet-Equipo10/
     RewriteRule ^(public)($|/) - [L,NC]
     RewriteRule ^(public)($|/iso) - [L,NC]
     RewriteRule ^(public)($|/style) - [L,NC]

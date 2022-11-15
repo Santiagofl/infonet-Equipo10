@@ -35,12 +35,14 @@ class ArticuloController
         $edicion = $_POST["productoEdicionArticulo"] ?? '';
         $titulo = $_POST["tituloArticulo"] ?? '';
         $subtitulo = $_POST["subtituloArticulo"] ?? '';
+
         //alterar el varchar de texto a mas
         $texto = $_POST["textoArticulo"] ?? '';
         $autor = $_POST["autorArticulo"] ?? '';
         $imagen = $_FILES["imagenArticulo"]["name"] ?? '';
+        $ubicacion = $_POST["ubicacionArticulo"] ?? '';
 
-        $this->articuloModel->setArticulo($seccion, $edicion, $titulo, $subtitulo, $imagen, $texto, $autor);
+        $this->articuloModel->setArticulo($seccion, $edicion, $titulo, $subtitulo, $imagen, $texto, $autor, $ubicacion);
 
         $rutaArchivoTemporal = $_FILES["imagenArticulo"]["tmp_name"];
         $rutaArchivoFinal = "public/imgArticulos/" . $imagen;
@@ -55,4 +57,5 @@ class ArticuloController
         $data['articulos'] = $this->articuloModel->getArticuloPorId($id);
         $this->view->renderSession('articulo-contenidoView.mustache', $data);
     }
+    
 }

@@ -11,14 +11,14 @@ class ProductoModel
 
     public function getProductos()
     {
-        $sql = 'SELECT p.id_producto, p.nombre, p.imagen, t.descripcion, p.precio as precio
+        $sql = 'SELECT p.id_producto, p.nombre, p.imagen, t.descripcion, 
                 FROM producto p JOIN tipo t ON p.tipo=t.id_tipo_producto';
         return $this->database->query($sql);
     }
 
     public function getProducto($id)
     {
-        $sql = "SELECT p.id_producto, p.nombre, p.imagen, t.descripcion, p.precio as precio
+        $sql = "SELECT p.id_producto, p.nombre, p.imagen, t.descripcion 
                 FROM producto p JOIN tipo t ON p.tipo=t.id_tipo_producto
                 WHERE p.id_producto=" . $id;
         return $this->database->query($sql);
@@ -54,20 +54,14 @@ class ProductoModel
     public function getSuscripcion($id_producto, $id_usuario)
     {
 
-        $sql = 'SELECT fecha FROM suscripcion
-                WHERE id_producto = '. $id_producto .' and id_usuario ='.$id_usuario ;
-
-        return $this->database->query($sql);
+        
     }
 
 
     public function setSuscripcion($fecha, $id_producto, $id_usuario)
     {
 
-        $sql = 'INSERT INTO suscripcion
-                (fecha, id_producto, id_usuario) 
-                VALUES (' . $fecha . ', ' . $id_producto . ', ' . $id_usuario . ')';
-        $this->database->execute($sql);
+       
     }
 
     public function updateProducto($idProducto, $nombre, $imagen, $tipo)

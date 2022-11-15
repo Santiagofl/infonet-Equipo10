@@ -8,6 +8,9 @@ include_once('helpers/ValidatorHelper.php');
 include_once('helpers/SessionUser.php');
 require_once('helpers/Mailer.php');
 
+include_once("helper/Location.php");
+
+
 include_once('model/ProductoModel.php');
 include_once('model/EdicionModel.php');
 include_once('model/SeccionModel.php');
@@ -23,6 +26,7 @@ include_once('controller/abmController.php');
 include_once('controller/RegistroController.php');
 include_once('controller/VerificacionController.php');
 include_once('controller/articuloController.php');
+include_once('controller/EdicionController.php');
 
 include_once('dependencies/mustache/src/Mustache/Autoloader.php');
 
@@ -119,6 +123,11 @@ class Configuration
     private function getAllArticulosModel(): ArticuloModel
     {
         return new ArticuloModel($this->database);
+    }
+
+    private function getEdicionModel(): EdicionModel
+    {
+        return new EdicionModel($this->database);
     }
 
 

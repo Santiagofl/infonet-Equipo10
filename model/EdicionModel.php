@@ -11,7 +11,7 @@ class EdicionModel
 
     public function getEdiciones($idUsuario)
     {
-        $sql = 'SELECT e.id_edicion, e.fecha, p.nombre, p.imagen
+        $sql = 'SELECT e.id_edicion, e.fecha, e.precio, p.nombre, p.imagen
         FROM edicion e JOIN producto p ON e.id_producto=p.id_producto
         
         ORDER BY p.nombre';
@@ -35,4 +35,20 @@ class EdicionModel
         $sql = "SELECT * FROM edicion WHERE id_edicion=" . $id;
         return $this->database->query($sql);
     }
+    
+    public function getCompra($usuario, $edicion){
+        $sql = 'SELECT c.id_compra, c.usuario, c.edicion FROM compra c 
+                JOIN edicion e ON c.edicion=e.id_edicion 
+                ORDER BY c.edicion';
+
+        return $this->database->query($sql);
+    }
+
+    public function setCompra($usuario, $edicion){
+        $sql = 'INSERT INTO compra (`usuario`,`edicion`)
+                values ($usuario, $edicion)';
+
+        $this->database->execute($sql);
+    }
+
 }

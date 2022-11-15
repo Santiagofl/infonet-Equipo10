@@ -1,7 +1,6 @@
 <?php
 
-class ArticuloModel
-{
+class ArticuloModel{
     private $database;
 
     public function __construct($database)
@@ -35,11 +34,11 @@ class ArticuloModel
         return $this->database->query($sql);
     }
 
-    public function setArticulo($seccion, $edicion, $titulo, $subtitulo, $imagen, $texto, $autor)
+    public function setArticulo($seccion, $edicion, $titulo, $subtitulo, $imagen, $texto, $autor, $ubicacion)
     {
         $sql = "INSERT INTO articulo 
-                (`titulo`, `subtitulo`, `texto`, `autor`, `imagen`, `id_edicion`, `id_seccion`) 
-                VALUES ('$titulo', '$subtitulo', '$texto', '$autor', '$imagen', '$edicion', '$seccion');";
+                (`titulo`, `subtitulo`, `texto`, `autor`, `imagen`, `id_edicion`, `id_seccion`, `ubicacion`) 
+                VALUES ('$titulo', '$subtitulo', '$texto', '$autor', '$imagen', '$edicion', '$seccion', 'ubicacion');";
         $this->database->execute($sql);
     }
 
@@ -60,5 +59,13 @@ class ArticuloModel
                 where a.id_edicion=" . $idEdicion;
         $format = $this->database->query($sql);
         return print json_encode($format, JSON_UNESCAPED_UNICODE);
+    }
+
+    public function getUbicacion(){
+        return $this->ubicacion;
+    }
+
+    public function setUbicacion($ubicacion){
+        $this->ubicacion = $ubicacion;
     }
 }

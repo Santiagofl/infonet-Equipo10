@@ -2,7 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6aa02d7e-1d1d-4107-9ef7-bb45196c54dd" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/controller/productoController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controller/productoController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/controller/EdicionController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/helpers/Location.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/view/compraView.mustache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/view/confirmadoView.mustache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/view/fallidoView.mustache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.htaccess" beforeDir="false" afterPath="$PROJECT_DIR$/.htaccess" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/configuration/Configuration.php" beforeDir="false" afterPath="$PROJECT_DIR$/configuration/Configuration.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/articuloController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controller/articuloController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infonet.sql" beforeDir="false" afterPath="$PROJECT_DIR$/infonet.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/ArticuloModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/ArticuloModel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/EdicionModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/EdicionModel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/ProductoModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/ProductoModel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/descriptionView.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/descriptionView.mustache" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,15 +36,18 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="TODO_SCOPE" value="All Places" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/view" />
-    <property name="settings.editor.selected.configurable" value="preferences.toDoOptions" />
-    <property name="vue.rearranger.settings.migration" value="true" />
-  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/xampp/htdocs/infonet-Equipo10/configuration",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\infonet-Equipo10\configuration" />
       <recent name="C:\xampp\htdocs\infonet\view" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -67,6 +83,7 @@
       <workItem from="1667599724002" duration="2627000" />
       <workItem from="1667605688995" duration="6191000" />
       <workItem from="1668128720299" duration="8971000" />
+      <workItem from="1668520215225" duration="15169000" />
     </task>
     <servers />
   </component>
