@@ -49,16 +49,26 @@ class ArticuloController
         Redirect::doIt('/infonet/abm/vistaListaArticulos');
     }
 
-    public function verArticulo(){
+    public function verArticulo()
+    {
         $data['usuario'] = $this->session->getCurrentUser();
         $id = $_GET['id'] ?? '';
         $data['articulos'] = $this->articuloModel->getArticuloPorId($id);
         $this->view->render('articulo-contenidoView.mustache', $data);
     }
 
-    public function borrarArticulo(){
+    public function borrarArticulo()
+    {
         $id = $_GET['id'] ?? '';
         $this->articuloModel->deleteArticulo($id);
         Redirect::doIt('/infonet/abm/vistaListaArticulos');
+    }
+
+    public function cambiarEstado()
+    {
+        $idEstado = $_POST['estadoArticulo'] ?? '';
+        $idArticulo = $_GET['idArticulo'] ?? '';
+        $this->articuloModel->updateEstadoArticulo($idEstado, $idArticulo);
+        Redirect::doIt('/infonet/abm/vistaListaArtiulos');
     }
 }

@@ -64,6 +64,7 @@ class AbmController
     {
         $data['usuario'] = $this->session->getCurrentUser();
         $data['productos'] = $this->productoModel->getProductos();
+        $data['estados'] = $this->articuloModel->getEstadosDeArticulos();
         $this->view->render('abm/lista-articulosView.mustache', $data);
     }
 

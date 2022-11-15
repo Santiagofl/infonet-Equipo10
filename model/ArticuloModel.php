@@ -43,6 +43,12 @@ class ArticuloModel
         $this->database->execute($sql);
     }
 
+    public function updateEstadoArticulo($idEstado, $idArticulo)
+    {
+        $sql = "UPDATE `articulo` SET `id_estado` = '$idEstado' WHERE (`id_articulo` = '$idArticulo')";
+        $this->database->execute($sql);
+    }
+
     /*ajax*/
     public function getArticulosPorEdicionAJax($idEdicion)
     {
@@ -53,7 +59,8 @@ class ArticuloModel
                 FROM articulo a JOIN seccion s ON s.id_seccion=a.id_seccion
                 JOIN edicion e ON e.id_edicion=a.id_edicion
                 JOIN estado es ON es.id_estado=a.id_estado
-                WHERE a.id_edicion=" . $idEdicion;
+                WHERE a.id_edicion=" . $idEdicion ."
+                ORDER BY a.id_articulo";
         $format = $this->database->query($sql);
         return print json_encode($format, JSON_UNESCAPED_UNICODE);
     }

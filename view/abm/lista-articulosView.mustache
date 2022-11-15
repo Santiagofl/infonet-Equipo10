@@ -74,9 +74,29 @@
                                             href="/infonet/articulo/borrarArticulo/id=${element.id_articulo}">Borrar</a>
                                             </div>
                                             </div>
-                                            <div class="card-footer text-muted">
-                                            ${element.estado}
-                                            </div></div>`)
+
+<div class="card-footer text-muted">
+    <div class="d-flex gap-2 align-items-center">
+        <div>${element.estado}</div>
+        <button class="btn btn-warning btn-radius btn-sm"
+        data-bs-toggle="collapse" data-bs-target="#collapseForm${element.id_articulo}"
+        aria-expanded="false" aria-controls="collapseExample">
+        Modificar estado</button>
+    </div>
+<hr />
+<div class="collapse my-2" id="collapseForm${element.id_articulo}">
+Seleccionar estado
+ <form class="d-flex align-items-center gap-3 flex-wrap" method="post"
+    action="/infonet/articulo/cambiarEstado/idArticulo=${element.id_articulo}">
+       <select name="estadoArticulo" class="form-select" aria-label="Default select example" style="width: 200px;">
+               <option value="${element.id_estado}" selected disabled>${element.estado}</option>
+               <option value="1">En revision</option>
+               <option value="2">Publicado</option>
+       </select>
+       <button class="btn btn-danger btn-sm btn-radius" type="submit">Cambiar estado</button>
+    </form>
+</div>
+                                            </div></div>`);
                                 });
                                 /*fin del evento select articulos*/
                             }
@@ -88,7 +108,6 @@
                 //fin success general
             });
         });
-
 
     });
 </script>
