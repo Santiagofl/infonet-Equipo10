@@ -5,7 +5,6 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controller/abmController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controller/abmController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controller/articuloController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controller/articuloController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/estructure.html" beforeDir="false" afterPath="$PROJECT_DIR$/estructure.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/model/ArticuloModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/ArticuloModel.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/view/abm/lista-articulosView.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/abm/lista-articulosView.mustache" afterDir="false" />
     </list>
@@ -74,7 +73,7 @@
       <workItem from="1668387952704" duration="593000" />
       <workItem from="1668389319161" duration="2973000" />
       <workItem from="1668435192504" duration="5699000" />
-      <workItem from="1668518936481" duration="4877000" />
+      <workItem from="1668518936481" duration="10900000" />
     </task>
     <servers />
   </component>

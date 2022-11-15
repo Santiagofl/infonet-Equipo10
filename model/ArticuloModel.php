@@ -59,7 +59,7 @@ class ArticuloModel
                 FROM articulo a JOIN seccion s ON s.id_seccion=a.id_seccion
                 JOIN edicion e ON e.id_edicion=a.id_edicion
                 JOIN estado es ON es.id_estado=a.id_estado
-                WHERE a.id_edicion=" . $idEdicion ."
+                WHERE a.id_edicion=" . $idEdicion . "
                 ORDER BY a.id_articulo";
         $format = $this->database->query($sql);
         return print json_encode($format, JSON_UNESCAPED_UNICODE);
@@ -68,6 +68,16 @@ class ArticuloModel
     public function deleteArticulo($id)
     {
         $sql = "DELETE FROM articulo WHERE articulo.id_articulo=" . $id;
+        $this->database->execute($sql);
+    }
+
+    public function updateArticulo($id, $titulo, $subtitulo, $imagen, $texto, $autor)
+    {
+        $sql = "UPDATE articulo a 
+                SET a.titulo='$titulo', a.texto = '$texto', a.subtitulo='$subtitulo',
+                a.autor = '$autor',
+                a.imagen='$imagen'
+                WHERE a.id_articulo='$id'";
         $this->database->execute($sql);
     }
 }

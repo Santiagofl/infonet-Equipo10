@@ -69,6 +69,26 @@ class ArticuloController
         $idEstado = $_POST['estadoArticulo'] ?? '';
         $idArticulo = $_GET['idArticulo'] ?? '';
         $this->articuloModel->updateEstadoArticulo($idEstado, $idArticulo);
-        Redirect::doIt('/infonet/abm/vistaListaArtiulos');
+        Redirect::doIt('/infonet/abm/vistaListaArticulos');
+    }
+
+    public function modificarArticulo()
+    {
+        $data['usuario'] = $this->session->getCurrentUser();
+        $id = $_GET["id"] ?? '';
+        $titulo = $_POST["tituloArticulo"] ?? '';
+        $subtitulo = $_POST["subtituloArticulo"] ?? '';
+        $imagen = $_FILES["imagenArticulo"]["name"] ? $_FILES["imagenArticulo"]["name"] : $_POST["modImagenArticuloSave"];
+        $texto = $_POST["textoArticulo"] ?? '';
+        $autor = $_POST["autorArticulo"] ?? '';
+
+
+        $this->articuloModel->updateArticulo($id, $titulo, $subtitulo, $imagen, $texto, $autor);
+
+        $rutaArchivoTemporal = $_FILES["imagenArticulo"]["tmp_name"];
+        $rutaArchivoFinal = "public/imgArticulos/" . $imagen;
+        move_uploaded_file($rutaArchivoTemporal, $rutaArchivoFinal);
+
+        Redirect::doIt('/infonet/abm/vistaListaArticulos');
     }
 }
