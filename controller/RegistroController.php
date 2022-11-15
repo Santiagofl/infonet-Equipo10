@@ -31,8 +31,7 @@
                 if($status == "existente"){
                     $this->duplicate();
                 }else{
-                    header("Location:/infonet/verificacion");
-                    exit();
+                    Redirect::doIt("/infonet/verificacion");
                 }
 
             }else{

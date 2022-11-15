@@ -4,16 +4,7 @@
     <section class="my-3">
         <h5>Crear Ediciones</h5>
         <div class="my-3">
-            <form>
-                <div class="form-floating my-3">
-                    <input type="date" name="fechaEdicion" class="form-control" id="fechaEdicion" value="2022-11-01"
-                           min="2022-01-01" max="2022-12-31">
-                    <label for="fechaEdicion">Fecha de edición</label>
-                </div>
-                <div class="form-floating my-3">
-                    <input type="text" class="form-control" id="nombreEdicion" name="nombreEdicion" placeholder="aa">
-                    <label for="nombreEdicion">Evento de la edición</label>
-                </div>
+            <form action="/infonet/edicion/subirEdicion" method="post">
                 <div class="form-floating my-3">
                     <select class="form-select" name="productoEdicion" id="productoEdicion"
                             aria-label="Floating label select example">
@@ -23,6 +14,15 @@
                         {{/productos}}
                     </select>
                     <label for="productoEdicion">Seleccionar producto</label>
+                </div>
+                <div class="form-floating my-3">
+                    <input type="date" name="fechaEdicion" class="form-control" id="fechaEdicion" value="2022-11-01"
+                           min="2022-01-01" max="2022-12-31">
+                    <label for="fechaEdicion">Fecha de edición</label>
+                </div>
+                <div class="form-floating my-3">
+                    <input type="text" class="form-control" id="nombreEdicion" name="eventoEdicion" placeholder="aa">
+                    <label for="nombreEdicion">Evento de la edición</label>
                 </div>
                 <button type="submit" class="btn btn-primary my-2 btn-radius">Crear edición</button>
             </form>

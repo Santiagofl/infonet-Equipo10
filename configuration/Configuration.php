@@ -7,6 +7,7 @@ include_once('helpers/Router.php');
 include_once('helpers/ValidatorHelper.php');
 include_once('helpers/SessionUser.php');
 require_once('helpers/Mailer.php');
+require_once('helpers/Weather.php');
 
 include_once('model/ProductoModel.php');
 include_once('model/EdicionModel.php');
@@ -18,12 +19,12 @@ include_once('model/ArticuloModel.php');
 include_once('controller/homeController.php');
 include_once('controller/productoController.php');
 include_once('controller/LoginController.php');
-include_once('controller/edicionController.php');
 include_once('controller/seccionController.php');
 include_once('controller/abmController.php');
 include_once('controller/RegistroController.php');
 include_once('controller/VerificacionController.php');
 include_once('controller/articuloController.php');
+include_once('controller/edicionController.php');
 
 include_once('dependencies/mustache/src/Mustache/Autoloader.php');
 
@@ -35,12 +36,12 @@ class Configuration
     public function __construct()
     {
         $this->database = new MySQlDatabase();
-        $this->view = new MustacheRenderer("view/", 'view/partial/');
+        $this->view = new MustacheRenderer("view/", 'view/partial/', new SessionUser());
     }
 
     public function getHomeController()
     {
-        return new HomeController($this->view, new SessionUser());
+        return new HomeController($this->view);
     }
 
     public function getAbmController()
@@ -50,22 +51,22 @@ class Configuration
 
     public function getProductoController()
     {
-        return new ProductoController($this->getAllProductosModel(), $this->view, new SessionUser());
+        return new ProductoController($this->getAllProductosModel(), $this->view, $this->getWeather(), new SessionUser());
     }
 
     public function getEdicionController()
     {
-        return new EdicionController($this->getAllEdicionesModel(), $this->getAllProductosModel(), $this->view, new SessionUser());
+        return new EdicionController($this-> getAllEdicionesModel(), $this->getAllProductosModel(), $this->view, new SessionUser());
     }
 
     public function getVerificacionController()
     {
-        return new VerificacionController($this->view, new SessionUser());
+        return new VerificacionController($this->view);
     }
 
     public function getSeccionController()
     {
-        return new SeccionController($this->getAllSeccionesModel(), $this->getAllEdicionesModel(), $this->view, new SessionUser());
+        return new SeccionController($this->getAllSeccionesModel(), $this->getAllEdicionesModel(), $this->view);
     }
 
     public function getArticuloController()
@@ -79,9 +80,8 @@ class Configuration
     }
 
     public function getMailer(){
-        return new Mailer(); //en realidad todas las configuraciones deberian ir acá
+        return new Mailer();
     }
-
 
     public function getLoginController()
     {
@@ -108,7 +108,8 @@ class Configuration
         return new LoginModel($this->database);
     }
 
-    private function getAllRegistroModel(): RegistroModel {
+    private function getAllRegistroModel(): RegistroModel
+    {
         return new RegistroModel($this->database, $this->getMailer());
     }
 
@@ -120,6 +121,11 @@ class Configuration
     private function getAllArticulosModel(): ArticuloModel
     {
         return new ArticuloModel($this->database);
+    }
+
+    public function getWeather()
+    {
+        return new Weather();
     }
 
 

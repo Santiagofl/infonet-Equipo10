@@ -16,7 +16,7 @@
                     let ediciones = JSON.parse(response)
 
                     $(".containerSelectEdicion").html("" +
-                            "<select class='form-select productoEdicion' name='productoEdicion' id='productoEdicion' aria-label='Floating label select example'>" +
+                            "<select class='form-select productoEdicion' name='productoEdicion' id='productoEdicion' aria-label='Floating label select example' required>" +
                             "<option selected disabled>Seleccionar edición</option> " +
                             "</select> " +
                             "<label for='productoEdicion'>Seleccionar edición</label>");
@@ -49,7 +49,7 @@
                                 // })
 
                                 $(".containerSelectSeccion").html("" +
-                                        "<select class='form-select productoEdicionSeccion' name='productoEdicionSeccion' id='productoEdicionSeccion' aria-label='Floating label select example'>" +
+                                        "<select class='form-select productoEdicionSeccion' name='productoEdicionSeccion' id='productoEdicionSeccion' aria-label='Floating label select example' required>" +
                                         "<option selected disabled>Seleccionar sección</option> " +
                                         "</select> " +
                                         "<label for='productoEdicion'>Seleccionar sección</label>");
@@ -112,12 +112,12 @@
                 </div>
                 <div class="form-floating my-3">
                     <input type="text" class="form-control" name="tituloArticulo" id="tituloArticulo"
-                           placeholder="name@example.com">
+                           placeholder="name@example.com" required>
                     <label for="tituloArticulo">Título de la publicación</label>
                 </div>
                 <div class="form-floating my-3">
                     <input type="text" class="form-control" name="subtituloArticulo" id="subtituloArticulo"
-                           placeholder="name@example.com">
+                           placeholder="name@example.com" required>
                     <label for="subtituloArticulo">Subtítulo de la publicación</label>
                 </div>
                 <div class="form-floating my-3">
@@ -135,26 +135,15 @@
                                                 <textarea class="form-control" name="textoArticulo"
                                                           placeholder="Leave a comment here"
                                                           id="floatingTextarea2"
-                                                          style="height: 100px"></textarea>
+                                                          style="height: 100px" required></textarea>
                     <label for="textoArticulo">Texto del articulo</label>
                 </div>
                 <div class="d-flex col-md-12 my-3 gap-2">
                     <div class="form-floating col-6">
                         <input type="text" class="form-control" id="autorArticulo" name="autorArticulo"
-                               placeholder="name@example.com">
+                               placeholder="name@example.com" required>
                         <label for="autorArticulo">Autor</label>
                     </div>
-<!--                    <div class="form-floating col-6">-->
-<!--                        <select class="form-select" name="estadoArticulo" id="estadoArticulo"-->
-<!--                                aria-label="Floating label select example">-->
-<!--                            <option selected disabled>Estado</option>-->
-<!--                            &lt;!&ndash;                            ALTER TABLE `tablename` ADD `new_col_name` INT NOT NULL DEFAULT 1;&ndash;&gt;-->
-<!--                            {{#estadoArticulos}}-->
-<!--                                <option value="{{id_estado}}">{{descripcion}}</option>-->
-<!--                            {{/estadoArticulos}}-->
-<!--                        </select>-->
-<!--                        <label for="estadoArticulo">Seleccionar estado</label>-->
-<!--                    </div>-->
                 </div>
                 <button type="submit" class="btn btn-primary my-2 btn-radius">Crear artículo</button>
             </form>
