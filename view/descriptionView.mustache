@@ -48,14 +48,17 @@
                                     <button class="btn btn-success btn-radius" disabled>Comprado</button>
                                 {{/comprado}}
                                 {{^comprado}}
-                                    <button class="btn btn-danger btn-radius">Comprar</button>
+                                    <button class='btn btn-danger btn-radius' type='submit'>
+                                        <a class='nav-link' href='/infonet/pago/comprarEdicion/usuario={{id_usuario}}?edicion={{id_edicion}}'>Comprar</a>
+                                    </button>
                                 {{/comprado}}
                             {{/suscripto}}
 
 
 
                         </div>
-                        <h6 class="card-subtitle mb-2 text-muted">Edicion nro: {{id_edicion}}</h6>
+                        <h6 class="card-subtitle mb-2 text-muted">Edición nro: {{id_edicion}}</h6>
+                        <h6 class="card-subtitle mb-2 text-muted">Valor: ${{precio}}</h6>
                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
                             card's content.</p>
 

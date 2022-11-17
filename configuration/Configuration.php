@@ -8,6 +8,7 @@ include_once('helpers/ValidatorHelper.php');
 include_once('helpers/SessionUser.php');
 require_once('helpers/Mailer.php');
 require_once('helpers/Weather.php');
+require_once('vendor/autoload.php');
 
 include_once('model/ProductoModel.php');
 include_once('model/EdicionModel.php');
@@ -15,6 +16,7 @@ include_once('model/SeccionModel.php');
 include_once('model/LoginModel.php');
 include_once('model/RegistroModel.php');
 include_once('model/ArticuloModel.php');
+include_once('model/PagoModel.php');
 
 include_once('controller/homeController.php');
 include_once('controller/productoController.php');
@@ -25,6 +27,7 @@ include_once('controller/RegistroController.php');
 include_once('controller/VerificacionController.php');
 include_once('controller/articuloController.php');
 include_once('controller/edicionController.php');
+include_once('controller/pagoController.php');
 
 include_once('dependencies/mustache/src/Mustache/Autoloader.php');
 
@@ -128,5 +131,12 @@ class Configuration
         return new Weather();
     }
 
+    public function getPagoController(){
+        return new PagoController($this->getPagoModel(), $this->view, new SessionUser());
+    }
+
+    private function getPagoModel(): PagoModel{
+        return new PagoModel($this->database);
+    }
 
 }

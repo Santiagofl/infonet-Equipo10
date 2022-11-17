@@ -1,0 +1,23 @@
+{{> header}}
+<script src="https://sdk.mercadopago.com/js/v2"></script>
+
+<div class="checkout-btn"></div>
+
+<script>
+    const mp = new MercadoPago('TEST-23d1538d-a44c-4d8f-ada8-f0d41d638e0a', {
+        locale: 'es-AR'
+    });
+
+    mp.checkout({
+        preference: {
+            id: '<?php echo $preference->id; ?>'
+        },
+        render: {
+            container: '.checkout-btn',
+            label: 'Pagar con MP'
+        }
+    });
+
+</script>
+
+{{> footer}}
