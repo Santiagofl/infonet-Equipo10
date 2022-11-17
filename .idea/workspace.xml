@@ -2,17 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6aa02d7e-1d1d-4107-9ef7-bb45196c54dd" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/controller/pagoController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model/PagoModel.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/view/comprarEdicionView.mustache" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/view/confirmadoView.mustache" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/view/fallidoView.mustache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/configuration/Configuration.php" beforeDir="false" afterPath="$PROJECT_DIR$/configuration/Configuration.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/productoController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controller/productoController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/infonet.sql" beforeDir="false" afterPath="$PROJECT_DIR$/infonet.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/ProductoModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/ProductoModel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/descriptionView.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/descriptionView.mustache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/comprarEdicionView.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/comprarEdicionView.mustache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/partial/header.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/partial/header.mustache" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,7 +78,7 @@
       <workItem from="1668435192504" duration="5699000" />
       <workItem from="1668518936481" duration="10900000" />
       <workItem from="1668558029196" duration="6148000" />
-      <workItem from="1668648676584" duration="8941000" />
+      <workItem from="1668648676584" duration="10046000" />
     </task>
     <servers />
   </component>
