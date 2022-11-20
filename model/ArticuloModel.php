@@ -50,6 +50,16 @@ class ArticuloModel
         $this->database->execute($sql);
     }
 
+    function isPublicado(){
+        $sql = "SELECT id_estado, descripcion 
+                FROM estado
+                WHERE id_estado=2;";
+        return $this->database->query($sql);
+    }
+
+
+
+
     /*ajax*/
     public function getArticulosPorEdicionAJax($idEdicion)
     {

@@ -46,10 +46,16 @@ class ArticuloController
         Redirect::doIt('/infonet/abm/vistaListaArticulos');
     }
 
-    public function verArticulo(){
+    public function verArticulo()
+    {
         $id = $_GET['id'] ?? '';
+        $data["estado"] = $this->articuloModel->isPublicado();
         $data['articulos'] = $this->articuloModel->getArticuloPorId($id);
-        $this->view->renderSession('articulo-contenidoView.mustache', $data);
+        if ($data["estado"][0]["id_estado"]==$data['articulos'][0]["id_estado"]) {
+            $this->view->renderSession('articulo-contenidoView.mustache', $data);
+        }else{
+            Redirect::doIt('/infonet');
+        }
     }
 
     public function borrarArticulo()
