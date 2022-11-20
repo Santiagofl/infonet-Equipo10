@@ -96,7 +96,6 @@ WHERE
         $sql = "SELECT * FROM edicion e JOIN producto p 
                     ON e.id_producto=p.id_producto WHERE p.id_producto =" . $id;
          $format = $this->database->query($sql);
-//        print_r($format);
         return print json_encode($format, JSON_UNESCAPED_UNICODE);
     }
 
@@ -105,15 +104,12 @@ WHERE
         $sql= "SELECT e.fecha, e.id_edicion  from edicion e 
                 left join compra c on c.edicion = e.id_edicion
                 where c.id_compra is null and e.id_producto='$id_producto'";
-                        return $this->database->query($sql);
+        return $this->database->query($sql);
 
     }
     public function getDiferenciaDeDias($fecha1, $fecha2){
 
         $sql = 'SELECT DATEDIFF('.$fecha1.', '.$fecha2.') AS diferencia';
-
-
-
         return $this->database->query($sql);
 
 }
