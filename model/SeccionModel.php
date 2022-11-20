@@ -45,4 +45,9 @@ class SeccionModel
         $this->database->execute($sql);
     }
 
+    public function getEdicionComprada($id, $idUsuario){
+        $sql = "select c.id_compra from compra c WHERE usuario ='$idUsuario' AND edicion ='$id';";
+        return $this->database->query($sql);
+    }
+
 }

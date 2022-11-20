@@ -21,9 +21,15 @@ class ArticuloController
 
     public function articuloPorSeccion()
     {
+
         $idSeccion = $_GET['id'] ?? '';
+        $comprado = $this->articuloModel->getSeccionComprada($idSeccion, $this->session->getIdUsuario());
+        if(!empty($comprado)){
         $data['articulos'] = $this->articuloModel->getArticulosPorSeccion($idSeccion);
         $this->view->renderSession('articulos-por-seccionView.mustache', $data);
+        }else{
+            Redirect::doIt('/infonet/producto');
+        }
     }
 
     public function subirArticulo()
@@ -48,8 +54,13 @@ class ArticuloController
 
     public function verArticulo(){
         $id = $_GET['id'] ?? '';
+        $comprado = $this->articuloModel->getArticuloComprado($id, $this->session->getIdUsuario());
+        if(!empty($comprado)){
         $data['articulos'] = $this->articuloModel->getArticuloPorId($id);
         $this->view->renderSession('articulo-contenidoView.mustache', $data);
+        }else{
+            Redirect::doIt('/infonet/producto');
+        }
     }
 
     public function borrarArticulo()

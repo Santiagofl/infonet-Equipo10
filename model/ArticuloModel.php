@@ -80,4 +80,18 @@ class ArticuloModel
                 WHERE a.id_articulo='$id'";
         $this->database->execute($sql);
     }
+
+    public function getArticuloComprado($id, $idUsuario){
+        $sql = "select c.id_compra from compra c JOIN articulo a ON c.edicion = a.id_edicion
+                WHERE c.usuario ='$idUsuario' AND
+                a.id_articulo ='$id'";
+        return $this->database->query($sql);
+    }
+
+    public function getSeccionComprada($id, $idUsuario){
+        $sql = "select c.id_compra from compra c JOIN seccion s ON c.edicion = s.id_edicion
+                WHERE c.usuario ='$idUsuario' AND
+                s.id_seccion ='$id'";
+        return $this->database->query($sql);
+    }
 }

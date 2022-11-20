@@ -6,16 +6,18 @@ class SeccionController
     private $seccionModel;
     private $edicionModel;
     private $view;
+    private $session;
 
-    public function __construct($seccionModel, $edicionModel, $view)
+    public function __construct($seccionModel, $edicionModel, $view, $session)
     {
         $this->edicionModel = $edicionModel;
         $this->seccionModel = $seccionModel;
         $this->view = $view;
+        $this->session = $session;
 
     }
 
-    public function list()
+    public function list($data = [])
     {
         $data['secciones'] = $this->seccionModel->getProductos();
         $this->view->render('seccionView.mustache', $data);
@@ -33,11 +35,14 @@ class SeccionController
     public function seccionesPorEdicion()
     {
         $id = $_GET['id'] ?? '';
-        $data['secciones'] = $this->seccionModel->getSeccionesPorProducto($id);
-        $data['edicion'] = $this->edicionModel->getEdicionById($id);
-        //Si la query no me trae una compra/suscripcion entonces quiere decir que
-        //la edicion no esta comprada, asi que me lleva a el producto/$PARAM
-        $this->view->renderSession('secciones-por-edicionView.mustache', $data);
+        $comprado = $this->seccionModel->getEdicionComprada($id, $this->session->getIdUsuario());
+        if(!empty($comprado)){
+            $data['secciones'] = $this->seccionModel->getSeccionesPorProducto($id);
+            $data['edicion'] = $this->edicionModel->getEdicionById($id);
+            $this->view->renderSession('secciones-por-edicionView.mustache', $data);
+        }else{
+            Redirect::doIt('/infonet/producto');
+        }
     }
 
     public function borrarSeccion()
