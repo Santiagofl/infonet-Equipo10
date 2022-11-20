@@ -15,6 +15,7 @@ include_once('model/SeccionModel.php');
 include_once('model/LoginModel.php');
 include_once('model/RegistroModel.php');
 include_once('model/ArticuloModel.php');
+include_once('model/UsuarioModel.php');
 
 
 include_once('controller/homeController.php');
@@ -26,6 +27,7 @@ include_once('controller/RegistroController.php');
 include_once('controller/VerificacionController.php');
 include_once('controller/articuloController.php');
 include_once('controller/edicionController.php');
+include_once('controller/usuarioController.php');
 
 include_once('dependencies/mustache/src/Mustache/Autoloader.php');
 
@@ -80,6 +82,11 @@ class Configuration
         return new RegistroController($this->getAllRegistroModel(), $this->view, new SessionUser());
     }
 
+    public function getUsuarioController()
+    {
+        return new usuarioController($this->getAllUsuarioModel(), $this->view, new SessionUser());
+    }
+
     public function getMailer(){
         return new Mailer();
     }
@@ -124,10 +131,10 @@ class Configuration
         return new ArticuloModel($this->database);
     }
 
-    /*private function getAllUsuarioModel(): UsuarioModel
+    private function getAllUsuarioModel(): UsuarioModel
     {
         return new UsuarioModel($this->database);
-    }*/
+    }
 
     public function getWeather()
     {
