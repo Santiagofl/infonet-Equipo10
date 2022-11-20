@@ -32,8 +32,25 @@ class ProductoController
         $id_producto = $_GET['id'] ?? '';
         $data['producto'] = $this->productoModel->getProducto($id_producto);
         $data['suscripto'] = $this->validarSuscripcion($id_producto, $idUsuario);
+
+        if ($data['suscripto']) {
+            $fechaSuscripcion = $this->productoModel->getSuscripcion($id_producto, $idUsuario);
+            $resultado = $this->productoModel->getEdicionesNoCompradas($id_producto);
+
+            if (!empty($resultado)) {
+                foreach ($resultado as $edicion) {
+
+                    $diferencia = $this->productoModel->getDiferenciaDeDias($edicion["fecha"], $fechaSuscripcion[0]["fecha"]);
+                    if ($diferencia < 0 || $diferencia > 31) {
+                        $this->productoModel->setCompra($idUsuario, $edicion["id_edicion"]);
+                    }
+                }
+            }
+        }
+
         $data['edicionProducto'] = $this->productoModel->getEdicionesDeCadaProducto($id_producto, $idUsuario);
         $this->view->render('descriptionView.mustache', $data);
+
     }
 
     public function subirProducto()
@@ -61,18 +78,20 @@ class ProductoController
 
     public function validarSuscripcion($id_producto, $idUsuario)
     {
-        $resultado = $this->productoModel->getSuscripcion($id_producto, $idUsuario);
+        $resultado = $this->productoModel->getSuscripcion($id_producto, $idUsuario)[0]["diferencia"] ?? '';
         if ($resultado) {
-            $fechaActual = new dateTime(date('Y-m-d'));
-            $fechaInicial = new dateTime($resultado[0]['fecha']);
-            $diff = $fechaInicial->diff($fechaActual);
-            if (($diff->days) > 31) {
+            if ($resultado < 0 || $resultado > 31) {
                 return false;
             } else {
                 return true;
             }
         }
+        return false;
     }
+
+
+
+
 
     public function modificarProducto()
     {

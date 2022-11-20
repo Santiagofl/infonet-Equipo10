@@ -16,6 +16,7 @@ include_once('model/LoginModel.php');
 include_once('model/RegistroModel.php');
 include_once('model/ArticuloModel.php');
 
+
 include_once('controller/homeController.php');
 include_once('controller/productoController.php');
 include_once('controller/LoginController.php');
@@ -46,7 +47,7 @@ class Configuration
 
     public function getAbmController()
     {
-        return new AbmController($this->getAllProductosModel(), $this->getAllEdicionesModel(), $this->getAllSeccionesModel(), $this->getAllArticulosModel(), $this->view, new SessionUser());
+        return new AbmController($this->getAllProductosModel(), $this->getAllEdicionesModel(), $this->getAllSeccionesModel(), $this->getAllArticulosModel(),$this->view, new SessionUser());
     }
 
     public function getProductoController()
@@ -122,6 +123,11 @@ class Configuration
     {
         return new ArticuloModel($this->database);
     }
+
+    /*private function getAllUsuarioModel(): UsuarioModel
+    {
+        return new UsuarioModel($this->database);
+    }*/
 
     public function getWeather()
     {
