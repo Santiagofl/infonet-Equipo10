@@ -3,9 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="6aa02d7e-1d1d-4107-9ef7-bb45196c54dd" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/articuloController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controller/articuloController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/ArticuloModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/ArticuloModel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/articulo-contenidoView.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/articulo-contenidoView.mustache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/productoController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controller/productoController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/helpers/Weather.php" beforeDir="false" afterPath="$PROJECT_DIR$/helpers/Weather.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/productoView.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/productoView.mustache" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
