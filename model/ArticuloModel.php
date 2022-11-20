@@ -17,7 +17,8 @@ class ArticuloModel
 
     public function getArticuloPorId($id)
     {
-        $sql = "SELECT * FROM articulo WHERE id_articulo=" . $id;
+        $sql = "SELECT * FROM articulo WHERE id_articulo='$id'
+                AND id_estado=2";
         return $this->database->query($sql);
     }
 
@@ -31,7 +32,7 @@ class ArticuloModel
     {
         $sql = "SELECT * FROM articulo a 
                 JOIN seccion s ON s.id_seccion=a.id_seccion
-                WHERE a.id_seccion =" . $idSeccion;
+                WHERE a.id_seccion ='$idSeccion' AND a.id_estado=2";
         return $this->database->query($sql);
     }
 
@@ -48,6 +49,16 @@ class ArticuloModel
         $sql = "UPDATE `articulo` SET `id_estado` = '$idEstado' WHERE (`id_articulo` = '$idArticulo')";
         $this->database->execute($sql);
     }
+
+    function isPublicado(){
+        $sql = "SELECT id_estado, descripcion 
+                FROM estado
+                WHERE id_estado=2;";
+        return $this->database->query($sql);
+    }
+
+
+
 
     /*ajax*/
     public function getArticulosPorEdicionAJax($idEdicion)

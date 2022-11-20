@@ -24,10 +24,10 @@ class ArticuloController
 
         $idSeccion = $_GET['id'] ?? '';
         $comprado = $this->articuloModel->getSeccionComprada($idSeccion, $this->session->getIdUsuario());
-        if(!empty($comprado)){
-        $data['articulos'] = $this->articuloModel->getArticulosPorSeccion($idSeccion);
-        $this->view->renderSession('articulos-por-seccionView.mustache', $data);
-        }else{
+        if (!empty($comprado)) {
+            $data['articulos'] = $this->articuloModel->getArticulosPorSeccion($idSeccion);
+            $this->view->renderSession('articulos-por-seccionView.mustache', $data);
+        } else {
             Redirect::doIt('/infonet/producto');
         }
     }
@@ -52,16 +52,23 @@ class ArticuloController
         Redirect::doIt('/infonet/abm/vistaListaArticulos');
     }
 
-    public function verArticulo(){
+    public function verArticulo()
+    {
         $id = $_GET['id'] ?? '';
         $comprado = $this->articuloModel->getArticuloComprado($id, $this->session->getIdUsuario());
-        if(!empty($comprado)){
-        $data['articulos'] = $this->articuloModel->getArticuloPorId($id);
-        $this->view->renderSession('articulo-contenidoView.mustache', $data);
-        }else{
+        if (!empty($comprado)) {
+            $data['articulos'] = $this->articuloModel->getArticuloPorId($id);
+            $data["estado"] = $this->articuloModel->isPublicado();
+            if ($data["estado"][0]["id_estado"] == $data['articulos'][0]["id_estado"]) {
+                $this->view->renderSession('articulo-contenidoView.mustache', $data);
+            } else {
+                Redirect::doIt('/infonet/producto');
+            }
+        } else {
             Redirect::doIt('/infonet/producto');
         }
     }
+    
 
     public function borrarArticulo()
     {
