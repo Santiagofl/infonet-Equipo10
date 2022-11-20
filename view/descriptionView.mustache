@@ -43,14 +43,14 @@
                             <h5 class="card-title">{{fecha}}</h5>
 
 
-                            {{^suscripto}}
+
                                 {{#comprado}}
                                     <button class="btn btn-success btn-radius" disabled>Comprado</button>
                                 {{/comprado}}
                                 {{^comprado}}
                                     <button class="btn btn-danger btn-radius">Comprar</button>
                                 {{/comprado}}
-                            {{/suscripto}}
+
 
 
 
@@ -63,11 +63,8 @@
                         {{#comprado}}
                             <a href="/infonet/seccion/seccionesPorEdicion/id={{id_edicion}}" class="card-link">Ver articulos</a>
                         {{/comprado}}
-                        {{#suscripto}}
-                            {{^comprado}}
-                                <a href="/infonet/seccion/seccionesPorEdicion/id={{id_edicion}}" class="card-link">Ver articulos</a>
-                            {{/comprado}}
-                        {{/suscripto}}
+
+
 
 
                     </div>

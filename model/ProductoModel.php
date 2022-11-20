@@ -35,6 +35,14 @@ class ProductoModel
 
         return $this->database->query($sql);
     }
+    public function setCompra($usuario, $edicion)
+    {
+        $sql = "INSERT INTO compra
+                (`usuario`, `edicion`) 
+                VALUES ('$usuario', '$edicion')";
+        $this->database->execute($sql);
+    }
+
 
 
     public function setProducto($nombre, $imagen, $tipo)
@@ -51,22 +59,26 @@ class ProductoModel
         $this->database->execute($sql);
     }
 
+
     public function getSuscripcion($id_producto, $id_usuario)
     {
-
-        $sql = 'SELECT fecha FROM suscripcion
-                WHERE id_producto = '. $id_producto .' and id_usuario ='.$id_usuario ;
+        $sql = 'SELECT 
+    DATEDIFF(CURRENT_DATE(), fecha) AS diferencia, fecha
+FROM
+    suscripcion
+WHERE
+    id_producto = '.$id_producto.' AND id_usuario ='.$id_usuario.';';
 
         return $this->database->query($sql);
     }
 
 
-    public function setSuscripcion($fecha, $id_producto, $id_usuario)
+    public function setSuscripcion($fecha, $id_producto, $id_usuario, $precio)
     {
 
         $sql = 'INSERT INTO suscripcion
-                (fecha, id_producto, id_usuario) 
-                VALUES (' . $fecha . ', ' . $id_producto . ', ' . $id_usuario . ')';
+                (fecha, id_producto, id_usuario, precio) 
+                VALUES ('. $fecha .','. $id_producto .','. $id_usuario .',(SELECT precio from producto where id_producto ='.$id_producto.' ) )';
         $this->database->execute($sql);
     }
 
@@ -82,11 +94,28 @@ class ProductoModel
     public function getEdicionesPorProductoAJax($id)
     {
         $sql = "SELECT * FROM edicion e JOIN producto p 
-ON e.id_producto=p.id_producto WHERE p.id_producto =" . $id;
-        $format = $this->database->query($sql);
+                    ON e.id_producto=p.id_producto WHERE p.id_producto =" . $id;
+         $format = $this->database->query($sql);
 //        print_r($format);
         return print json_encode($format, JSON_UNESCAPED_UNICODE);
     }
 
+
+    public function getEdicionesNoCompradas($id_producto){
+        $sql= "SELECT e.fecha, e.id_edicion  from edicion e 
+                left join compra c on c.edicion = e.id_edicion
+                where c.id_compra is null and e.id_producto='$id_producto'";
+                        return $this->database->query($sql);
+
+    }
+    public function getDiferenciaDeDias($fecha1, $fecha2){
+
+        $sql = 'SELECT DATEDIFF('.$fecha1.', '.$fecha2.') AS diferencia';
+
+
+
+        return $this->database->query($sql);
+
+}
 
 }
