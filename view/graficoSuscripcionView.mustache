@@ -1,0 +1,69 @@
+{{> header}}
+<!--<nav class="topnav" onload="cargaFechas()">-->
+<h3>Suscripciones diarias por Rango de Fechas</h3>
+<nav class="topnav">
+    <form id="formDate" action="/infonet/graficos" method="get">
+        <label for="filtroFechaD">Desde:</label>
+        <input type="date" id="filtroFechaD" name="desde" value={{fechaDesde}}>
+        <label for="hasta">Hasta:</label>
+        <input type="date" id="hasta" name="hasta" value={{fechaHasta}}>
+        <button type="submit" form="formDate">Buscar</button>
+    </form>
+    {{fechas}}
+</nav>
+
+<div>
+    <canvas id="myChart"></canvas>
+</div>
+
+{{> footer}}
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+    const ctx = document.getElementById('myChart');
+
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['11-10-20', '11-10-21', '11-10-22', '11-10-23', '11-10-24', '11-10-25'],
+            datasets: [{
+                label: '# of Votes',
+                data: [12, 19, 3, 5, 2, 3],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>
+
+<!--<script>-->
+<!--    const ctx = document.getElementById('myChart');-->
+
+<!--    new Chart(ctx, {-->
+<!--        type: 'bar',-->
+<!--        data: {-->
+<!--            labels: {/{fechas}},-->
+<!--            datasets: [{-->
+<!--                label: '# of Votes',-->
+<!--                data: {/{cantidades}},-->
+<!--                borderWidth: 1-->
+<!--            }]-->
+<!--        },-->
+<!--        options: {-->
+<!--            scales: {-->
+<!--                y: {-->
+<!--                    beginAtZero: true-->
+<!--                }-->
+<!--            }-->
+<!--        }-->
+<!--    });-->
+<!--</script>-->
+
+

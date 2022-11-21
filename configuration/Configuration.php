@@ -20,6 +20,7 @@ include_once('model/PagoModel.php');
 include_once ('model/LoginModel.php');
 include_once ('model/RegistroModel.php');
 include_once ('model/HistorialModel.php');
+include_once ('model/GraficosModel.php');
 include_once ('model/PdfModel.php');
 
 
@@ -35,6 +36,7 @@ include_once('controller/articuloController.php');
 include_once('controller/edicionController.php');
 include_once('controller/pagoController.php');
 
+include_once('controller/graficosController.php');
 include_once('controller/HistorialController.php');
 include_once('controller/PdfController.php');
 
@@ -106,6 +108,11 @@ class Configuration
         return new HistorialController($this->getHistorialModel(), $this->view, new SessionUser());
     }
 
+    public function getGraficosController()
+    {
+        return new graficosController($this->view, new SessionUser(),$this->getGraficosModel());
+    }
+
     public function getPdfController()
     {
         return new PdfController($this->getPdfModel(), $this->view, new SessionUser(), $this->getHistorialModel());
@@ -171,6 +178,10 @@ class Configuration
 
     private function getPagoModel(): PagoModel{
         return new PagoModel($this->database);
+    }
+
+    private function getGraficosModel(): GraficosModel{
+        return new GraficosModel($this->database);
     }
 
 }
