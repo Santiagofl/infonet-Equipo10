@@ -23,7 +23,7 @@
                 {{/suscripto}}
                 {{^suscripto}}
                     <!-- TODO LLEVAR A CONFIRMAR COMPRA -->
-                    <a href="/infonet/suscribirse" class="btn btn-danger btn-radius">Suscribirse ${{precio}}/mes</a>
+                    <a href="/infonet/pago/suscribirse/id_producto={{id_producto}}?id_usuario={{#usuario}}{{id_usuario}}{{/usuario}}" class="btn btn-danger btn-radius">Suscribirse ${{precio}}/mes</a>
                 {{/suscripto}}
 
             </div>

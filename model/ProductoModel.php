@@ -52,11 +52,12 @@ class ProductoModel{
 
 
     public function setSuscripcion($fecha, $id_producto, $id_usuario){
-        $sql = 'INSERT INTO suscripcion
-                (fecha, id_producto, id_usuario) 
-                VALUES (' . $fecha . ', ' . $id_producto . ', ' . $id_usuario . ')';
+            $sql = 'INSERT INTO suscripcion
+            (fecha, id_producto, id_usuario, precio)
+            VALUES ('. $fecha .','. $id_producto .','. $id_usuario .',(SELECT precio from producto where id_producto ='.$id_producto.' ))';
         $this->database->execute($sql);
     }
+
 
     public function updateProducto($idProducto, $nombre, $imagen, $tipo){
         $sql = "UPDATE producto p SET p.nombre='$nombre',
