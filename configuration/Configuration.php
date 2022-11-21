@@ -8,13 +8,17 @@ include_once('helpers/ValidatorHelper.php');
 include_once('helpers/SessionUser.php');
 require_once('helpers/Mailer.php');
 require_once('helpers/Weather.php');
+include_once('helpers/PdfManager.php');
 
 include_once('model/ProductoModel.php');
 include_once('model/EdicionModel.php');
 include_once('model/SeccionModel.php');
-include_once('model/LoginModel.php');
-include_once('model/RegistroModel.php');
 include_once('model/ArticuloModel.php');
+
+include_once ('model/LoginModel.php');
+include_once ('model/RegistroModel.php');
+include_once ('model/HistorialModel.php');
+include_once ('model/PdfModel.php');
 
 
 include_once('controller/homeController.php');
@@ -23,9 +27,14 @@ include_once('controller/LoginController.php');
 include_once('controller/seccionController.php');
 include_once('controller/abmController.php');
 include_once('controller/RegistroController.php');
+
 include_once('controller/VerificacionController.php');
 include_once('controller/articuloController.php');
 include_once('controller/edicionController.php');
+
+include_once('controller/HistorialController.php');
+include_once('controller/PdfController.php');
+
 
 include_once('dependencies/mustache/src/Mustache/Autoloader.php');
 
@@ -89,9 +98,24 @@ class Configuration
         return new LoginController($this->getAllLoginModel(), $this->view, new SessionUser());
     }
 
+    public function getHistorialController()
+    {
+        return new HistorialController($this->getHistorialModel(), $this->view, new SessionUser());
+    }
+
+    public function getPdfController()
+    {
+        return new PdfController($this->getPdfModel(), $this->view, new SessionUser(), $this->getHistorialModel());
+    }
+
     public function getRouter()
     {
         return new Router($this, "home", "list");
+    }
+
+    private function getHistorialModel(): HistorialModel
+    {
+        return new HistorialModel($this->database);
     }
 
     private function getAllProductosModel(): ProductoModel
@@ -132,6 +156,9 @@ class Configuration
     public function getWeather()
     {
         return new Weather();
+    private function getPdfModel(): PdfModel
+    {
+        return new PdfModel(new PdfManager(), $this->getHistorialModel());
     }
 
 

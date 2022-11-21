@@ -1,0 +1,37 @@
+{{> header}}
+<!--<nav class="topnav" onload="cargaFechas()">-->
+<nav class="topnav">
+    <form id="formDate" action="/infonet/historial" method="get">
+        <label for="filtroFechaD">Desde:</label>
+        <input type="date" id="filtroFechaD" name="desde" value={{fechaDesde}}>
+        <label for="hasta">Hasta:</label>
+        <input type="date" id="hasta" name="hasta" value={{fechaHasta}}>
+        <button type="submit" form="formDate">Buscar</button>
+    </form>
+</nav>
+<section class="my-3">
+    <div class="d-flex flex-column gap-2">
+        {{#ediciones}}
+            <div class="card">
+                <div class="card-header">
+                    Fecha: {{fecha}}
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">{{nombre}}</h5>
+                    <p class="card-text">Lo mejor de la fecha -  {{nombre}}</p>
+                    <a href="#" class="btn btn-primary btn-radius">Ver articulos</a>
+                </div>
+            </div>
+        {{/ediciones}}
+    </div>
+</section>
+<div>
+    <button class="btn btn-primary"><a class="nav-link" href="/infonet/pdf?fechas={{fechaDesde}}?{{fechaHasta}}">Abrir PDF</a></button>
+    <button class="btn btn-primary"><a class="nav-link" href="/infonet/pdf?descarga={{fechaDesde}}?{{fechaHasta}}">Descargar PDF</a></button>
+</div>
+{{> footer}}
+<!--<script>-->
+<!--    function cargaFechas(){-->
+<!--        document.getElementById('datePicker').value = new Date().toDateInputValue();-->
+<!--    }-->
+<!--</script>-->
