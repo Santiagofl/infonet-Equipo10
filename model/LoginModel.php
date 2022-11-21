@@ -10,12 +10,12 @@ class LoginModel{
 
     public function iniciarSesion($usuario,$password){
         $passwordMd5 = md5($password);
-        var_dump($passwordMd5);
+        
         $sql = "SELECT u.id_usuario, u.nombre, u.password, u.usuario, u.latitud, 
        u.longitud, u.email, u.activo, u.rol
         FROM 
         usuario u WHERE u.usuario  ='$usuario' AND u.password= '$passwordMd5'";
-        var_dump($sql);
+
         return $this->database->queryResult($sql);
     }
 
