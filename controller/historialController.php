@@ -16,11 +16,15 @@ class HistorialController
 
     public function list()
     {
-        $data['usuario']= $this->session->getCurrentUser();
-        $data['ediciones'] = $this->historialModel->getEdiciones(2, $_GET['desde'] ?? '', $_GET['hasta'] ?? '');
-        $data['fechaDesde'] = $_GET['desde'] ?? '';
-        $data['fechaHasta'] = $_GET['hasta'] ?? '';
-        $this->view->render('historialView.mustache', $data);
+        if ($this->session->getRol() == 2) {
+            $data['usuario'] = $this->session->getCurrentUser();
+            $data['ediciones'] = $this->historialModel->getEdiciones($this->session->getIdUsuario(), $_GET['desde'] ?? '', $_GET['hasta'] ?? '');
+            $data['fechaDesde'] = $_GET['desde'] ?? '';
+            $data['fechaHasta'] = $_GET['hasta'] ?? '';
+            $this->view->render('historialView.mustache', $data);
+        }else{
+            Redirect::doIt("/infonet/producto");
+        }
     }
 
     // public function description()

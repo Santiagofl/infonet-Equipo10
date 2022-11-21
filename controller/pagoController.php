@@ -16,15 +16,34 @@ class pagoController{
         $this->view = $view;
     }
 
-    public function comprarEdicion(){
+    public function list($data = []){
+        $this->view->render('comprarEdicionView.mustache',$data);
+    }
 
+
+    public function pagoConfirmado($data = []){
         $user = $_GET["usuario"];
+        $edicion = $_GET["edicion"] ?? 'vacio';
+        $id_producto = $_GET['id_producto'] ?? 0;
+
+        if($edicion != 'vacio'){
+            $this->pagoModel->setCompra($user, $edicion);
+        }else{
+            $this->productoModel->setSuscripcion($id_producto, $user);
+        }
+
+        $this->view->render('confirmadoView.mustache', $data);
+    }
+
+    public function pagoFallido($data = []){
+        $this->view->render('fallidoView.mustache', $data);
+    }
+
+    public function comprarEdicion(){
         $edicion = $_GET["edicion"];
+        $user = $_GET["usuario"];
 
-        $data['ediciones'] = $this->pagoModel->setCompra($user, $edicion);
-
-        $producto['producto'] = $this->edicionModel->getEdicionById($edicion);
-
+        $ediciones= $this->edicionModel->getEdicionById($edicion);
         require 'vendor/autoload.php';
 
         MercadoPago\SDK::setAccessToken('TEST-5322929221556591-110901-5614eabea6ba44256133cc0858a47ebb-328479679');
@@ -33,16 +52,16 @@ class pagoController{
 
         $item = new MercadoPago\Item();
 
-        $item->title = $producto['producto'][0]['evento'];
+        $item->title = $ediciones[0]['evento'];
         $item->quantity = 1;
-        $item->unit_price = $producto['producto'][0]['precio'];
+        $item->unit_price = $ediciones[0]['precio'];
         $item->currency_id = "ARS";
 
         $preference->items = array($item);
 
         $preference->back_urls = array(
-            "success" => "http://localhost/infonet/pagoConfirmado",
-            "failure" => "http://localhost/infonet/pagoFallido",
+            "success" => "http://localhost/infonet/pago/pagoConfirmado?usuario=$user&edicion=$edicion",
+            "failure" => "http://localhost/infonet/pago/pagoFallido",
         );
 
         $preference->auto_return = "approved";
@@ -52,17 +71,7 @@ class pagoController{
 
         $data['preferencias'] = $preference;
 
-        $this->view->render('comprarEdicionView.mustache', $data);
-    }
-
-    public function pagoConfirmado($data = []){
-
-        $this->view->render('confirmadoView.mustache', $data);
-    }
-
-    public function pagoFallido($data = []){
-
-        $this->view->render('fallidoView.mustache', $data);
+        $this->list($data);
     }
 
     public function suscribirse(){
@@ -70,9 +79,7 @@ class pagoController{
         $id_producto = $_GET['id_producto'];
         $id_usuario = $_GET['id_usuario'];
 
-        $data['ediciones'] = $this->productoModel->setSuscripcion($id_producto, $id_usuario);
-
-        $producto['producto'] = $this->productoModel->getProducto($id_producto);
+        $producto = $this->productoModel->getProducto($id_producto);
 
         require 'vendor/autoload.php';
 
@@ -82,16 +89,16 @@ class pagoController{
 
         $item = new MercadoPago\Item();
 
-        $item->title = $producto['producto'][0]['nombre'];
+        $item->title = $producto[0]['nombre'];
         $item->quantity = 1;
-        $item->unit_price = $producto['producto'][0]['precio'];
+        $item->unit_price = $producto[0]['precio'];
         $item->currency_id = "ARS";
 
         $preference->items = array($item);
 
         $preference->back_urls = array(
-            "success" => "http://localhost/infonet/pagoConfirmado",
-            "failure" => "http://localhost/infonet/pagoFallido",
+            "success" => "http://localhost/infonet/pago/pagoConfirmado?usuario=$id_usuario&id_producto=$id_producto",
+            "failure" => "http://localhost/infonet/pago/pagoFallido",
         );
 
         $preference->auto_return = "approved";
@@ -101,7 +108,7 @@ class pagoController{
 
         $data['preferencias'] = $preference;
 
-        $this->view->render('comprarEdicionView.mustache', $data);
+        $this->list($data);
     }
 
 }

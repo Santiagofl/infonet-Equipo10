@@ -13,7 +13,7 @@ class RegistroModel{
     public function registrar($name,$user,$pass,$email,$rol){
         if(!$this->emailExistente($email)
             && !$this->userExistente($user)){
-            $passMd5= md5($pass);
+            $passMd5 = md5($pass);
             $sql = "INSERT INTO usuario (nombre,password,usuario,email,rol) VALUES ('".$name."','".$passMd5."','".$user."','".$email."','".$rol."')";
             $this->database->execute($sql);
             $confirmation = $this->mailer->sendEmail($email,$user);
