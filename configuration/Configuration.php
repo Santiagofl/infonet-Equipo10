@@ -132,7 +132,7 @@ class Configuration
     }
 
     public function getPagoController(){
-        return new PagoController($this->getPagoModel(), $this->view, new SessionUser());
+        return new PagoController($this->getPagoModel(), $this->getAllEdicionesModel(), $this->view, new SessionUser());
     }
 
     private function getPagoModel(): PagoModel{

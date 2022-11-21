@@ -3,6 +3,7 @@ Options -Indexes
 <FilesMatch ".*\.(log|ini|htaccess)$">
     deny from all
 </FilesMatch>
+
 <IfModule mod_rewrite.c>
     RewriteEngine On
     RewriteBase /infonet/

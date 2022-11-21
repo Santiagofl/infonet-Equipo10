@@ -30,10 +30,12 @@ class ProductoController
     {
         $idUsuario = $this->session->getIdUsuario();
         $id_producto = $_GET['id'] ?? '';
+        $data['usuario'] = $idUsuario;
         $data['producto'] = $this->productoModel->getProducto($id_producto);
         $data['suscripto'] = $this->validarSuscripcion($id_producto, $idUsuario);
         $data['edicionProducto'] = $this->productoModel->getEdicionesDeCadaProducto($id_producto, $idUsuario);
         $this->view->render('descriptionView.mustache', $data);
+
     }
 
     public function subirProducto()

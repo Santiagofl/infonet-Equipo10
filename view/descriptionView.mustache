@@ -49,11 +49,11 @@
                                 {{/comprado}}
                                 {{^comprado}}
                                     <button class='btn btn-danger btn-radius' type='submit'>
-                                        <a class='nav-link' href='/infonet/pago/comprarEdicion/usuario={{id_usuario}}?edicion={{id_edicion}}'>Comprar</a>
+                                        <a class='nav-link' href='/infonet/pago/comprarEdicion/usuario={{#usuario}}{{id_usuario}}{{/usuario}}?edicion={{id_edicion}}'>Comprar</a>
+
                                     </button>
                                 {{/comprado}}
                             {{/suscripto}}
-
 
 
                         </div>
