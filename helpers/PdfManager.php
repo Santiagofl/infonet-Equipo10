@@ -18,6 +18,8 @@ class PdfManager
                         <th>Id Edición</th>
                         <th>Fecha</th>
                         <th>Producto</th>
+                        <th>Edicion</th>
+                        
                     </tr>";
 
         for($i = 0; $i < sizeof($ediciones); $i++){
@@ -26,6 +28,7 @@ class PdfManager
                         <td>".$ediciones[$i]['id_edicion']."</td>
                         <td>".$ediciones[$i]['fecha']."</td>
                         <td>".$ediciones[$i]['nombre']."</td>
+                        <td>".$ediciones[$i]['evento']."</td>
                     </tr>";
         }
 
