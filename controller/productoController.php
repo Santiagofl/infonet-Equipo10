@@ -31,6 +31,7 @@ class ProductoController
     {
         $idUsuario = $this->session->getIdUsuario();
         $id_producto = $_GET['id'] ?? '';
+        $data['usuario'] = $idUsuario;
         $data['producto'] = $this->productoModel->getProducto($id_producto);
         $data['suscripto'] = $this->validarSuscripcion($id_producto, $idUsuario);
 
@@ -109,5 +110,6 @@ class ProductoController
         $this->productoModel->updateProducto($idProducto, $nombreProducto, $imagenProducto, $tipoProducto);
         Redirect::doIt('/infonet/abm/vistaListaProductos/lista-productos');
     }
+
 
 }

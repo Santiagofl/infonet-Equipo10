@@ -9,11 +9,13 @@ include_once('helpers/SessionUser.php');
 require_once('helpers/Mailer.php');
 require_once('helpers/Weather.php');
 include_once('helpers/PdfManager.php');
+require_once('vendor/autoload.php');
 
 include_once('model/ProductoModel.php');
 include_once('model/EdicionModel.php');
 include_once('model/SeccionModel.php');
 include_once('model/ArticuloModel.php');
+include_once('model/PagoModel.php');
 
 include_once ('model/LoginModel.php');
 include_once ('model/RegistroModel.php');
@@ -31,6 +33,7 @@ include_once('controller/RegistroController.php');
 include_once('controller/VerificacionController.php');
 include_once('controller/articuloController.php');
 include_once('controller/edicionController.php');
+include_once('controller/pagoController.php');
 
 include_once('controller/HistorialController.php');
 include_once('controller/PdfController.php');
@@ -162,5 +165,12 @@ class Configuration
         return new PdfModel(new PdfManager(), $this->getHistorialModel());
     }
 
+    public function getPagoController(){
+        return new PagoController($this->getPagoModel(), $this->getAllEdicionesModel(), $this->getAllProductosModel(), $this->view, new SessionUser());
+    }
+
+    private function getPagoModel(): PagoModel{
+        return new PagoModel($this->database);
+    }
 
 }
