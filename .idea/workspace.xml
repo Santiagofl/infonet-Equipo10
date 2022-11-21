@@ -2,11 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b4cfadcd-6fb7-4291-a589-e9da6a52e93f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/controller/usuarioController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model/UsuarioModel.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/view/alta-usuariosView.mustache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/view/alta-usuarioView.mustache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/view/lista-usuariosView.mustache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/view/usuariosView.mustache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/configuration/Configuration.php" beforeDir="false" afterPath="$PROJECT_DIR$/configuration/Configuration.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/usuarioController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controller/usuarioController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/UsuarioModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/UsuarioModel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/style/global.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/style/global.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/alta-usuariosView.mustache" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/view/partial/header.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/partial/header.mustache" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -19,6 +22,14 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../pokemon-main" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\infonet\view" />
+    </key>
   </component>
   <component name="TaskManager">
     <servers />

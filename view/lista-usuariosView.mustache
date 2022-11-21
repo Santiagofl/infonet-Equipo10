@@ -1,0 +1,47 @@
+{{> header}}
+
+<section class="my-3">
+    <h4 class="my-3">Todos los productos</h4>
+    <table class="table text-center">
+        <thead>
+        <tr>
+            <th scope="col">Usuario</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">E-mail</th>
+            <th scope="col">Rol</th>
+            <th scope="col">Activo</th>
+        </tr>
+        </thead>
+        <tbody>
+        {{#usuarios}}
+            <tr>
+                <td>{{usuario}}</td>
+                <td>{{nombre}}</td>
+                <td>{{email}}</td>
+                <form method="post" action=""
+                      enctype="multipart/form-data">
+                    <td><select class="form-select form-select-sm" aria-label=".form-select-sm example">
+                        <option value="NULL"> Seleccione Rol </option>
+                        {{#roles}}
+                            <option value="{{id_rol}}" >{{descripcion}}</option>
+                        {{/roles}}
+                    </select>
+
+
+                    </td>
+                    <td>
+                        <input class="form-check-input" type="checkbox" value="1" id="flexCheckChecked"
+                               {{#activo}}checked{{/activo}}>
+                    </td>
+                    <td>
+                        <button type="submit" class="btn btn-success btn-sm">Actualizar</button>
+                    </td>
+                </form>
+            </tr>
+        {{/usuarios}}
+        </tbody>
+    </table>
+</section>
+
+
+{{> footer}}
