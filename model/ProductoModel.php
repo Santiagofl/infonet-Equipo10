@@ -51,6 +51,7 @@ class ProductoModel{
         $this->database->execute($sql);
     }
 
+
     public function getSuscripcion($id_producto, $id_usuario)
     {
         $sql = 'SELECT 
@@ -58,30 +59,18 @@ class ProductoModel{
 FROM
     suscripcion
 WHERE
-    id_producto = '.$id_producto.' AND id_usuario ='.$id_usuario.';';
-=======
-    public function getSuscripcion($id_producto, $id_usuario){
-        $sql = 'SELECT fecha FROM suscripcion
-                WHERE id_producto = '. $id_producto .' and id_usuario ='.$id_usuario ;
->>>>>>> compra-ec
+    id_producto = '.$id_producto.' AND id_usuario ='.$id_usuario.'
+ORDER BY fecha DESC LIMIT 1';
 
         return $this->database->query($sql);
     }
 
 
-<<<<<<< HEAD
-    public function setSuscripcion($fecha, $id_producto, $id_usuario, $precio)
-    {
-
-        $sql = 'INSERT INTO suscripcion
-                (fecha, id_producto, id_usuario, precio) 
-                VALUES ('. $fecha .','. $id_producto .','. $id_usuario .',(SELECT precio from producto where id_producto ='.$id_producto.' ) )';
-=======
-    public function setSuscripcion($fecha, $id_producto, $id_usuario){
+    public function setSuscripcion($id_producto, $id_usuario){
             $sql = 'INSERT INTO suscripcion
             (fecha, id_producto, id_usuario, precio)
-            VALUES ('. $fecha .','. $id_producto .','. $id_usuario .',(SELECT precio from producto where id_producto ='.$id_producto.' ))';
->>>>>>> compra-ec
+            VALUE (CURRENT_DATE(),'. $id_producto .','. $id_usuario .',(SELECT precio from producto where id_producto ='.$id_producto.' ))';
+
         $this->database->execute($sql);
     }
 
@@ -96,7 +85,6 @@ WHERE
     //ajax
     public function getEdicionesPorProductoAJax($id){
         $sql = "SELECT * FROM edicion e JOIN producto p 
-<<<<<<< HEAD
                     ON e.id_producto=p.id_producto WHERE p.id_producto =" . $id;
          $format = $this->database->query($sql);
         return print json_encode($format, JSON_UNESCAPED_UNICODE);
@@ -117,11 +105,4 @@ WHERE
 
 }
 
-=======
-                ON e.id_producto=p.id_producto WHERE p.id_producto =" . $id;
-        $format = $this->database->query($sql);
-//        print_r($format);
-        return print json_encode($format, JSON_UNESCAPED_UNICODE);
-    }
->>>>>>> compra-ec
 }

@@ -69,9 +69,8 @@ class pagoController{
 
         $id_producto = $_GET['id_producto'];
         $id_usuario = $_GET['id_usuario'];
-        $fechaActual = date('Y-m-d');
 
-        $data['ediciones'] = $this->productoModel->setSuscripcion($fechaActual, $id_producto, $id_usuario);
+        $data['ediciones'] = $this->productoModel->setSuscripcion($id_producto, $id_usuario);
 
         $producto['producto'] = $this->productoModel->getProducto($id_producto);
 
