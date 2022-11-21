@@ -16,7 +16,7 @@ class HistorialModel
             $sql = ' SELECT e.id_edicion, e.fecha, p.nombre, p.imagen,  e.evento
                FROM edicion e JOIN producto p ON e.id_producto=p.id_producto
                JOIN compra c on e.id_edicion = c.edicion
-               where usuario = 2 and e.fecha >= "' . $desde . '" and e.fecha <= "' . $hasta . '"
+               where usuario = '. $idUsuario .' and e.fecha >= "' . $desde . '" and e.fecha <= "' . $hasta . '"
                ORDER BY fecha';
 
 
@@ -24,20 +24,20 @@ class HistorialModel
             $sql = ' SELECT e.id_edicion, e.fecha, p.nombre, p.imagen,  e.evento
                FROM edicion e JOIN producto p ON e.id_producto=p.id_producto
                JOIN compra c on e.id_edicion = c.edicion
-               where usuario = 2 and e.fecha >= "' . $desde . '"
+               where usuario = '. $idUsuario .' and e.fecha >= "' . $desde . '"
                ORDER BY fecha';
 
         } else if ($desde == "" && $hasta != "") {
             $sql = ' SELECT e.id_edicion, e.fecha, p.nombre, p.imagen,  e.evento
                FROM edicion e JOIN producto p ON e.id_producto=p.id_producto
                JOIN compra c on e.id_edicion = c.edicion
-               where usuario = 2 and e.fecha <= "' . $hasta . '"
+               where usuario = '. $idUsuario .' and e.fecha <= "' . $hasta . '"
                ORDER BY fecha';
         } else {
             $sql = ' SELECT e.id_edicion, e.fecha, p.nombre, p.imagen,  e.evento
                FROM edicion e JOIN producto p ON e.id_producto=p.id_producto
                JOIN compra c on e.id_edicion = c.edicion
-               where usuario = 2
+               where usuario = '. $idUsuario .'
                ORDER BY fecha';
         }
         return $this->database->query($sql);
