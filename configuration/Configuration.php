@@ -156,6 +156,7 @@ class Configuration
     public function getWeather()
     {
         return new Weather();
+    }
     private function getPdfModel(): PdfModel
     {
         return new PdfModel(new PdfManager(), $this->getHistorialModel());
