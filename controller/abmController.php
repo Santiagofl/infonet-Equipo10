@@ -22,6 +22,7 @@ class AbmController
 
     public function list()
     {
+
         $data['usuario'] = $this->session->getCurrentUser() ?? '';
         $data['productos'] = $this->productoModel->getProductos();
         $data['ediciones'] = $this->edicionModel->getEdiciones(2);
