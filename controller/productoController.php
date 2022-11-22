@@ -31,6 +31,7 @@ class ProductoController
     {
         $idUsuario = $this->session->getIdUsuario();
         $id_producto = $_GET['id'] ?? '';
+        $data['usuario'] = $idUsuario;
         $data['producto'] = $this->productoModel->getProducto($id_producto);
         $data['suscripto'] = $this->validarSuscripcion($id_producto, $idUsuario);
 
@@ -80,18 +81,13 @@ class ProductoController
     public function validarSuscripcion($id_producto, $idUsuario)
     {
         $resultado = $this->productoModel->getSuscripcion($id_producto, $idUsuario)[0]["diferencia"] ?? '';
-        if ($resultado) {
-            if ($resultado < 0 || $resultado > 31) {
-                return false;
-            } else {
-                return true;
-            }
+
+        if (!empty($resultado) || $resultado < 0 || $resultado > 31) {
+            return false;
+        } else {
+            return true;
         }
-        return false;
     }
-
-
-
 
 
     public function modificarProducto()
@@ -109,5 +105,6 @@ class ProductoController
         $this->productoModel->updateProducto($idProducto, $nombreProducto, $imagenProducto, $tipoProducto);
         Redirect::doIt('/infonet/abm/vistaListaProductos/lista-productos');
     }
+
 
 }

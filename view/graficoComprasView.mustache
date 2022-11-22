@@ -1,0 +1,47 @@
+{{> header}}
+<!--<nav class="topnav" onload="cargaFechas()">-->
+<nav class="topnav">
+    <form id="formDate" action="/infonet/graficos" method="get">
+        <label for="filtroFechaD">Desde:</label>
+        <input type="date" id="filtroFechaD" name="desde" value={{fechaDesde}}>
+        <label for="hasta">Hasta:</label>
+        <input type="date" id="hasta" name="hasta" value={{fechaHasta}}>
+        <button type="submit" form="formDate">Buscar</button>
+    </form>
+</nav>
+
+<div>
+    <canvas id="myChart"></canvas>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+    const ctx = document.getElementById('myChart');
+
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: [{{#datesC}}'{{fecha}}',{{/datesC}}],
+            datasets: [{
+                label: 'Cantidad de compras ',
+                data: [{{#cantidadesC}}{{cantidad}},{{/cantidadesC}}],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>
+
+{{> footer}}
+<!--<script>-->
+<!--    function cargaFechas(){-->
+<!--        document.getElementById('datePicker').value = new Date().toDateInputValue();-->
+<!--    }-->
+<!--</script>-->

@@ -40,4 +40,10 @@ class MustacheRenderer
         }
 
     }
+
+    public function renderPdf($viewName, $datos = []) {
+        $contentAsString =  file_get_contents($this->viewFolder . $viewName);
+        return $this->mustache->render($contentAsString, $datos);
+    }
+
 }

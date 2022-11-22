@@ -9,6 +9,7 @@
           integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <link rel="stylesheet" href="/infonet/public/style/style.css" type="text/css">
     <script src="/infonet/public/js/jquery.min.js" type="text/javascript"></script>
+    <script src="https://sdk.mercadopago.com/js/v2"></script>
     <title>Infonet</title>
 </head>
 <body>
@@ -45,7 +46,7 @@
                 {{#admin}}
 
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Grafico compras</a>
+                        <a class="nav-link" href="/infonet/graficos?tipo=C">Grafico compras</a>
                     </li>
 
 
@@ -53,7 +54,7 @@
                 {{#admin}}
 
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Grafico suscripciones</a>
+                        <a class="nav-link" href="/infonet/graficos?tipo=S">Grafico suscripciones</a>
                     </li>
 
 
@@ -74,6 +75,11 @@
                     </li>
 
                 {{/editor}}
+                {{#lector}}
+                <li class="nav-item">
+                    <a class="nav-link" href="/infonet/historial">Historial</a>
+                </li>
+                {{/lector}}
             </ul>
             <div class="d-flex">
                 {{#usuario}}
