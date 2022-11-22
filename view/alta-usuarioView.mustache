@@ -20,11 +20,11 @@
             <input type="email" class="form-control" name="email" id="email">
         </div>
         <div class="form-group mt-2">
-        <label for="roles">Rol</label>
-        <select class="form-select" id="roles">
-            <option value="NULL"> -Seleccione Rol- </option>
+        <label for="rol">Rol</label>
+        <select class="form-select" id="rol" name="rol">
+            <option value=""> -Seleccione Rol- </option>
             {{#roles}}
-                <option value="{{id_rol}}" >{{descripcion}}</option>
+                <option value="{{id_rol}}" name={{id_rol}}" >{{descripcion}}</option>
             {{/roles}}
         </select>
         </div>

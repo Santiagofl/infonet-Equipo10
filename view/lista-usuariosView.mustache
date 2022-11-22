@@ -18,10 +18,9 @@
                 <td>{{usuario}}</td>
                 <td>{{nombre}}</td>
                 <td>{{email}}</td>
-                <form method="post" action=""
-                      enctype="multipart/form-data">
-                    <td><select class="form-select form-select-sm" aria-label=".form-select-sm example">
-                        <option value="NULL"> Seleccione Rol </option>
+                <form method="post" action="/infonet/usuario/modificarUsuario" >
+                    <td><select class="form-select form-select-sm"  id="rol" name="rol">
+                        <option value="{{rol}}"> {{#rol}}{{userRol}}{{/rol}}{{^rol}}-Seleccione Rol-{{/rol}}</option>
                         {{#roles}}
                             <option value="{{id_rol}}" >{{descripcion}}</option>
                         {{/roles}}
@@ -29,12 +28,16 @@
 
 
                     </td>
+                    <input type="hidden" class="form-control" name="id_usuario" id="id_usuario" value="{{id_usuario}}">
                     <td>
-                        <input class="form-check-input" type="checkbox" value="1" id="flexCheckChecked"
-                               {{#activo}}checked{{/activo}}>
+
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" name="activo" {{#activo}}checked{{/activo}}>
+                        </div>
+
                     </td>
                     <td>
-                        <button type="submit" class="btn btn-success btn-sm">Actualizar</button>
+                        <button type="submit" class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal">Actualizar</button>
                     </td>
                 </form>
             </tr>
@@ -42,6 +45,8 @@
         </tbody>
     </table>
 </section>
+
+
 
 
 {{> footer}}

@@ -14,7 +14,8 @@ class usuarioController
 
     }
 
-    public function list(){
+    public function list()
+    {
 
         if ($this->session->getRol() == 1) {
 
@@ -24,20 +25,22 @@ class usuarioController
         }
     }
 
-    public function altaUsuario(){
+    public function altaUsuario()
+    {
         if ($this->session->getRol() == 1) {
             $data["roles"] = $this->usuarioModel->getRoles();
-            $this->view->render('alta-usuarioView.mustache',$data);
+            $this->view->render('alta-usuarioView.mustache', $data);
         } else {
             Redirect::doIt("/infonet/producto");
         }
     }
 
-    public function darAltaUsuario(){
-        if(ValidatorHelper::validarSeteadoYNoVacio($_POST["nombre"])&&
-            ValidatorHelper::validarSeteadoYNoVacio($_POST["usuario"])&&
-            ValidatorHelper::validarSeteadoYNoVacio($_POST["clave"])&&
-            ValidatorHelper::validarSeteadoYNoVacio($_POST["email"])&&
+    public function darAltaUsuario()
+    {
+        if (ValidatorHelper::validarSeteadoYNoVacio($_POST["nombre"]) &&
+            ValidatorHelper::validarSeteadoYNoVacio($_POST["usuario"]) &&
+            ValidatorHelper::validarSeteadoYNoVacio($_POST["clave"]) &&
+            ValidatorHelper::validarSeteadoYNoVacio($_POST["email"]) &&
             ValidatorHelper::validarSeteadoYNoVacio($_POST["rol"])) {
 
             $name = $_POST["nombre"];
@@ -45,34 +48,65 @@ class usuarioController
             $pass = $_POST["clave"];
             $email = $_POST["email"];
             $rol = $_POST["rol"];
-            $activo = 1;
 
-            $status = $this->registroModel->registrar($name,$user,$pass,$email,$rol);
 
-            if($status == "existente"){
+            $status = $this->usuarioModel->darAlta($name, $user, $pass, $email, $rol);
+
+            if ($status == "existente") {
                 $this->duplicate();
-            }else{
+            } else {
                 Redirect::doIt("/infonet/verificacion");
             }
 
-        }else{
+        } else {
             $this->incorrectFormat();
         }
 
     }
 
-    public function listaUsuarios(){
+    public function listaUsuarios()
+    {
         if ($this->session->getRol() == 1) {
             $data["usuarios"] = $this->usuarioModel->getUsuarios();
             $data["roles"] = $this->usuarioModel->getRoles();
-            $this->view->render('lista-usuariosView.mustache',$data);
+            $this->view->render('lista-usuariosView.mustache', $data);
         } else {
             Redirect::doIt("/infonet/producto");
         }
 
     }
 
+    public function duplicate()
+    {
+        $data['title'] = "Usuario o email ya registrados";
+        $this->list($data);
+    }
+    public function incorrectFormat(){
+        $data['validador'] = true;
+        $data["roles"] = $this->usuarioModel->getRoles();
+        $this->view->render('alta-usuarioView.mustache',$data);
+    }
 
 
+    public function modificarUsuario(){
+        if(ValidatorHelper::validarSeteadoYNoVacio($_POST["rol"])){
+            $id_usuario = $_POST["id_usuario"];
+            $rol = $_POST["rol"];
+            if(!isset($_POST["activo"])){
+                $activo = 0;
+            }else{
+                $activo=1;
+            }
+            $data["error"] = false;
+            $data["usuarios"] = $this->usuarioModel->getUsuarios();
+            $data["roles"] = $this->usuarioModel->getRoles();
+            $this->view->render('lista-usuariosView.mustache', $data);
+        }else{
+            $data["error"] = true;
+            $data["usuarios"] = $this->usuarioModel->getUsuarios();
+            $data["roles"] = $this->usuarioModel->getRoles();
+            $this->view->render('lista-usuariosView.mustache', $data);
+        }
+    }
 
 }
