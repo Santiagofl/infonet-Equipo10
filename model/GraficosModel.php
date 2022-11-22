@@ -11,38 +11,38 @@ class GraficosModel
 
     public function getCantidades($desde, $hasta)
     {
-//        $sql = "select count(id_suscripcion) as cantidad from suscripcion ";
-//
-//        if($desde != "" && $hasta != "") {
-//            $sql .= " where fecha>'".$desde."' and fecha<'".$hasta."'";
-//        } else if ($desde != "" && $hasta == ""){
-//            $sql .= " where fecha>'".$desde."'";
-//        } else if ($desde == "" && $hasta != ""){
-//            $sql .= " where fecha<'".$hasta."'";
-//        }else {}
+        $sql = "select count(id_suscripcion) as cantidad from suscripcion ";
 
-        //$sql .= " group by fecha";
+        if ($desde != "" && $hasta != "") {
+            $sql .= " where fecha>'" . $desde . "' and fecha<'" . $hasta . "'";
+        } else if ($desde != "" && $hasta == "") {
+            $sql .= " where fecha>'" . $desde . "'";
+        } else if ($desde == "" && $hasta != "") {
+            $sql .= " where fecha<'" . $hasta . "'";
+        } else {
 
-        $sqlTest = "select count(id_suscripcion) from suscripcion where fecha>'2022-11-10' and fecha<'2022-11-15' group by fecha";
-        return $this->database->query($sqlTest);
+        }
+
+        $sql .= "group by fecha";
+        return $this->database->query($sql);
     }
 
     public function getFechas($desde, $hasta)
     {
-//        $sql = "select fecha from suscripcion ";
-//
-//        if($desde != "" && $hasta != "") {
-//            $sql .= " where fecha>'".$desde."' and fecha<'".$hasta."'";
-//        } else if ($desde != "" && $hasta == ""){
-//            $sql .= " where fecha>'".$desde."'";
-//        } else if ($desde == "" && $hasta != ""){
-//            $sql .= " where fecha<'".$hasta."'";
-//        }else {}
-//
-//        $sql .= " group by fecha";
+        $sql = "select fecha from suscripcion ";
 
-        $sqlTest = "select fecha from suscripcion where fecha>'2022-11-10' and fecha<'2022-11-15' group by fecha";
+        if ($desde != "" && $hasta != "") {
+            $sql .= " where fecha>'" . $desde . "' and fecha<'" . $hasta . "'";
+        } else if ($desde != "" && $hasta == "") {
+            $sql .= " where fecha>'" . $desde . "'";
+        } else if ($desde == "" && $hasta != "") {
+            $sql .= " where fecha<'" . $hasta . "'";
+        } else {
 
-        return $this->database->query($sqlTest);
+        }
+
+        $sql .= " group by fecha";
+        var_dump($sql);
+        return $this->database->query($sql);
     }
 }

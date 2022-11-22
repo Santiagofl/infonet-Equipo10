@@ -19,40 +19,34 @@ class graficosController
         $data['usuario']= $this->session->getCurrentUser();
 
 
-        $desde = $_GET['desde'] ?? '';
-        $hasta = $_GET['hasta'] ?? '';
-
+        $data['fechaDesde'] = $_GET['desde'] ?? '';
+        $data['fechaHasta'] = $_GET['hasta'] ?? '';
         $tipo = $_GET['tipo'] ?? "";
+
         if($tipo === "C"){
 
             $this->view->render('graficoComprasView.mustache', $data);
 
         } else {
-            $data['fechaDesde'] = $desde;
-            $data['fechaHasta'] = $hasta;
 
-            $data['cantidades']= $this -> array_flatten($this->graficosModel->getCantidades($desde, $hasta));
-
-            var_dump($data['cantidades']);
-
-            $data['fechas']= $this -> array_flatten($this->graficosModel->getFechas($desde, $hasta));
-            var_dump($data['fechas']);
-
+            $data['cantidades']= $this->graficosModel->getCantidades($data['fechaDesde'], $data['fechaHasta'] );
+            $data['dates'] = $this->graficosModel->getFechas($data['fechaDesde'], $data['fechaHasta']);
+            var_dump($data['dates']);
             $this->view->render('graficoSuscripcionView.mustache', $data);
         }
 
     }
 
-    function array_flatten($array) {
-
-        $return = array();
-        foreach ($array as $key => $value) {
-            if (is_array($value)){ $return = array_merge($return, array_flatten($value));}
-            else {$return[$key] = $value;}
-        }
-        return $return;
-
-    }
+//    function array_flatten($array) {
+//
+//        $return = array();
+//        foreach ($array as $key => $value) {
+//            if (is_array($value)){ $return = array_merge($return, array_flatten($value));}
+//            else {$return[$key] = $value;}
+//        }
+//        return $return;
+//
+//    }
 
     // public function description()
     // {

@@ -9,14 +9,12 @@
         <input type="date" id="hasta" name="hasta" value={{fechaHasta}}>
         <button type="submit" form="formDate">Buscar</button>
     </form>
-    {{fechas}}
 </nav>
 
+<p>{{#dates}}{{fecha}}, {{/dates}}</p>
 <div>
     <canvas id="myChart"></canvas>
 </div>
-
-{{> footer}}
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
@@ -26,20 +24,20 @@
     new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: ['11-10-20', '11-10-21', '11-10-22', '11-10-23', '11-10-24', '11-10-25'],
-            datasets: [{
-                label: '# of Votes',
-                data: [12, 19, 3, 5, 2, 3],
-                borderWidth: 1
-            }]
-        },
-        options: {
-            scales: {
-                y: {
-                    beginAtZero: true
-                }
+            labels: [{{#dates}}{{fecha}},{{/dates}}],
+    datasets: [{
+        label: '# of Votes',
+        data: [{{#cantidades}}{{cantidad}},{{/cantidades}}],
+        borderWidth: 1
+    }]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true
             }
         }
+    }
     });
 </script>
 
@@ -49,10 +47,10 @@
 <!--    new Chart(ctx, {-->
 <!--        type: 'bar',-->
 <!--        data: {-->
-<!--            labels: {/{fechas}},-->
+<!--            labels: ['11-10-20', '11-10-21', '11-10-22', '11-10-23', '11-10-24', '11-10-25'],-->
 <!--            datasets: [{-->
 <!--                label: '# of Votes',-->
-<!--                data: {/{cantidades}},-->
+<!--                data: [12, 19, 3, 5, 2, 3],-->
 <!--                borderWidth: 1-->
 <!--            }]-->
 <!--        },-->
@@ -65,5 +63,7 @@
 <!--        }-->
 <!--    });-->
 <!--</script>-->
+
+{{> footer}}
 
 
