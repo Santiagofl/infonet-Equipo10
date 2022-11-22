@@ -22,7 +22,7 @@ class ProductoController
         $data['productos'] = $this->productoModel->getProductos();
         $data["clima"] = $this->weather->getDayWeather();
         $data["tempNum"] = $this->weather->getTemperatura();
-        $data["t"] = $this->weather->detailsTemperature();
+        $data["t"] = $this->weather->detailsTemperature()->weather;
         $data["semana"] = $this->weather->getWeekWeather();
         $this->view->render('productoView.mustache', $data);
     }

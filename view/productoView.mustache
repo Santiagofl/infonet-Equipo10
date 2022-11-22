@@ -1,3 +1,38 @@
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+<script !src="">
+    $(document).ready(function () {
+        {{#semana}}
+            console.log($('#{{day}}').text())
+            switch ($('#{{day}}').text()) {
+                case 'Sunday':
+                    $('#{{day}}').text('Domingo')
+                    break;
+                case 'Monday':
+                    $('#{{day}}').text('Lunes')
+                    break;
+                case 'Tuesday':
+                    $('#{{day}}').text('Martes')
+                    break;
+                case 'Wednesday':
+                    $('#{{day}}').text('Miercoles')
+                    break;
+                case 'Thursday':
+                    $('#{{day}}').text('Jueves')
+                    break;
+                case 'Friday':
+                    $('#{{day}}').text('Viernes')
+                    break;
+                case 'Saturday':
+                    $('#{{day}}').text('Sabado')
+                    break;
+                default:
+                    break;
+            }
+        {{/semana}}
+
+
+    })
+</script>
 {{> header}}
 <!-- The Band Section -->
 <section class="my-3">
@@ -7,7 +42,9 @@
         </div>
         <div class="card-body">
             <div class="d-flex align-items-center">
-                <img src="{{clima.image}}" alt="{{clima.image}}" width="50">
+                {{#t}}
+                    <img src="http://openweathermap.org/img/w/{{icon}}.png" alt="" srcset="">
+                {{/t}}
                 <span>{{tempNum}}° C</span>
             </div>
             <h5 class="my-3">En la semana</h5>
