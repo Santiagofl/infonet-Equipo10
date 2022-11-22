@@ -61,12 +61,13 @@ class ProductoController
         $nombre = $_POST["nombreProducto"] ?? '';
         $imagen = $_FILES["imagenProducto"]["name"] ?? '';
         $tipo = $_POST["tipoProducto"] ?? '';
+        $precio = $_POST["precioProducto"] ?? '0.00';
 
         $rutaArchivoTemporal = $_FILES["imagenProducto"]["tmp_name"];
         $rutaArchivoFinal = "public/iso/" . $imagen;
         move_uploaded_file($rutaArchivoTemporal, $rutaArchivoFinal);
 
-        $this->productoModel->setProducto($nombre, $imagen, $tipo);
+        $this->productoModel->setProducto($nombre, $imagen, $tipo, $precio);
 
         Redirect::doIt('/infonet/abm/vistaListaProductos');
     }

@@ -44,11 +44,11 @@ class ProductoModel
     }
 
 
-    public function setProducto($nombre, $imagen, $tipo)
+    public function setProducto($nombre, $imagen, $tipo, $precio)
     {
         $sql = "INSERT INTO producto
-                (`nombre`, `imagen`, `tipo`) 
-                VALUES ('$nombre', '$imagen', $tipo)";
+                (`nombre`, `imagen`, `tipo`, `precio`) 
+                VALUES ('$nombre', '$imagen', '$tipo', '$precio')";
         $this->database->execute($sql);
     }
 
