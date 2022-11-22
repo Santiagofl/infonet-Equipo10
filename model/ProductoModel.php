@@ -97,19 +97,22 @@ class ProductoModel
     }
 
 
-    public function getEdicionesNoCompradas($id_producto)
+    public function getEdicionesNoCompradas($id_producto, $idUsuario)
     {
-        $sql = "SELECT e.fecha, e.id_edicion  from edicion e 
-                left join compra c on c.edicion = e.id_edicion
-                where c.id_compra is null and e.id_producto='$id_producto'";
+        $sql = "SELECT e.fecha, e.id_edicion  
+        from edicion e 
+        where e.id_producto='$id_producto'
+        and not exists (select c.id_compra
+                            from compra c 
+                            where c.edicion = e.id_edicion
+                            and c.usuario ='$idUsuario')";
         return $this->database->query($sql);
-
     }
 
     public function getDiferenciaDeDias($fecha1, $fecha2)
     {
 
-        $sql = 'SELECT DATEDIFF(' . $fecha1 . ', ' . $fecha2 . ') AS diferencia';
+        $sql = "SELECT DATEDIFF(' . $fecha1 . ', ' . $fecha2 . ') AS diferencia";
         return $this->database->query($sql);
 
     }

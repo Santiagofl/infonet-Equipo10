@@ -37,8 +37,9 @@ class ProductoController
 
         if ($data['suscripto']) {
             $fechaSuscripcion = $this->productoModel->getSuscripcion($id_producto, $idUsuario);
-            $resultado = $this->productoModel->getEdicionesNoCompradas($id_producto);
-
+            $resultado = $this->productoModel->getEdicionesNoCompradas($id_producto, $idUsuario);
+            var_dump($fechaSuscripcion);
+            var_dump($resultado);
             if (!empty($resultado)) {
                 foreach ($resultado as $edicion) {
 
