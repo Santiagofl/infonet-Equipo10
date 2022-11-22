@@ -90,24 +90,28 @@ class usuarioController
 
     public function modificarUsuario(){
 
+        if ($this->session->getRol() == 1) {
+
             $id_usuario = $_POST["id_usuario"];
             $rol = $_POST["rol"];
+            $isActivo = $_POST["activo"] ?? 'off';
 
-            if($_POST["activo"]== "on"){
+            if ($isActivo == "on") {
                 $activo = 1;
-            }else{
+            } else {
                 $activo = 0;
             }
 
-            $this->usuarioModel->setUsuario($id_usuario,$rol,$activo);
-
+            $this->usuarioModel->setUsuario($id_usuario, $rol, $activo);
 
 
             $data["error"] = false;
             $data["usuarios"] = $this->usuarioModel->getUsuarios();
             $data["roles"] = $this->usuarioModel->getRoles();
             $this->view->render('lista-usuariosView.mustache', $data);
-
+        }else {
+            Redirect::doIt("/infonet/producto");
+        }
     }
 
 }
