@@ -76,25 +76,20 @@
 
                 {{/editor}}
                 {{#lector}}
-                <li class="nav-item">
-                    <a class="nav-link" href="/infonet/historial">Historial</a>
-                </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/infonet/historial">Historial</a>
+                    </li>
                 {{/lector}}
             </ul>
             <div class="d-flex">
                 {{#usuario}}
-                    <button class='btn btn-light btn-radius' type='submit'>
-                        <a class='nav-link' href='/infonet/login/logout'>Logout</a>
-                    </button>
+                    <a class='btn btn-danger btn-radius' href='/infonet/login/logout'>Logout</a>
                 {{/usuario}}
                 {{^usuario}}
-                    <button class="btn btn-light btn-radius" type="submit">
-                        <a class="nav-link" href="/infonet/login">Inicia sesion</a>
-                    </button>
-
-                    <button class="btn btn-outline-success btn-radius" type="submit">
-                        <a class="nav-link" href="/infonet/registro">Registrarse</a>
-                    </button>
+                    <div class="d-flex gap-2">
+                        <a class="btn btn-primary btn-radius" href="/infonet/login">Inicia sesion</a>
+                        <a class="btn btn-success btn-radius" href="/infonet/registro">Registrarse</a>
+                    </div>
                 {{/usuario}}
             </div>
         </div>

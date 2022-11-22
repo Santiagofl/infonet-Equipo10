@@ -3,8 +3,14 @@
   <component name="ChangeListManager">
     <list default="true" id="b4cfadcd-6fb7-4291-a589-e9da6a52e93f" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/usuarioController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controller/usuarioController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/lista-usuariosView.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/lista-usuariosView.mustache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/helpers/PdfManager.php" beforeDir="false" afterPath="$PROJECT_DIR$/helpers/PdfManager.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/articulo-contenidoView.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/articulo-contenidoView.mustache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/graficoComprasView.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/graficoComprasView.mustache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/graficoSuscripcionView.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/graficoSuscripcionView.mustache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/historialView.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/historialView.mustache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/loginView.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/loginView.mustache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/partial/header.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/partial/header.mustache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/registroView.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/registroView.mustache" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,13 +31,14 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../pokemon-main" />
-    <property name="vue.rearranger.settings.migration" value="true" />
-  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\infonet\view" />
@@ -47,6 +54,7 @@
       <updated>1669063157486</updated>
       <workItem from="1669063177174" duration="1079000" />
       <workItem from="1669066723921" duration="12373000" />
+      <workItem from="1669123599358" duration="8979000" />
     </task>
     <servers />
   </component>
