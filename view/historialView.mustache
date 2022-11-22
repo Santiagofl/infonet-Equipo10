@@ -1,15 +1,21 @@
 {{> header}}
 <!--<nav class="topnav" onload="cargaFechas()">-->
-<nav class="topnav">
-    <form id="formDate" action="/infonet/historial" method="get">
-        <label for="filtroFechaD">Desde:</label>
-        <input type="date" id="filtroFechaD" name="desde" value={{fechaDesde}}>
-        <label for="hasta">Hasta:</label>
-        <input type="date" id="hasta" name="hasta" value={{fechaHasta}}>
-        <button type="submit" form="formDate">Buscar</button>
-    </form>
-</nav>
 <section class="my-3">
+    <form id="formDate" action="/infonet/historial" method="get" class="my-3">
+        <div class="d-flex gap-3 align-items-center">
+            <div class="form-floating">
+                <input type="date" class="form-control" id="filtroFechaD" name="desde" value={{fechaDesde}}>
+                <label for="desde">Desde</label>
+            </div>
+            <div class="form-floating">
+                <input type="date" class="form-control" id="hasta" name="hasta" value={{fechaHasta}}>
+                <label for="hasta">Hasta</label>
+            </div>
+            <div>
+                <button type="submit" form="formDate" class="btn btn-danger btn-radius">Buscar</button>
+            </div>
+        </div>
+    </form>
     <div class="d-flex flex-column gap-2">
         {{#ediciones}}
             <div class="card">
@@ -18,16 +24,16 @@
                 </div>
                 <div class="card-body">
                     <h5 class="card-title">{{nombre}}</h5>
-                    <p class="card-text">Lo mejor de la fecha -  {{nombre}}</p>
-                    <a href="#" class="btn btn-primary btn-radius">Ver articulos</a>
+                    <p class="card-text">Numero edicion -  {{id_edicion}}</p>
+                    <p class="card-text">Nombre edicion -  {{evento}}</p>
                 </div>
             </div>
         {{/ediciones}}
     </div>
 </section>
-<div>
-    <button class="btn btn-primary"><a class="nav-link" href="/infonet/pdf?fechas={{fechaDesde}}?{{fechaHasta}}">Abrir PDF</a></button>
-    <button class="btn btn-primary"><a class="nav-link" href="/infonet/pdf?descarga={{fechaDesde}}?{{fechaHasta}}">Descargar PDF</a></button>
+<div class="container d-flex justify-content-center gap-2">
+    <a class="btn btn-primary btn-radius" href="/infonet/pdf?fechas={{fechaDesde}}?{{fechaHasta}}">Abrir PDF</a>
+    <a class="btn btn-success btn-radius" href="/infonet/pdf?descarga={{fechaDesde}}?{{fechaHasta}}">Descargar PDF</a>
 </div>
 {{> footer}}
 <!--<script>-->

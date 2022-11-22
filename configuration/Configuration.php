@@ -15,11 +15,13 @@ include_once('model/ProductoModel.php');
 include_once('model/EdicionModel.php');
 include_once('model/SeccionModel.php');
 include_once('model/ArticuloModel.php');
+include_once('model/UsuarioModel.php');
 include_once('model/PagoModel.php');
 
 include_once ('model/LoginModel.php');
 include_once ('model/RegistroModel.php');
 include_once ('model/HistorialModel.php');
+include_once ('model/GraficosModel.php');
 include_once ('model/PdfModel.php');
 
 
@@ -33,8 +35,10 @@ include_once('controller/RegistroController.php');
 include_once('controller/VerificacionController.php');
 include_once('controller/articuloController.php');
 include_once('controller/edicionController.php');
+include_once('controller/usuarioController.php');
 include_once('controller/pagoController.php');
 
+include_once('controller/graficosController.php');
 include_once('controller/HistorialController.php');
 include_once('controller/PdfController.php');
 
@@ -92,6 +96,11 @@ class Configuration
         return new RegistroController($this->getAllRegistroModel(), $this->view, new SessionUser());
     }
 
+    public function getUsuarioController()
+    {
+        return new usuarioController($this->getAllUsuarioModel(), $this->view, new SessionUser());
+    }
+
     public function getMailer(){
         return new Mailer();
     }
@@ -104,6 +113,11 @@ class Configuration
     public function getHistorialController()
     {
         return new HistorialController($this->getHistorialModel(), $this->view, new SessionUser());
+    }
+
+    public function getGraficosController()
+    {
+        return new graficosController($this->view, new SessionUser(),$this->getGraficosModel());
     }
 
     public function getPdfController()
@@ -151,10 +165,10 @@ class Configuration
         return new ArticuloModel($this->database);
     }
 
-    /*private function getAllUsuarioModel(): UsuarioModel
+    private function getAllUsuarioModel(): UsuarioModel
     {
         return new UsuarioModel($this->database);
-    }*/
+    }
 
     public function getWeather()
     {
@@ -171,6 +185,10 @@ class Configuration
 
     private function getPagoModel(): PagoModel{
         return new PagoModel($this->database);
+    }
+
+    private function getGraficosModel(): GraficosModel{
+        return new GraficosModel($this->database);
     }
 
 }

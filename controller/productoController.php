@@ -22,7 +22,7 @@ class ProductoController
         $data['productos'] = $this->productoModel->getProductos();
         $data["clima"] = $this->weather->getDayWeather();
         $data["tempNum"] = $this->weather->getTemperatura();
-        $data["t"] = $this->weather->detailsTemperature();
+        $data["t"] = $this->weather->detailsTemperature()->weather;
         $data["semana"] = $this->weather->getWeekWeather();
         $this->view->render('productoView.mustache', $data);
     }
@@ -35,12 +35,11 @@ class ProductoController
         $data['producto'] = $this->productoModel->getProducto($id_producto);
         $data['suscripto'] = $this->validarSuscripcion($id_producto, $idUsuario);
 
-
-
         if ($data['suscripto']) {
             $fechaSuscripcion = $this->productoModel->getSuscripcion($id_producto, $idUsuario);
-            $resultado = $this->productoModel->getEdicionesNoCompradas($id_producto);
-
+            $resultado = $this->productoModel->getEdicionesNoCompradas($id_producto, $idUsuario);
+            var_dump($fechaSuscripcion);
+            var_dump($resultado);
             if (!empty($resultado)) {
                 foreach ($resultado as $edicion) {
 
@@ -82,16 +81,13 @@ class ProductoController
 
     public function validarSuscripcion($id_producto, $idUsuario)
     {
-        $resultado = intval($this->productoModel->getSuscripcion($id_producto, $idUsuario)[0]["diferencia"] ?? '');
+        $resultado = $this->productoModel->getSuscripcion($id_producto, $idUsuario)[0]["diferencia"] ?? '';
 
-        if ((int)$resultado) {
-            if ($resultado < 0 || $resultado > 31) {
-                return false;
-            } else {
-                return true;
-            }
+        if (!empty($resultado) || $resultado < 0 || $resultado > 31) {
+            return false;
+        } else {
+            return true;
         }
-        return false;
     }
 
 

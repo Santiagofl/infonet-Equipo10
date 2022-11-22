@@ -21,7 +21,6 @@ class LoginController{
             $usuario = $_POST["usuario"];
             $password = $_POST["password"];
             $obj = $this->loginModel->iniciarSesion($usuario, $password);
-
             if (!empty($obj)) {
                 if($obj["activo"] == 1){
                     $this->session->setCurrentUser($obj);
