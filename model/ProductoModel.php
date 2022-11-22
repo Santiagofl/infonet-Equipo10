@@ -38,8 +38,8 @@ class ProductoModel
     public function setCompra($usuario, $edicion)
     {
         $sql = "INSERT INTO compra
-                (`usuario`, `edicion`) 
-                VALUES ('$usuario', '$edicion')";
+                (fecha, usuario, edicion) 
+                VALUES (CURRENT_DATE(),'$usuario','$edicion')";
         $this->database->execute($sql);
     }
 

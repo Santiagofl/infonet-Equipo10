@@ -14,8 +14,6 @@
     <canvas id="myChart"></canvas>
 </div>
 
-{{> footer}}
-
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <script>
@@ -24,10 +22,10 @@
     new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: ['11-10-20', '11-10-21', '11-10-22', '11-10-23', '11-10-24', '11-10-25'],
+            labels: [{{#datesC}}'{{fecha}}',{{/datesC}}],
             datasets: [{
-                label: '# of Votes',
-                data: [12, 19, 3, 5, 2, 3],
+                label: 'Cantidad de compras ',
+                data: [{{#cantidadesC}}{{cantidad}},{{/cantidadesC}}],
                 borderWidth: 1
             }]
         },
@@ -40,6 +38,8 @@
         }
     });
 </script>
+
+{{> footer}}
 <!--<script>-->
 <!--    function cargaFechas(){-->
 <!--        document.getElementById('datePicker').value = new Date().toDateInputValue();-->

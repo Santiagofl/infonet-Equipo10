@@ -11,7 +11,6 @@
     </form>
 </nav>
 
-<p>{{#dates}}{{fecha}}, {{/dates}}</p>
 <div>
     <canvas id="myChart"></canvas>
 </div>
@@ -24,9 +23,9 @@
     new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: [{{#dates}}{{fecha}},{{/dates}}],
+            labels: [{{#dates}}'{{fecha}}',{{/dates}}],
     datasets: [{
-        label: '# of Votes',
+        label: 'Cantidad de suscripciones',
         data: [{{#cantidades}}{{cantidad}},{{/cantidades}}],
         borderWidth: 1
     }]

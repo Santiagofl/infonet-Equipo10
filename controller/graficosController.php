@@ -16,42 +16,27 @@ class graficosController
 
     public function list()
     {
-        $data['usuario']= $this->session->getCurrentUser();
+        if ($this->session->getRol() == 1) {
+            $data['usuario'] = $this->session->getCurrentUser();
+            $data['fechaDesde'] = $_GET['desde'] ?? '';
+            $data['fechaHasta'] = $_GET['hasta'] ?? '';
+            $tipo = $_GET['tipo'] ?? "";
 
+            if ($tipo === "C") {
 
-        $data['fechaDesde'] = $_GET['desde'] ?? '';
-        $data['fechaHasta'] = $_GET['hasta'] ?? '';
-        $tipo = $_GET['tipo'] ?? "";
+                $data['cantidadesC'] = $this->graficosModel->getCantidadesCompras($data['fechaDesde'], $data['fechaHasta']);
+                $data['datesC'] = $this->graficosModel->getFechasCompras($data['fechaDesde'], $data['fechaHasta']);
+                $this->view->render('graficoComprasView.mustache', $data);
 
-        if($tipo === "C"){
+            } else {
 
-            $this->view->render('graficoComprasView.mustache', $data);
-
+                $data['cantidades'] = $this->graficosModel->getCantidadesSuscripcion($data['fechaDesde'], $data['fechaHasta']);
+                $data['dates'] = $this->graficosModel->getFechasSuscripcion($data['fechaDesde'], $data['fechaHasta']);
+                $this->view->render('graficoSuscripcionView.mustache', $data);
+            }
         } else {
-
-            $data['cantidades']= $this->graficosModel->getCantidades($data['fechaDesde'], $data['fechaHasta'] );
-            $data['dates'] = $this->graficosModel->getFechas($data['fechaDesde'], $data['fechaHasta']);
-            var_dump($data['dates']);
-            $this->view->render('graficoSuscripcionView.mustache', $data);
+            Redirect::doIt("/infonet/producto");
         }
-
     }
 
-//    function array_flatten($array) {
-//
-//        $return = array();
-//        foreach ($array as $key => $value) {
-//            if (is_array($value)){ $return = array_merge($return, array_flatten($value));}
-//            else {$return[$key] = $value;}
-//        }
-//        return $return;
-//
-//    }
-
-    // public function description()
-    // {
-    //     $id = $_GET['id'] ?? '';
-    //     $producto['producto'] = $this->productoModel->getProducto($id);
-    //     $this->view->render('descriptionView.mustache', $producto);
-    // }
 }
