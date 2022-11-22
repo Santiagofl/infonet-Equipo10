@@ -89,24 +89,25 @@ class usuarioController
 
 
     public function modificarUsuario(){
-        if(ValidatorHelper::validarSeteadoYNoVacio($_POST["rol"])){
+
             $id_usuario = $_POST["id_usuario"];
             $rol = $_POST["rol"];
-            if(!isset($_POST["activo"])){
-                $activo = 0;
+
+            if($_POST["activo"]== "on"){
+                $activo = 1;
             }else{
-                $activo=1;
+                $activo = 0;
             }
+
+            $this->usuarioModel->setUsuario($id_usuario,$rol,$activo);
+
+
+
             $data["error"] = false;
             $data["usuarios"] = $this->usuarioModel->getUsuarios();
             $data["roles"] = $this->usuarioModel->getRoles();
             $this->view->render('lista-usuariosView.mustache', $data);
-        }else{
-            $data["error"] = true;
-            $data["usuarios"] = $this->usuarioModel->getUsuarios();
-            $data["roles"] = $this->usuarioModel->getRoles();
-            $this->view->render('lista-usuariosView.mustache', $data);
-        }
+
     }
 
 }

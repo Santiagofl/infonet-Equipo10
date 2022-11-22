@@ -63,7 +63,7 @@ class UsuarioModel
 
     }
 
-    private function setUsuario($id_usuario, $rol,$activo){
+    public function setUsuario($id_usuario, $rol,$activo){
         $sql="UPDATE usuario
         SET rol = '$rol', activo = '$activo'
         WHERE id_usuario = '$id_usuario'";

@@ -20,7 +20,8 @@
                 <td>{{email}}</td>
                 <form method="post" action="/infonet/usuario/modificarUsuario" >
                     <td><select class="form-select form-select-sm"  id="rol" name="rol">
-                        <option value="{{rol}}"> {{#rol}}{{userRol}}{{/rol}}{{^rol}}-Seleccione Rol-{{/rol}}</option>
+                        <option value=""disabled> -Seleccione Rol-</option>
+                        <option value="{{rol}}" > {{#rol}}{{userRol}}{{/rol}}{{^rol}}{{/rol}}</option>
                         {{#roles}}
                             <option value="{{id_rol}}" >{{descripcion}}</option>
                         {{/roles}}
