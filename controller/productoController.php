@@ -84,7 +84,7 @@ class ProductoController
     {
         $resultado = intval($this->productoModel->getSuscripcion($id_producto, $idUsuario)[0]["diferencia"] ?? '');
 
-        if (!empty($resultado)) {
+        if ((int)$resultado) {
             if ($resultado < 0 || $resultado > 31) {
                 return false;
             } else {

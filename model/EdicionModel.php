@@ -36,11 +36,11 @@ class EdicionModel
         return $this->database->query($sql);
     }
 
-    public function setEdicion($idProducto, $fecha, $evento)
+    public function setEdicion($idProducto, $fecha, $evento, $precio)
     {
         $sql = "INSERT INTO edicion
-                (`fecha`, `id_producto`, `evento`) 
-                VALUES ('$fecha', '$idProducto', '$evento')";
+                (`fecha`, `id_producto`, `evento`, `precio`) 
+                VALUES ('$fecha', '$idProducto', '$evento','$precio')";
         $this->database->execute($sql);
     }
 }

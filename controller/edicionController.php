@@ -28,7 +28,8 @@ class EdicionController
         $idProducto = $_POST["productoEdicion"] ?? '';
         $fecha = $_POST["fechaEdicion"] ?? '';
         $evento = $_POST["eventoEdicion"] ?? '';
-        $this->edicionModel->setEdicion($idProducto, $fecha, $evento);
+        $precio = $_POST["precioEdicion"] ?? '0.00';
+        $this->edicionModel->setEdicion($idProducto, $fecha, $evento, $precio);
 
         Redirect::doIt('/infonet/abm');
     }
