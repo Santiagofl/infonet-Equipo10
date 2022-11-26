@@ -57,7 +57,10 @@
                                             </div>
                                             <div class="card-body">
                                             <h5 class="card-title">${element.subtitulo}</h5>
-                                            <p class="card-text">Seccion: <span class="fw-bolder">${element.nombreSeccion}</span></p>
+                                            <div class="d-flex justify-content-between">
+      <p class="card-text">Seccion: <span class="fw-bolder">${element.nombreSeccion}</span></p>
+          <img src="/infonet/public/imgArticulos/${element.imagen}"  width="200" height="150" style="width: fit-content; overflow-y: hidden"/>
+</div>
                                             <div class="d-flex gap-2 ">
                                             <button class="btn btn-radius btn-success"
                                             data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop${element.id_articulo}" aria-controls="offcanvasTop"
