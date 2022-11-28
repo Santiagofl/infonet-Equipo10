@@ -45,6 +45,13 @@ class SeccionController
         }
     }
 
+    public function modificarSeccion(){
+        $id = $_GET['idSeccion'] ?? '';
+        $nombreSeccion = $_POST["nombreSeccion"] ?? '';
+        $this->seccionModel->updateSeccion($id, $nombreSeccion);
+        Redirect::doIt('/infonet/abm/vistaListaSecciones');
+    }
+
     public function borrarSeccion()
     {
         $data['usuario'] = $this->session->getCurrentUser();

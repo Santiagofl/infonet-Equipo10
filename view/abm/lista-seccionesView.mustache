@@ -65,7 +65,30 @@
                             </button>
                             <a class="btn btn-danger btn-radius"
                                href="/infonet/seccion/borrarSeccion/id=${element.id_seccion}">Borrar
-                            </a></div></td></tr>`);
+                            </a></div>
+
+<div class="modal fade" id="modalProducto${element.id_seccion}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Modificar Sección</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form method="post" action="/infonet/seccion/modificarSeccion/idSeccion=${element.id_seccion}" >
+      <div class="modal-body align-items-start d-flex flex-column">
+       <p>Nombre de la sección</p>
+         <input class="form-control" type="text" name="nombreSeccion" id="nombreSeccion" value="${element.nombre}">
+         <br/>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary btn-radius" data-bs-dismiss="modal">Cancelar</button>
+        <button type="submit" class="btn btn-primary btn-radius">Guardar cambios</button>
+      </div>
+</form>
+    </div>
+  </div>
+</div>
+</td></tr>`);
                                 });
                             }
                         })
