@@ -208,3 +208,39 @@ from usuario;
 INSERT INTO `suscripcion` (`fecha`, `id_producto`, `id_usuario`) VALUES
 ('2022-11-08', 2, 2),
 ('2022-11-08', 3, 2);
+
+INSERT INTO `articulo` (`titulo`, `subtitulo`, `texto`, `autor`, `imagen`, `latitud`, `longitud`, `id_edicion`, `id_estado`, `id_seccion`) VALUES
+                                                                                                                                               ('Debate por el presupuesto', 'Sigue el debate en la camara baja por el presupuesto, gritos y acusaciones en el Senado', 'La media sanción que dio la Cámara de Diputados de la Nación al Presupuesto 2023 guarda un dato político que sobresale en medio de la grieta en la que está estancada hace años la dirigencia argentina. Pese al escenario de polarización que exponen el Frente de Todos y Juntos por el Cambio, y a las cruentas internas que conviven en ambas coaliciones, la ley de Presupuesto aprobada este miércoles es la que mayor consenso logró a lo largo de la última década.
+
+Luego de más de 15 horas de debate, el oficialismo logró aprobar el proyecto en general con 180 votos afirmativos, 22 negativos y 48 abstenciones. La Unión Cívica Radical (UCR), Evolución, el Interbloque Federal y Provincias Unidas respaldaron la iniciativa del Poder Ejecutivo; mientras que el PRO y la Izquierda se abstuvieron; y la Coalición Cívica y los libertarios rechazaron la hoja de ruta con la que contará el Gobierno el año próximo..', 'Jose Maria Gimenez', "politica.jpg", NULL, NULL, 1, 2, 1),
+                                                                                                                                               ('Bomba de tiempo en el central', 'El gobierno no puede controlar las altas tasas de interes', 'En el último informe efectuado por Equilibra, el centro de análisis económico que lideran Martin Rapetti, Lorenzo Sigaut Gravina y Lorena Giorgio, se destaca la caída del financiamiento bancario al público y empresas en 2022 y la contracara, que es la mayor exposición al sector público.
+
+"Es cada vez menor la porción de los depósitos en pesos que van a préstamos privados: 60% a fines de 2019 y menos del 40% en los últimos meses.
+
+Por el contrario, el financiamiento al sector público es cada vez mayor: el 60% de los depósitos en pesos está volcado a instrumentos del sector público consolidado, contra 34% en 2019" señala Equilibra.
+
+Ese 60% incluye tanto los requerimientos legales como encajes o efectivo mínimo, como letras y bonos suscriptos voluntariamente por las entidades financieras.', 'Martin Di Natalle', "economia.jpg", NULL, NULL, 1, 2, 4),
+                                                                                                                                               ('Racing Campeon', 'Rcacing es el mejor equipo de la temporada ganandole a Boca luego de que abandonaran', 'Los momentos que vivi, todo lo que yo deje
+Por seguir a la academia, nadie lo puede entender
+Yo no se como explicar, que te llevo hasta en la piel
+Sos la droga que en las venas me inyectaron al nacer
+
+Se me parte el corazón, cada vez que vos perdes
+Me pongo de la cabeza y otra vez te vengo a ver
+Muchachos, traigan vino juega la acade
+Que esta banda esta de fiesta
+Y hoy no podemos perder
+
+Muchachos, traigan vino juega la acade
+Me emborrarcho bien borracho
+Si el rojo se va a la B
+.', 'Aguante la Academia', 'deportes.jpg', NULL, NULL, 1, 2, 7),
+                                                                                                                                               ('Baja el romedio de notas en la provincia de Buenos Aires', 'Segun un estudio en la universidad de Di Tella LAS NOTAS CAYERON UN 3% respecto del año anterior', 'Tras dos años de cambios por el cierre de escuelas, en 2022 se retomarán las calificaciones numéricas a la hora de evaluar en las secundarias bonaerenses, pero bajo un esquema distinto. Según supo Infobae, en primaria se volverá a un modelo pre-pandemia con valoraciones conceptuales en los primeros grados y notas en los últimos.
+
+Desde este año habrá una transición hacia los regímenes de evaluación tradicionales, de acuerdo a lo que informaron las autoridades. El esquema en secundaria tendrá algunas particularidades: la calificación numérica recién llegará cuando la materia esté aprobada. En los boletines durante la cursada no habrá notas, sino que se mantendrán las valoraciones conceptuales.
+
+Una vez aprobada la materia, a fin de año la nota podrá oscilar entre 7 y 10. Si un alumno desaprueba la asignatura y debe rendir en diciembre, febrero o dejarla previa, la calificación estará entre el 4 y el 10.
+
+La Dirección General de Cultura y Educación bonaerense distribuyó un documento entre las secundarias explicando cómo será la evaluación. Dispuso cuatro instancias de comunicación con las familias en los dos cuatrimestres:
+
+-Se entregarán Registros Institucionales de Trayectorias Educativas (RITE) a estudiantes y sus padres dos veces al año, uno al cierre del primer cuatrimestre y el otro, al cierre del segundo.', 'autor', 'alumnos.jpg', NULL, NULL, 1, 2, 11),
