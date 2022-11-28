@@ -3,117 +3,115 @@ create database infonet;
 use infonet;
 
 CREATE TABLE `rol` (
-  `id_rol` INT(11) NOT NULL AUTO_INCREMENT,
-  `descripcion` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`id_rol`)
+                       `id_rol` INT(11) NOT NULL AUTO_INCREMENT,
+                       `descripcion` varchar(45) DEFAULT NULL,
+                       PRIMARY KEY (`id_rol`)
 );
 
 CREATE TABLE `usuario` (
-  `id_usuario` int NOT NULL AUTO_INCREMENT,
-  `nombre` varchar(45) DEFAULT NULL,
-  `password` varchar(45) DEFAULT NULL,
-  `usuario` varchar(45) DEFAULT NULL,
-  `latitud` float DEFAULT NULL,
-  `longitud` float DEFAULT NULL,
-  `email` varchar(45) DEFAULT NULL,
-  `rol` int DEFAULT NULL,
-  `activo` tinyint(1) DEFAULT NULL,
-  PRIMARY KEY (`id_usuario`),
-  KEY `rol` (`rol`),
-  CONSTRAINT `usuario_ibfk_1` FOREIGN KEY (`rol`) REFERENCES `rol` (`id_rol`)
+                           `id_usuario` int NOT NULL AUTO_INCREMENT,
+                           `nombre` varchar(45) DEFAULT NULL,
+                           `password` varchar(45) DEFAULT NULL,
+                           `usuario` varchar(45) DEFAULT NULL,
+                           `latitud` float DEFAULT NULL,
+                           `longitud` float DEFAULT NULL,
+                           `email` varchar(45) DEFAULT NULL,
+                           `rol` int DEFAULT NULL,
+                           `activo` tinyint(1) DEFAULT NULL,
+                           PRIMARY KEY (`id_usuario`),
+                           KEY `rol` (`rol`),
+                           CONSTRAINT `usuario_ibfk_1` FOREIGN KEY (`rol`) REFERENCES `rol` (`id_rol`)
 );
 
 CREATE TABLE `tipo` (
-  `id_tipo_producto` int NOT NULL AUTO_INCREMENT,
-  `descripcion` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`id_tipo_producto`)
+                        `id_tipo_producto` int NOT NULL AUTO_INCREMENT,
+                        `descripcion` varchar(45) DEFAULT NULL,
+                        PRIMARY KEY (`id_tipo_producto`)
 );
 
 CREATE TABLE `producto` (
-  `id_producto` int NOT NULL AUTO_INCREMENT,
-  `nombre` varchar(45) DEFAULT NULL,
-  `imagen` text,
-  `tipo` int DEFAULT NULL,
-  `precio` decimal(10,2) DEFAULT NULL,
-  PRIMARY KEY (`id_producto`),
-  KEY `tipo` (`tipo`),
-  CONSTRAINT `producto_ibfk_1` FOREIGN KEY (`tipo`) REFERENCES `tipo` (`id_tipo_producto`)
+                            `id_producto` int NOT NULL AUTO_INCREMENT,
+                            `nombre` varchar(45) DEFAULT NULL,
+                            `imagen` text,
+                            `tipo` int DEFAULT NULL,
+                            `precio` decimal(10,2) DEFAULT NULL,
+                            PRIMARY KEY (`id_producto`),
+                            KEY `tipo` (`tipo`),
+                            CONSTRAINT `producto_ibfk_1` FOREIGN KEY (`tipo`) REFERENCES `tipo` (`id_tipo_producto`)
 );
 
 CREATE TABLE `edicion` (
-  `id_edicion` int NOT NULL AUTO_INCREMENT,
-  `fecha` date DEFAULT NULL,
-  `id_producto` int DEFAULT NULL,
-  `evento` varchar(200) DEFAULT NULL,
-  `precio` decimal(10,2) DEFAULT NULL,
-  PRIMARY KEY (`id_edicion`),
-  KEY `id_producto` (`id_producto`),
-  CONSTRAINT `edicion_ibfk_1` FOREIGN KEY (`id_producto`) REFERENCES `producto` (`id_producto`)
+                           `id_edicion` int NOT NULL AUTO_INCREMENT,
+                           `fecha` date DEFAULT NULL,
+                           `id_producto` int DEFAULT NULL,
+                           `evento` varchar(200) DEFAULT NULL,
+                           `precio` decimal(10,2) DEFAULT NULL,
+                           PRIMARY KEY (`id_edicion`),
+                           KEY `id_producto` (`id_producto`),
+                           CONSTRAINT `edicion_ibfk_1` FOREIGN KEY (`id_producto`) REFERENCES `producto` (`id_producto`) on delete cascade
 );
 
 CREATE TABLE `seccion` (
-  `id_seccion` int NOT NULL AUTO_INCREMENT,
-  `nombre` varchar(45) DEFAULT NULL,
-  `imagen` varchar(45) DEFAULT NULL,
-  `id_edicion` int DEFAULT NULL,
-  PRIMARY KEY (`id_seccion`),
-  KEY `id_edicion` (`id_edicion`),
-  CONSTRAINT `seccion_ibfk_1` FOREIGN KEY (`id_edicion`) REFERENCES `edicion` (`id_edicion`)
+                           `id_seccion` int NOT NULL AUTO_INCREMENT,
+                           `nombre` varchar(45) DEFAULT NULL,
+                           `imagen` varchar(45) DEFAULT NULL,
+                           `id_edicion` int DEFAULT NULL,
+                           PRIMARY KEY (`id_seccion`),
+                           KEY `id_edicion` (`id_edicion`),
+                           CONSTRAINT `seccion_ibfk_1` FOREIGN KEY (`id_edicion`) REFERENCES `edicion` (`id_edicion`) on delete cascade
 );
 
 CREATE TABLE `estado` (
-  `id_estado` int NOT NULL AUTO_INCREMENT,
-  `descripcion` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`id_estado`)
+                          `id_estado` int NOT NULL AUTO_INCREMENT,
+                          `descripcion` varchar(45) DEFAULT NULL,
+                          PRIMARY KEY (`id_estado`)
 );
 
 CREATE TABLE `articulo` (
-  `id_articulo` int NOT NULL AUTO_INCREMENT,
-  `titulo` varchar(200) DEFAULT NULL,
-  `subtitulo` varchar(200) DEFAULT NULL,
-  `texto` varchar(4000) DEFAULT NULL,
-  `autor` varchar(45) DEFAULT NULL,
-  `imagen` varchar(45) DEFAULT NULL,
-  `latitud` float DEFAULT NULL,
-  `longitud` float DEFAULT NULL,
-  `id_edicion` int DEFAULT NULL,
-  `id_estado` int DEFAULT '1',
-  `id_seccion` int DEFAULT NULL,
-  PRIMARY KEY (`id_articulo`),
-  KEY `id_edicion` (`id_edicion`),
-  KEY `id_estado` (`id_estado`),
-  KEY `id_seccion` (`id_seccion`),
-  CONSTRAINT `articulo_ibfk_1` FOREIGN KEY (`id_edicion`) REFERENCES `edicion` (`id_edicion`),
-  CONSTRAINT `articulo_ibfk_2` FOREIGN KEY (`id_estado`) REFERENCES `estado` (`id_estado`),
-  CONSTRAINT `articulo_ibfk_3` FOREIGN KEY (`id_seccion`) REFERENCES `seccion` (`id_seccion`)
+                            `id_articulo` int NOT NULL AUTO_INCREMENT,
+                            `titulo` varchar(200) DEFAULT NULL,
+                            `subtitulo` varchar(200) DEFAULT NULL,
+                            `texto` varchar(4000) DEFAULT NULL,
+                            `autor` varchar(45) DEFAULT NULL,
+                            `imagen` varchar(45) DEFAULT NULL,
+                            `latitud` float DEFAULT NULL,
+                            `longitud` float DEFAULT NULL,
+                            `id_edicion` int DEFAULT NULL,
+                            `id_estado` int DEFAULT '1',
+                            `id_seccion` int DEFAULT NULL,
+                            PRIMARY KEY (`id_articulo`),
+                            KEY `id_edicion` (`id_edicion`),
+                            KEY `id_estado` (`id_estado`),
+                            KEY `id_seccion` (`id_seccion`),
+                            CONSTRAINT `articulo_ibfk_1` FOREIGN KEY (`id_edicion`) REFERENCES `edicion` (`id_edicion`)  on delete cascade,
+                            CONSTRAINT `articulo_ibfk_2` FOREIGN KEY (`id_estado`) REFERENCES `estado` (`id_estado`),
+                            CONSTRAINT `articulo_ibfk_3` FOREIGN KEY (`id_seccion`) REFERENCES `seccion` (`id_seccion`)  on delete cascade
 );
 
 CREATE TABLE `compra` (
-  `id_compra` int NOT NULL AUTO_INCREMENT,
-  `usuario` int DEFAULT NULL,
-  `edicion` int DEFAULT NULL,
-  fecha date DEFAULT NULL,
-  PRIMARY KEY (`id_compra`),
-  KEY `usuario` (`usuario`),
-  KEY `edicion` (`edicion`),
-  CONSTRAINT `compra_ibfk_1` FOREIGN KEY (`usuario`) REFERENCES `usuario` (`id_usuario`),
-  CONSTRAINT `compra_ibfk_2` FOREIGN KEY (`edicion`) REFERENCES `edicion` (`id_edicion`)
+                          `id_compra` int NOT NULL AUTO_INCREMENT,
+                          `usuario` int DEFAULT NULL,
+                          `edicion` int DEFAULT NULL,
+                          fecha date DEFAULT NULL,
+                          PRIMARY KEY (`id_compra`),
+                          KEY `usuario` (`usuario`),
+                          KEY `edicion` (`edicion`),
+                          CONSTRAINT `compra_ibfk_1` FOREIGN KEY (`usuario`) REFERENCES `usuario` (`id_usuario`) on delete cascade,
+                          CONSTRAINT `compra_ibfk_2` FOREIGN KEY (`edicion`) REFERENCES `edicion` (`id_edicion`) on delete cascade
 );
-
-
-
 CREATE TABLE `suscripcion` (
-  `id_suscripcion` int NOT NULL AUTO_INCREMENT,
-  `fecha` date DEFAULT NULL,
-  `id_producto` int DEFAULT NULL,
-  `id_usuario` int DEFAULT NULL,
-  `precio` decimal(10,2) DEFAULT NULL,
-  PRIMARY KEY (`id_suscripcion`),
-  KEY `id_producto` (`id_producto`),
-  KEY `id_usuario` (`id_usuario`),
-  CONSTRAINT `suscripcion_ibfk_1` FOREIGN KEY (`id_producto`) REFERENCES `producto` (`id_producto`),
-  CONSTRAINT `suscripcion_ibfk_2` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`)
+                               `id_suscripcion` int NOT NULL AUTO_INCREMENT,
+                               `fecha` date DEFAULT NULL,
+                               `id_producto` int DEFAULT NULL,
+                               `id_usuario` int DEFAULT NULL,
+                               `precio` decimal(10,2) DEFAULT NULL,
+                               PRIMARY KEY (`id_suscripcion`),
+                               KEY `id_producto` (`id_producto`),
+                               KEY `id_usuario` (`id_usuario`),
+                               CONSTRAINT `suscripcion_ibfk_1` FOREIGN KEY (`id_producto`) REFERENCES `producto` (`id_producto`) on delete cascade,
+                               CONSTRAINT `suscripcion_ibfk_2` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`) on delete cascade
 );
+
 
 
 
