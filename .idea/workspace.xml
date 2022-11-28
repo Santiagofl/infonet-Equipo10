@@ -2,11 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6aa02d7e-1d1d-4107-9ef7-bb45196c54dd" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/public/imgArticulos/messi.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/imgArticulos/messi.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/abm/lista-articulosView.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/abm/lista-articulosView.mustache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/articulo-contenidoView.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/articulo-contenidoView.mustache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/productoController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controller/productoController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/articulos-por-seccionView.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/articulos-por-seccionView.mustache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/descriptionView.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/descriptionView.mustache" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,14 +27,10 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/xampp/htdocs/infonet/public/imgArticulos",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
-  }
-}]]></component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\infonet\public\imgArticulos" />
@@ -87,6 +82,7 @@
       <workItem from="1668982137886" duration="14604000" />
       <workItem from="1669068832917" duration="4000" />
       <workItem from="1669151367704" duration="4326000" />
+      <workItem from="1669605847599" duration="4271000" />
     </task>
     <servers />
   </component>
