@@ -38,8 +38,6 @@ class ProductoController
         if ($data['suscripto']) {
             $fechaSuscripcion = $this->productoModel->getSuscripcion($id_producto, $idUsuario);
             $resultado = $this->productoModel->getEdicionesNoCompradas($id_producto, $idUsuario);
-            var_dump($fechaSuscripcion);
-            var_dump($resultado);
             if (!empty($resultado)) {
                 foreach ($resultado as $edicion) {
 
@@ -82,9 +80,9 @@ class ProductoController
 
     public function validarSuscripcion($id_producto, $idUsuario)
     {
-        $resultado = $this->productoModel->getSuscripcion($id_producto, $idUsuario)[0]["diferencia"] ?? '';
+        $resultado = intval($this->productoModel->getSuscripcion($id_producto, $idUsuario)[0]["diferencia"] ?? '')+1;
 
-        if (!empty($resultado) || $resultado < 0 || $resultado > 31) {
+        if ($resultado < 1 || $resultado > 32) {
             return false;
         } else {
             return true;
