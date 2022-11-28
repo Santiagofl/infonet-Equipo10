@@ -50,4 +50,10 @@ class SeccionModel
         return $this->database->query($sql);
     }
 
+    public function updateSeccion($idSeccion, $nombre){
+        $sql = "UPDATE seccion s SET s.nombre='$nombre'
+                WHERE s.id_seccion='$idSeccion';";
+        $this->database->execute($sql);
+    }
+
 }

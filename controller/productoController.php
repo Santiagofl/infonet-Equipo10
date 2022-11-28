@@ -41,7 +41,7 @@ class ProductoController
             if (!empty($resultado)) {
                 foreach ($resultado as $edicion) {
 
-                    $diferencia = $this->productoModel->getDiferenciaDeDias($edicion["fecha"], $fechaSuscripcion[0]["fecha"]);
+                    $diferencia = $this->productoModel->getDiferenciaDeDias($edicion["fecha"] ?? '', $fechaSuscripcion[0]["fecha"] ?? '');
                     if ($diferencia < 0 || $diferencia > 31) {
                         $this->productoModel->setCompra($idUsuario, $edicion["id_edicion"]);
                     }
@@ -80,9 +80,9 @@ class ProductoController
 
     public function validarSuscripcion($id_producto, $idUsuario)
     {
-        $resultado = intval($this->productoModel->getSuscripcion($id_producto, $idUsuario)[0]["diferencia"] ?? '')+1;
+        $resultado = $this->productoModel->getSuscripcion($id_producto, $idUsuario)[0]["diferencia"] ?? '';
 
-        if ($resultado < 1 || $resultado > 32) {
+        if (!empty($resultado) || $resultado < 0 || $resultado > 31) {
             return false;
         } else {
             return true;
